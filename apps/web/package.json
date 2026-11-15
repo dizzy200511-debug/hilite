@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "build:desktop": "tsc -b && vite build --mode desktop",
     "preview": "vite preview",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "papers:update": "node scripts/fetch-past-papers.mjs"
   },
   "dependencies": {
     "@fontsource-variable/hanken-grotesk": "^5.3.0",

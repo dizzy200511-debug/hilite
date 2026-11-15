@@ -11,6 +11,7 @@ import { uid } from '../lib/sanitize';
 import { useAuth } from '../auth/AuthProvider';
 import type { PaperLog } from '../lib/types';
 import { MistakeModal } from '../components/MistakeModal';
+import { linksFor, parseSeries, usePaperLinks, type PaperLink } from '../lib/paperLinks';
 
 export default function Papers() {
   const [profile] = useProfile();
@@ -26,6 +27,14 @@ export default function Papers() {
   const logs = papers.logs.filter((l) => l.specId === specId);
   const tr = trend(logs);
   const pred = predictGrade(logs);
+  const links = usePaperLinks(specId || undefined);
+  // With links: one row per paper (and tier or option) in each public series. Without: every series, linking to the board.
+  const rows: { year: number; series: 'June' | 'November'; p: Paper; link?: PaperLink; key: string }[] = !spec ? [] : links
+    ? Object.entries(links.series).flatMap(([k, byPaper]) => {
+      const { year, series } = parseSeries(k);
+      return spec.papers.flatMap((p) => linksFor(byPaper[p.id], choice?.tier).map((link, i) => ({ year, series, p, link, key: k + p.id + i })));
+    })
+    : pastSeries(spec).flatMap((ser) => spec.papers.map((p) => ({ year: ser.year, series: ser.series, p, key: ser.year + ser.series + p.id })));
 
   if (!profile.subjects.length) return (<><Topbar title="Past papers" /><div className="content"><div className="panel"><Empty title="Add your subjects first" action={<Link className="btn btn-primary" to="/subjects">Add subjects</Link>}>Past papers are listed by your exact specification, so Hilite needs your subjects.</Empty></div></div></>);
 
@@ -47,29 +56,35 @@ export default function Papers() {
             </div>
             <section className="panel">
               <div className="panel-head"><h2>{spec.board} {spec.qual} {spec.subject} <span className="muted small">({spec.code})</span></h2>
-                <a className="btn btn-sm" href={BOARDS[spec.board].pastPapers} target="_blank" rel="noopener noreferrer">Open {BOARDS[spec.board].name} papers<IconExternal /></a></div>
+                <a className="btn btn-sm btn-ghost" href={BOARDS[spec.board].pastPapers} target="_blank" rel="noopener noreferrer">{BOARDS[spec.board].name} site<IconExternal /></a></div>
               <div className="panel-body" style={{ paddingLeft: 0, paddingRight: 0, overflowX: 'auto' }}>
-                <p className="small muted" style={{ padding: '0 20px 10px' }}>Papers open on the official {BOARDS[spec.board].name} site, so you always get the real paper and mark scheme. The most recent series are kept private by the board until they’re released.</p>
+                <p className="small muted" style={{ padding: '0 20px 10px' }}>{links ? <>Each link opens the official file on the {BOARDS[spec.board].name} website. Hilite links to the board’s own copy; it never hosts papers.</> : <>Papers open on the official {BOARDS[spec.board].name} site, so you always get the real paper and mark scheme. The most recent series are kept private by the board until they’re released.</>}</p>
+                {links === undefined ? <p className="small muted" style={{ padding: '0 20px' }}>Loading papers…</p> : (
                 <table className="table">
-                  <thead><tr><th>Series</th><th>Paper</th><th>Your mark</th><th>Grade</th><th /></tr></thead>
+                  <thead><tr><th>Series</th><th>Paper</th><th>Files</th><th>Your mark</th><th /></tr></thead>
                   <tbody>
-                    {pastSeries(spec).flatMap((ser) => spec.papers.map((p) => {
-                      const mine = logs.filter((l) => l.paperId === p.id && l.year === ser.year && l.series === ser.series).sort((a, b) => b.date.localeCompare(a.date))[0];
+                    {rows.map(({ year, series, p, link, key }) => {
+                      const mine = logs.filter((l) => l.paperId === p.id && l.year === year && l.series === series).sort((a, b) => b.date.localeCompare(a.date))[0];
                       return (
-                        <tr key={ser.year + ser.series + p.id}>
-                          <td className="num" style={{ whiteSpace: 'nowrap' }}><b>{ser.series} {ser.year}</b>{!ser.isPublic && <div className="tiny faint">Not public yet</div>}</td>
-                          <td>{p.name}{choice?.tier ? <span className="muted small">, {choice.tier === 'H' ? 'Higher' : 'Foundation'}</span> : null}</td>
-                          <td className="num">{mine ? <><b>{mine.score}/{mine.max}</b> <span className="muted">({pct(mine)}%)</span></> : <span className="faint">–</span>}</td>
-                          <td>{mine?.grade ? <span className="tag accent">{mine.grade}</span> : <span className="faint">–</span>}</td>
+                        <tr key={key}>
+                          <td className="num" style={{ whiteSpace: 'nowrap' }}><b>{series} {year}</b>{!link && !pastSeries(spec).find((x) => x.year === year && x.series === series)?.isPublic && <div className="tiny faint">Not public yet</div>}</td>
+                          <td>{p.name}{link?.tier ? <span className="muted small">, {link.tier === 'H' ? 'Higher' : 'Foundation'}</span> : choice?.tier && !link ? <span className="muted small">, {choice.tier === 'H' ? 'Higher' : 'Foundation'}</span> : null}{link?.option && <div className="tiny muted">{link.option}</div>}</td>
+                          <td style={{ whiteSpace: 'nowrap' }}>{link ? <span className="row" style={{ gap: 4 }}>
+                            {link.qp && <a className="btn btn-sm" href={link.qp} target="_blank" rel="noopener noreferrer">Paper</a>}
+                            {link.ms && <a className="btn btn-sm btn-ghost" href={link.ms} target="_blank" rel="noopener noreferrer">Mark scheme</a>}
+                            {link.er && <a className="btn btn-sm btn-ghost hide-sm" href={link.er} target="_blank" rel="noopener noreferrer">Report</a>}
+                          </span> : <span className="faint small">On the board’s site</span>}</td>
+                          <td className="num">{mine ? <><b>{mine.score}/{mine.max}</b> <span className="muted">({pct(mine)}%)</span>{mine.grade && <span className="tag accent" style={{ marginLeft: 6 }}>{mine.grade}</span>}</> : <span className="faint">–</span>}</td>
                           <td style={{ whiteSpace: 'nowrap', textAlign: 'right' }}>
-                            <button className="btn btn-sm btn-ghost" onClick={() => setMock({ spec, paper: p, year: ser.year, series: ser.series })}><IconTimer />Mock</button>
-                            <button className="btn btn-sm" onClick={() => setLog({ spec, paper: p, year: ser.year, series: ser.series })}>{mine ? 'Log again' : 'Log mark'}</button>
+                            <button className="btn btn-sm btn-ghost" onClick={() => setMock({ spec, paper: p, year, series })}><IconTimer />Mock</button>
+                            <button className="btn btn-sm" onClick={() => setLog({ spec, paper: p, year, series })}>{mine ? 'Log again' : 'Log mark'}</button>
                           </td>
                         </tr>
                       );
-                    }))}
+                    })}
                   </tbody>
                 </table>
+                )}
               </div>
             </section>
             {logs.length > 0 && (
