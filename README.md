@@ -69,7 +69,7 @@ Every push to `main` redeploys the site automatically.
 ### 6. The AI coach (Pro)
 The AI coach, AI marking and AI flashcards run through the `ai` server function, so the API key never reaches anyone's browser.
 1. Make an account at console.anthropic.com with your parent, add billing, and create an API key. Set a monthly spend limit there too.
-2. In the Supabase SQL editor, run `supabase/migrations/0002_ai.sql`. It adds the daily request counter.
+2. In the Supabase SQL editor, run `supabase/migrations/0002_ai.sql` (the daily request counter), then `0003_owner_ai.sql` (AI usage on the owner dashboard).
 3. Set the secrets and deploy:
    ```
    npx supabase secrets set ANTHROPIC_API_KEY=sk-ant-xxx AI_DAILY_LIMIT=40
