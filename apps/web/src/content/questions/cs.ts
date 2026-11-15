@@ -1,0 +1,96 @@
+import type { Bank } from './types';
+import { calc, long, mcq, short } from './make';
+
+/** GCSE computer science for AQA and OCR. Written for Hilite; never copied from papers. */
+const bank: Bank = {
+  algorithms: [
+    short('cs-alg-01', 2, 1, 'Define abstraction and decomposition.', ['Abstraction: removing unnecessary detail to focus on what matters', 'Decomposition: breaking a problem into smaller parts']),
+    mcq('cs-alg-02', 1, 'Which search algorithm needs the data to be sorted first?', ['Linear search', 'Binary search'], 1),
+    short('cs-alg-03', 3, 2, 'Show the steps a binary search takes to find 11 in the list [1, 3, 5, 7, 9, 11, 13].', ['Compare 11 with the middle item, 7', '11 is bigger, so discard 7 and everything before it', 'The middle of [9, 11, 13] is 11: found']),
+    short('cs-alg-04', 2, 2, 'Show the list [5, 2, 8, 1] after the first pass of a bubble sort into ascending order.', ['Swaps 5 and 2, then 8 and 1', '[2, 5, 1, 8]']),
+    short('cs-alg-05', 1, 2, 'Give one advantage of merge sort over bubble sort.', ['It is much faster (more efficient) for large lists']),
+    calc('cs-alg-06', 2, 2, 'What is output by this algorithm?\n\nx ← 3\nFOR i ← 1 TO 3\n    x ← x * 2\nENDFOR\nOUTPUT x', ['x goes 6, 12, 24', '24']),
+    short('cs-alg-07', 1, 1, 'What is an algorithm?', ['A sequence of steps to solve a problem']),
+  ],
+  programming: [
+    mcq('cs-pro-01', 1, 'Which data type stores only True or False?', ['Integer', 'Real', 'Boolean', 'String'], 2),
+    short('cs-pro-02', 2, 1, 'What is the difference between a local and a global variable?', ['A local variable can only be used inside the subroutine where it is declared', 'A global variable can be used anywhere in the program']),
+    long('cs-pro-03', 3, 2, 'Write an algorithm that asks for a password and keeps asking until “letmein” is entered.', ['Uses a loop that repeats until the password is correct', 'Takes input inside the loop', 'Compares the input with “letmein”'], 'password ← ""\nWHILE password ≠ "letmein"\n    password ← USERINPUT\nENDWHILE'),
+    short('cs-pro-04', 2, 1, 'Give two reasons programmers use subroutines.', ['Code can be reused without rewriting it', 'Programs are easier to test, debug and maintain']),
+    calc('cs-pro-05', 2, 1, 'What are 17 MOD 5 and 17 DIV 5?', ['17 MOD 5 = 2', '17 DIV 5 = 3']),
+    short('cs-pro-06', 2, 1, 'Name two types of programming error and describe each.', ['Syntax error: breaks the rules of the language, so the program will not run', 'Logic error: the program runs but gives the wrong result']),
+    short('cs-pro-07', 2, 1, 'Why is input validation used? Give one validation check.', ['To make sure data entered is sensible and reasonable', 'Range, length, presence, type or format check']),
+    short('cs-pro-08', 2, 1, 'What is an array?', ['A data structure that stores several items of the same data type', 'Under one name, each with an index']),
+  ],
+  datarep: [
+    calc('cs-dat-01', 1, 1, 'Convert the binary number 10110101 to denary.', ['181'], '128 + 32 + 16 + 4 + 1 = 181'),
+    calc('cs-dat-02', 1, 1, 'Convert the denary number 200 to 8-bit binary.', ['11001000'], '128 + 64 + 8 = 200'),
+    calc('cs-dat-03', 1, 2, 'Convert the binary number 11101011 to hexadecimal.', ['EB'], '1110 = E and 1011 = B'),
+    calc('cs-dat-04', 2, 2, 'Add the binary numbers 01101100 and 00111010.', ['Carries shown correctly', '10100110'], '108 + 58 = 166 = 10100110'),
+    calc('cs-dat-05', 3, 2, 'An image is 800 × 600 pixels with a colour depth of 8 bits. Calculate its file size in kilobytes (1 KB = 1000 bytes).', ['800 × 600 × 8 = 3 840 000 bits', '÷ 8 = 480 000 bytes', '480 KB']),
+    calc('cs-dat-06', 2, 3, 'A sound is recorded for 10 seconds at 44 100 Hz with a bit depth of 16. Calculate the file size in bytes.', ['44 100 × 16 × 10 = 7 056 000 bits', '882 000 bytes']),
+    short('cs-dat-07', 2, 1, 'Describe the difference between lossy and lossless compression.', ['Lossy permanently removes some data, making smaller files', 'Lossless lets the original file be restored exactly']),
+    short('cs-dat-08', 1, 2, 'Why does Unicode use more bits per character than ASCII?', ['To represent many more characters, such as other alphabets and symbols']),
+    calc('cs-dat-09', 2, 2, 'Apply a 2-place left shift to 00010110. What effect does it have on the number?', ['01011000', 'It multiplies the number by 4']),
+    mcq('cs-dat-10', 1, 'How many bits are in a nibble?', ['2', '4', '8', '16'], 1),
+  ],
+  hardware: [
+    short('cs-har-01', 1, 1, 'What is the purpose of the CPU?', ['To process data and instructions, by repeating the fetch–execute cycle']),
+    short('cs-har-02', 4, 2, 'Describe the fetch–execute cycle.', ['The address in the program counter is copied to the MAR', 'The instruction at that address is fetched into the MDR', 'The program counter is incremented', 'The control unit decodes the instruction and it is executed']),
+    short('cs-har-03', 2, 2, 'Explain how a larger cache improves CPU performance.', ['More frequently used instructions and data can be stored in cache', 'So the CPU fetches from slower RAM less often']),
+    short('cs-har-04', 2, 3, 'Explain why doubling the number of cores might not double performance.', ['Some programs can’t be split across several cores', 'Cores have to share resources and coordinate with each other']),
+    short('cs-har-05', 2, 1, 'What is an embedded system? Give an example.', ['A computer built into a larger device to do one dedicated job', 'Such as in a washing machine, microwave or car engine']),
+    mcq('cs-har-06', 1, 'Which register holds the address of the next instruction to be fetched?', ['MAR', 'MDR', 'Program counter', 'Accumulator'], 2),
+  ],
+  storage: [
+    short('cs-sto-01', 2, 1, 'Give two differences between RAM and ROM.', ['RAM is volatile; ROM keeps its contents without power', 'RAM can be written to and holds running programs; ROM is read-only and holds the boot-up instructions']),
+    short('cs-sto-02', 2, 2, 'What is virtual memory, and why can it slow a computer down?', ['Part of secondary storage used as extra RAM when RAM is full', 'Secondary storage is much slower to access than RAM']),
+    long('cs-sto-03', 3, 2, 'A photographer travels a lot and edits photos on a laptop. Recommend a type of secondary storage and justify your choice.', ['Recommends solid state (SSD)', 'Durable, with no moving parts, so it survives travel', 'Fast to read and write large photo files']),
+    mcq('cs-sto-04', 1, 'Which of these is magnetic storage?', ['Hard disk drive', 'DVD', 'USB flash drive', 'Solid state drive'], 0),
+  ],
+  software: [
+    short('cs-sof-01', 3, 1, 'Give three functions of an operating system.', ['Any three: memory management and multitasking, managing peripherals and drivers, user management, file management, providing a user interface']),
+    short('cs-sof-02', 2, 2, 'What does defragmentation do, and why does it help?', ['It moves the parts of each file so they are stored together', 'So files on a hard disk are read faster']),
+    short('cs-sof-03', 2, 2, 'Describe the difference between a compiler and an interpreter.', ['A compiler translates the whole program into machine code at once, making an executable file', 'An interpreter translates and runs the code one line at a time']),
+    short('cs-sof-04', 2, 1, 'Give two reasons high-level languages are easier to use than low-level languages.', ['They read more like English', 'One statement does the work of many machine instructions, and they work on different machines']),
+    short('cs-sof-05', 2, 1, 'Give two features of an IDE that help programmers.', ['Any two: code editor, error diagnostics, translator, run-time environment, debugger with breakpoints']),
+  ],
+  logic: [
+    short('cs-log-01', 1, 1, 'Complete the output column for A AND B.', ['0, 0, 0, 1'], { diagram: { type: 'table', head: ['A', 'B', 'A AND B'], rows: [[0, 0, '?'], [0, 1, '?'], [1, 0, '?'], [1, 1, '?']] } }),
+    short('cs-log-02', 1, 1, 'Complete the output column for A OR B.', ['0, 1, 1, 1'], { diagram: { type: 'table', head: ['A', 'B', 'A OR B'], rows: [[0, 0, '?'], [0, 1, '?'], [1, 0, '?'], [1, 1, '?']] } }),
+    calc('cs-log-03', 2, 2, 'Q = NOT (A OR B). What is Q when A = 0 and B = 0?', ['A OR B = 0', 'Q = 1']),
+    mcq('cs-log-04', 1, 'Which logic gate outputs 1 only when both inputs are 1?', ['AND', 'OR', 'NOT', 'XOR'], 0),
+  ],
+  networks: [
+    short('cs-net-01', 2, 1, 'Give two differences between a LAN and a WAN.', ['A LAN covers a small area, such as one building; a WAN covers a large area', 'A LAN uses its own hardware; a WAN uses third-party infrastructure such as phone lines']),
+    short('cs-net-02', 2, 1, 'Give two advantages of a star topology.', ['If one cable fails, the other devices are not affected', 'It is easy to add devices, and performance is good']),
+    short('cs-net-03', 2, 1, 'What is a protocol? Give an example.', ['A set of rules for how devices communicate', 'Such as TCP/IP, HTTP or SMTP']),
+    short('cs-net-04', 1, 1, 'What does the DNS do?', ['Turns domain names, such as hilite.study, into IP addresses']),
+    short('cs-net-05', 2, 2, 'Give two differences between an IP address and a MAC address.', ['An IP address is given by the network and can change', 'A MAC address is fixed to the network card']),
+    short('cs-net-06', 2, 1, 'Give two factors that affect the performance of a network.', ['Any two: bandwidth, number of users, transmission media, interference, distance']),
+    short('cs-net-07', 2, 3, 'Explain why network protocols are arranged in layers.', ['Each layer has its own job and can be changed without affecting the others', 'It makes networks easier to develop and to fix']),
+    mcq('cs-net-08', 1, 'Which protocol is used to send emails?', ['FTP', 'HTTP', 'IMAP', 'SMTP'], 3),
+  ],
+  security: [
+    short('cs-sec-01', 2, 1, 'What is phishing?', ['A fake email or website pretending to be a trusted organisation', 'To trick people into giving personal details such as passwords']),
+    short('cs-sec-02', 2, 1, 'How does a firewall protect a network?', ['It checks the data coming into and leaving the network', 'And blocks traffic that breaks its rules']),
+    short('cs-sec-03', 2, 2, 'What is SQL injection, and how can it be prevented?', ['Typing SQL code into an input box to read or change a database', 'Validate and sanitise input, or use parameterised queries']),
+    short('cs-sec-04', 2, 1, 'What is a brute-force attack? Give one way to stop it.', ['Trying many passwords until one works', 'Lock the account after a few failed attempts, or use strong passwords']),
+    short('cs-sec-05', 1, 1, 'What is penetration testing?', ['An authorised, simulated attack to find weaknesses in a system']),
+    short('cs-sec-06', 2, 1, 'Why should data be encrypted before it is sent?', ['If it is intercepted', 'It can’t be understood without the key']),
+  ],
+  databases: [
+    short('cs-db-01', 1, 1, 'What is a primary key?', ['A field that uniquely identifies each record']),
+    short('cs-db-02', 3, 2, 'A table called Students has the fields ID, Name and Year. Write an SQL statement to show the names of all students in Year 11.', ['SELECT Name', 'FROM Students', 'WHERE Year = 11']),
+    short('cs-db-03', 2, 2, 'What is a foreign key?', ['A field in one table that is the primary key of another table', 'It links the two tables']),
+    short('cs-db-04', 1, 2, 'Why are relational databases better than flat files for storing lots of related data?', ['They cut data redundancy, so data is not repeated or inconsistent']),
+  ],
+  impacts: [
+    short('cs-imp-01', 2, 1, 'Name the law that protects personal data, and give one of its principles.', ['The Data Protection Act 2018', 'Any one: used fairly and lawfully, kept secure, accurate, not kept longer than needed']),
+    short('cs-imp-02', 2, 1, 'Give two offences under the Computer Misuse Act 1990.', ['Unauthorised access to computer material', 'Unauthorised access with intent to commit a further crime, or unauthorised modification of data']),
+    long('cs-imp-03', 6, 3, 'Discuss the impacts of self-driving cars. Consider ethical, legal and environmental issues.', ['Ethical: who decides how the car acts in an unavoidable crash', 'Legal: who is responsible after an accident, and how insurance works', 'Environmental: more efficient driving can cut fuel use', 'Privacy: cars collect data on where people go', 'Jobs: drivers could lose work', 'A balanced conclusion']),
+    short('cs-imp-04', 2, 1, 'Describe the difference between open-source and proprietary software.', ['Open source: the source code is available and can be changed, often free', 'Proprietary: the code is hidden and a licence must usually be paid for']),
+    short('cs-imp-05', 2, 1, 'Give one environmental problem with old computers, and one way to reduce it.', ['E-waste in landfill can release toxic materials', 'Recycle, reuse or repair devices']),
+  ],
+};
+export default bank;

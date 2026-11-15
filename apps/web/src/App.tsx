@@ -26,6 +26,7 @@ const Tools = lazy(() => import('./pages/Tools'));
 const GuideList = lazy(() => import('./pages/Guides').then((m) => ({ default: m.GuideList })));
 const GuidePage = lazy(() => import('./pages/Guides').then((m) => ({ default: m.GuidePage })));
 const Coach = lazy(() => import('./pages/Coach'));
+const Practice = lazy(() => import('./pages/Practice'));
 const Mistakes = lazy(() => import('./pages/tools/Mistakes'));
 const Blurt = lazy(() => import('./pages/tools/Blurt'));
 const Teach = lazy(() => import('./pages/tools/Teach'));
@@ -46,7 +47,7 @@ function Splash() {
 function useTitle() {
   const loc = useLocation();
   useEffect(() => {
-    const names: Record<string, string> = { '': 'Today', timetable: 'Exam timetable', planner: 'Revision planner', papers: 'Past papers', topics: 'Topic checklist', flashcards: 'Flashcards', focus: 'Focus timer', tools: 'Revision tools', guides: 'Revision guides', coach: 'AI coach', 'tools/mistakes': 'Mistake log', 'tools/blurt': 'Blurting', 'tools/teach': 'Teach-back', 'tools/notes': 'Cornell notes', 'tools/mindmap': 'Mind maps', 'tools/memorise': 'Memoriser', 'tools/mixed': 'Mixed quiz', 'tools/command-words': 'Command words', 'tools/timing': 'Exam timing', 'tools/target': 'Grade target', stats: 'Progress', subjects: 'Subjects', settings: 'Settings', upgrade: 'Hilite Pro', signin: 'Sign in', signup: 'Create account', forgot: 'Reset password', privacy: 'Privacy', terms: 'Terms' };
+    const names: Record<string, string> = { '': 'Today', timetable: 'Exam timetable', planner: 'Revision planner', papers: 'Past papers', topics: 'Topic checklist', flashcards: 'Flashcards', focus: 'Focus timer', tools: 'Revision tools', practice: 'Practice questions', guides: 'Revision guides', coach: 'AI coach', 'tools/mistakes': 'Mistake log', 'tools/blurt': 'Blurting', 'tools/teach': 'Teach-back', 'tools/notes': 'Cornell notes', 'tools/mindmap': 'Mind maps', 'tools/memorise': 'Memoriser', 'tools/mixed': 'Mixed quiz', 'tools/command-words': 'Command words', 'tools/timing': 'Exam timing', 'tools/target': 'Grade target', stats: 'Progress', subjects: 'Subjects', settings: 'Settings', upgrade: 'Hilite Pro', signin: 'Sign in', signup: 'Create account', forgot: 'Reset password', privacy: 'Privacy', terms: 'Terms' };
     const parts = loc.pathname.split('/');
     const n = names[parts[1] + '/' + parts[2]] || names[parts[1] || ''];
     document.title = n ? n + ' · Hilite' : 'Hilite';
@@ -106,6 +107,7 @@ export default function App() {
           <Route path="guides" element={<GuideList />} />
           <Route path="guides/:id" element={<GuidePage />} />
           <Route path="coach" element={<Coach />} />
+          <Route path="practice" element={<Practice />} />
           <Route path="stats" element={<Stats />} />
           <Route path="subjects" element={<Subjects />} />
           <Route path="settings" element={<Settings />} />

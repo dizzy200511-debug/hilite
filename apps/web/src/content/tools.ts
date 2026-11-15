@@ -16,6 +16,7 @@ export const TOOLS: ToolInfo[] = [
   { to: '/tools/timing', name: 'Exam timing', summary: 'Minutes per mark and clock checkpoints for any of your papers.', guide: 'timing', methods: ['timed'] },
   { to: '/tools/target', name: 'Grade target', summary: 'How many marks you need on your remaining papers to reach a grade boundary.', guide: 'past-papers', methods: [] },
   { to: '/flashcards', name: 'Flashcards', summary: 'Spaced repetition decks, including ready-made decks for equations and formulae.', guide: 'flashcards', methods: ['cards', 'review'] },
-  { to: '/papers', name: 'Past papers', summary: 'Official papers for your specs, mock mode, and your marks over time.', guide: 'past-papers', methods: ['pastq', 'timed'] },
+  { to: '/practice', name: 'Practice questions', summary: 'Exam-style questions for every topic, some with diagrams, and a mark scheme for each. Pro adds AI marking.', guide: 'past-papers', methods: ['pastq'] },
+  { to: '/papers', name: 'Past papers', summary: 'Official papers for your specs, mock mode, and your marks over time.', guide: 'past-papers', methods: ['timed'] },
   { to: '/focus', name: 'Focus timer', summary: 'Pomodoro sessions that log your study time by subject.', guide: 'focus', methods: [] },
 ];

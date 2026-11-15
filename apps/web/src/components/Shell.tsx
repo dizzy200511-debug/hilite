@@ -5,7 +5,7 @@ import { useProfile } from '../lib/data';
 import { store, useStoreVersion } from '../lib/store';
 import { useTimer } from '../lib/timer';
 import { fmtClock } from '../lib/dates';
-import { IconCalendar, IconCards, IconChecklist, IconGuide, IconMistake, IconMore, IconOwner, IconPapers, IconPlanner, IconSettings, IconSparkle, IconStar, IconStats, IconSubjects, IconTimer, IconToday, IconTools } from './icons';
+import { IconCalendar, IconCards, IconChecklist, IconGuide, IconMistake, IconMore, IconOwner, IconPapers, IconQuestion, IconPlanner, IconSettings, IconSparkle, IconStar, IconStats, IconSubjects, IconTimer, IconToday, IconTools } from './icons';
 import { useDueCount } from '../pages/hooks';
 import { useMistakes, usePlanner } from '../lib/data';
 import { isDueMistake } from '../lib/mistakes';
@@ -79,6 +79,7 @@ export function Shell() {
           {link('/timetable', 'Exam timetable', <IconCalendar />)}
           {link('/planner', 'Revision planner', <IconPlanner />)}
           <div className="nav-group"><div className="nav-label">Practise</div>
+            {link('/practice', 'Practice questions', <IconQuestion />)}
             {link('/papers', 'Past papers', <IconPapers />)}
             {link('/topics', 'Topic checklist', <IconChecklist />)}
             {link('/flashcards', 'Flashcards', <IconCards />, due ? <span className="count">{due}</span> : null)}

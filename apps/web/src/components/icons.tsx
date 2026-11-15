@@ -27,6 +27,7 @@ export const IconLock = I('M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z');
 export const IconMore = I('M5 12h.01M12 12h.01M19 12h.01');
 export const IconOwner = I('M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5M16 4.5a3.5 3.5 0 0 1 0 6.5M21 20c-.3-2.6-1.6-4.3-3.6-5');
 export const IconMail = I('M4 6h16v12H4zM4 7l8 6 8-6');
+export const IconQuestion = I('M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9.5 9.2a2.6 2.6 0 1 1 3.6 2.4c-.7.3-1.1.9-1.1 1.6v.5M12 17h.01');
 export const IconTools = I('M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM16.5 13v7M13 16.5h7');
 export const IconGuide = I('M4 5a1 1 0 0 1 1-1h5a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H5a1 1 0 0 1-1-1zM20 5a1 1 0 0 0-1-1h-5a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h5a1 1 0 0 0 1-1z');
 export const IconMistake = I('M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM9 9.5l6 5M15 9.5l-6 5');

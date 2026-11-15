@@ -40,6 +40,9 @@ export interface OwnTest {
 }
 export interface OwnTests { list: OwnTest[] }
 
+/** Practice question attempts: the latest score for each question id. */
+export type PracticeLog = Record<string, { s: number; m: number; at: number }>;
+
 /** Topic confidence. Key: specId, then topic index. */
 export type Rating = 'r' | 'a' | 'g';
 export type Checklist = Record<string, Record<number, Rating>>;
@@ -71,7 +74,7 @@ export const METHODS: Record<Method, { name: string; how: string; guide: string;
   learn: { name: 'Learn and blurt', how: 'Read your notes once, close them, then write down everything you remember. Check, and fill the gaps in a different colour.', guide: 'blurting', tool: '/tools/blurt' },
   cards: { name: 'Make flashcards', how: 'Turn the topic into question-and-answer cards in Hilite, then test yourself once.', guide: 'flashcards', tool: '/flashcards' },
   review: { name: 'Flashcard review', how: 'Test yourself on this topic’s cards. Say each answer before you flip.', guide: 'spaced-repetition', tool: '/flashcards' },
-  pastq: { name: 'Exam questions', how: 'Do past-paper questions on this topic, then mark them with the mark scheme. Log every mark you lost in your mistake log.', guide: 'past-papers', tool: '/papers' },
+  pastq: { name: 'Exam questions', how: 'Answer exam-style questions on this topic, then mark them with the mark scheme. Log every mark you lost in your mistake log.', guide: 'past-papers', tool: '/practice' },
   teach: { name: 'Teach it back', how: 'Explain the topic out loud without notes, as if teaching a friend. Note where you got stuck.', guide: 'feynman', tool: '/tools/teach' },
   timed: { name: 'Timed practice', how: 'Do a timed set of exam questions on this topic under exam conditions.', guide: 'timed-practice', tool: '/papers' },
   blurt: { name: 'Blurt from memory', how: 'Without notes, write everything you know about the topic for 10 minutes. Then check it and note what you missed.', guide: 'blurting', tool: '/tools/blurt' },

@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Topbar } from '../components/Shell';
 import { useAuth } from '../auth/AuthProvider';
-import { IconChecklist, IconGuide, IconMistake, IconOwner, IconPapers, IconSettings, IconSparkle, IconStar, IconStats, IconSubjects, IconTimer, IconTools } from '../components/icons';
+import { IconChecklist, IconGuide, IconMistake, IconOwner, IconPapers, IconQuestion, IconSettings, IconSparkle, IconStar, IconStats, IconSubjects, IconTimer, IconTools } from '../components/icons';
 
 export default function More() {
   const auth = useAuth();
   const items: [string, string, JSX.Element][] = [
+    ['/practice', 'Practice questions', <IconQuestion />],
     ['/papers', 'Past papers', <IconPapers />],
     ['/topics', 'Topic checklist', <IconChecklist />],
     ['/tools/mistakes', 'Mistake log', <IconMistake />],
