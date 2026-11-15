@@ -1,18 +1,26 @@
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { readdirSync, readFileSync } from 'node:fs';
 import { buildExamPages } from './src/seo/examPages';
+import type { SpecPapers } from './src/lib/paperLinks';
 
-/** Static exam-date pages, sitemap.xml and robots.txt for the website (not the Windows app). */
+/** Past paper links, one JSON file per spec (written by scripts/fetch-past-papers.mjs). */
+function readPapers(): Record<string, SpecPapers> {
+  const dir = new URL('./src/catalog/papers/', import.meta.url);
+  return Object.fromEntries(readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => [f.slice(0, -5), JSON.parse(readFileSync(new URL(f, dir), 'utf8'))]));
+}
+
+/** Static exam-date and past paper pages, sitemap.xml and robots.txt for the website (not the Windows app). */
 function examPages(site: string): Plugin {
-  const pathToFile = (url: string) => (url === '/exam-dates' ? 'exam-dates.html' : /^\/exam-dates\/[a-z0-9-]+$/.test(url) ? url.slice(1) + '.html' : url.slice(1));
+  const pathToFile = (url: string) => (/^\/(exam-dates|past-papers)(\/[a-z0-9-]+)?$/.test(url) ? url.slice(1) + '.html' : url.slice(1));
   return {
     name: 'hilite-exam-pages',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const url = (req.url || '').split('?')[0];
-        if (!/^\/(exam-dates(\/[a-z0-9.-]+)?|sitemap\.xml|robots\.txt)$/.test(url)) return next();
+        if (!/^\/((exam-dates|past-papers)(\/[a-z0-9.-]+)?|sitemap\.xml|robots\.txt)$/.test(url)) return next();
         const css = ['/node_modules/@fontsource-variable/hanken-grotesk/index.css', '/src/styles/app.css'];
-        const file = buildExamPages({ css, site }).find((f) => f.fileName === pathToFile(url));
+        const file = buildExamPages({ css, site }, readPapers()).find((f) => f.fileName === pathToFile(url));
         if (!file) return next();
         const type = file.fileName.endsWith('.js') ? 'text/javascript' : file.fileName.endsWith('.xml') ? 'application/xml' : file.fileName.endsWith('.txt') ? 'text/plain' : 'text/html';
         res.setHeader('Content-Type', type + '; charset=utf-8');
@@ -22,7 +30,7 @@ function examPages(site: string): Plugin {
     generateBundle(_, bundle) {
       const entry = Object.values(bundle).find((c) => c.type === 'chunk' && c.isEntry);
       const css = entry && entry.type === 'chunk' ? [...(entry.viteMetadata?.importedCss ?? [])].map((f) => '/' + f) : [];
-      for (const f of buildExamPages({ css, site })) this.emitFile({ type: 'asset', fileName: f.fileName, source: f.source });
+      for (const f of buildExamPages({ css, site }, readPapers())) this.emitFile({ type: 'asset', fileName: f.fileName, source: f.source });
     },
   };
 }

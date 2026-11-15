@@ -1,0 +1,366 @@
+- generic [ref=f11e2]:
+  - banner [ref=f11e3]:
+    - link "Hilite" [ref=f11e4] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f11e7]:
+      - link "Past papers" [ref=f11e8] [cursor=pointer]:
+        - /url: /past-papers
+      - link "Exam dates" [ref=f11e9] [cursor=pointer]:
+        - /url: /exam-dates
+      - link "Sign in" [ref=f11e10] [cursor=pointer]:
+        - /url: /signin
+      - link "Get started" [ref=f11e11] [cursor=pointer]:
+        - /url: /signup
+  - main [ref=f11e12]:
+    - navigation [ref=f11e13]:
+      - link "GCSE past papers" [ref=f11e14] [cursor=pointer]:
+        - /url: /past-papers
+      - text: / AQA
+    - heading "AQA GCSE Biology past papers" [level=1] [ref=f11e15]
+    - paragraph [ref=f11e16]: Question papers, mark schemes and examiners’ reports for specification 8461, free with no sign-up. 7 series, from June 2018 to June 2025. Every file opens on the AQA website.
+    - generic [ref=f11e17]:
+      - link "Biology exam dates 2027" [ref=f11e18] [cursor=pointer]:
+        - /url: /exam-dates/aqa-gcse-biology
+      - link "AQA past paper finder" [ref=f11e19] [cursor=pointer]:
+        - /url: https://www.aqa.org.uk/find-past-papers-and-mark-schemes
+    - generic [ref=f11e20]:
+      - generic [ref=f11e21]:
+        - heading "Turn past papers into progress" [level=2] [ref=f11e22]
+        - paragraph [ref=f11e23]: Sit papers in timed mock mode, log your marks to see your trend, and send every lost mark to a mistake log that retests you. Free.
+      - link "Track your marks free" [ref=f11e24] [cursor=pointer]:
+        - /url: /signup
+    - generic [ref=f11e25]:
+      - generic [ref=f11e26]:
+        - heading "June 2025" [level=2] [ref=f11e28]
+        - table [ref=f11e30]:
+          - rowgroup [ref=f11e31]:
+            - row [ref=f11e32]:
+              - cell "Paper 1 Foundation" [ref=f11e33]:
+                - text: Paper 1
+                - generic [ref=f11e34]: Foundation
+              - cell [ref=f11e35]:
+                - link "Question paper" [ref=f11e36] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/a0f269916a712a08c79119756ed8982bc012d9b1.pdf
+                - link "Mark scheme" [ref=f11e37] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/11ccb01b84b16e76fbf49671377da2f59b15b11e.pdf
+                - link "Examiners’ report" [ref=f11e38] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/fe75d21560fe0ed665f81619d9553f50e5678d03.pdf
+            - row [ref=f11e39]:
+              - cell "Paper 1 Higher" [ref=f11e40]:
+                - text: Paper 1
+                - generic [ref=f11e41]: Higher
+              - cell [ref=f11e42]:
+                - link "Question paper" [ref=f11e43] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/47dfa73fc713780cb812441c8b01c7fd9fb7206f.pdf
+                - link "Mark scheme" [ref=f11e44] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/107c6e676d1afbe16dd83555c05fdd63013345a1.pdf
+                - link "Examiners’ report" [ref=f11e45] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/46116ac691d43d67fbc6a7ed334827b66a097efe.pdf
+            - row [ref=f11e46]:
+              - cell "Paper 2 Foundation" [ref=f11e47]:
+                - text: Paper 2
+                - generic [ref=f11e48]: Foundation
+              - cell [ref=f11e49]:
+                - link "Question paper" [ref=f11e50] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/41c34dc473b11ba6d0bd21ec5d885730c20fd4ce.pdf
+                - link "Mark scheme" [ref=f11e51] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/52aa82e4d6da45fae8b182384d8e5f11dfccb898.pdf
+                - link "Examiners’ report" [ref=f11e52] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/d6a2b067a491108a26651e091b30e4a1bdb67c3b.pdf
+            - row [ref=f11e53]:
+              - cell "Paper 2 Higher" [ref=f11e54]:
+                - text: Paper 2
+                - generic [ref=f11e55]: Higher
+              - cell [ref=f11e56]:
+                - link "Question paper" [ref=f11e57] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/ec49086966c204b53a24ba8c62d5ae14a64849ac.pdf
+                - link "Mark scheme" [ref=f11e58] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/dae808f93bdee75ea3e4d17f4a3f17a5a44f2562.pdf
+                - link "Examiners’ report" [ref=f11e59] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/460a7e8d0c640ae9ee894cd5af598248044152f2.pdf
+      - generic [ref=f11e60]:
+        - heading "June 2024" [level=2] [ref=f11e62]
+        - table [ref=f11e64]:
+          - rowgroup [ref=f11e65]:
+            - row [ref=f11e66]:
+              - cell "Paper 1 Foundation" [ref=f11e67]:
+                - text: Paper 1
+                - generic [ref=f11e68]: Foundation
+              - cell [ref=f11e69]:
+                - link "Mark scheme" [ref=f11e70] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/bb7a043f0d4b1f090ff15cc11875fa15798e4135.pdf
+                - link "Examiners’ report" [ref=f11e71] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/2252132eb564c3b0aa0280b8080ead5c03281cae.pdf
+            - row [ref=f11e72]:
+              - cell "Paper 1 Higher" [ref=f11e73]:
+                - text: Paper 1
+                - generic [ref=f11e74]: Higher
+              - cell [ref=f11e75]:
+                - link "Mark scheme" [ref=f11e76] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/8d711ebd0128dce40f21490bfc3ab7305e492fda.pdf
+                - link "Examiners’ report" [ref=f11e77] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/215720a9103071d2937011fde6920ab77b77277b.pdf
+            - row [ref=f11e78]:
+              - cell "Paper 2 Foundation" [ref=f11e79]:
+                - text: Paper 2
+                - generic [ref=f11e80]: Foundation
+              - cell [ref=f11e81]:
+                - link "Question paper" [ref=f11e82] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/af175ee50253d9e3f886b06fe23a9851be93a75a.pdf
+                - link "Mark scheme" [ref=f11e83] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/20dcb789ef75500e442b8b30a1d84f350d90eee8.pdf
+                - link "Examiners’ report" [ref=f11e84] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/066baf983f2f5d8309772a2c57dd1f43cf1e34b9.pdf
+            - row [ref=f11e85]:
+              - cell "Paper 2 Higher" [ref=f11e86]:
+                - text: Paper 2
+                - generic [ref=f11e87]: Higher
+              - cell [ref=f11e88]:
+                - link "Question paper" [ref=f11e89] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/dfafe238a1ff1ec7e60abaa5bed6107cecc4e382.pdf
+                - link "Mark scheme" [ref=f11e90] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/923aa377ee5618115b99b54d437b51c0ac99453b.pdf
+                - link "Examiners’ report" [ref=f11e91] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/135668d414aca11b5973dc4c3b521749c9e326b5.pdf
+      - generic [ref=f11e92]:
+        - heading "June 2023" [level=2] [ref=f11e94]
+        - table [ref=f11e96]:
+          - rowgroup [ref=f11e97]:
+            - row [ref=f11e98]:
+              - cell "Paper 1 Foundation" [ref=f11e99]:
+                - text: Paper 1
+                - generic [ref=f11e100]: Foundation
+              - cell [ref=f11e101]:
+                - link "Question paper" [ref=f11e102] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/822500b30d5cb586689ef6d3acb85deccb4a00da.pdf
+                - link "Mark scheme" [ref=f11e103] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/2c75e27e9960556ada5402dc8588a939eb1db07c.pdf
+                - link "Examiners’ report" [ref=f11e104] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/98b6e8377b505d0462063afa412e35f4f7066d24.pdf
+            - row [ref=f11e105]:
+              - cell "Paper 1 Higher" [ref=f11e106]:
+                - text: Paper 1
+                - generic [ref=f11e107]: Higher
+              - cell [ref=f11e108]:
+                - link "Question paper" [ref=f11e109] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/b9a9417f5d544beba8dae16fc3c10582ee5769e0.pdf
+                - link "Mark scheme" [ref=f11e110] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/91864b27ed6dde51a4dd5d9bd3aa1977ce9c77aa.pdf
+                - link "Examiners’ report" [ref=f11e111] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/f6381bbeb378256c81af3b1046a8980421986304.pdf
+            - row [ref=f11e112]:
+              - cell "Paper 2 Foundation" [ref=f11e113]:
+                - text: Paper 2
+                - generic [ref=f11e114]: Foundation
+              - cell [ref=f11e115]:
+                - link "Question paper" [ref=f11e116] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/aa1d313cd32ea2e818f4680dd21969010f1e61f5.pdf
+                - link "Mark scheme" [ref=f11e117] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/fd471d8de7d45f1c198aa2dcb8a76d7cb0529d81.pdf
+                - link "Examiners’ report" [ref=f11e118] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/36fd201d88df3d32225613e6b491855db326f62a.pdf
+            - row [ref=f11e119]:
+              - cell "Paper 2 Higher" [ref=f11e120]:
+                - text: Paper 2
+                - generic [ref=f11e121]: Higher
+              - cell [ref=f11e122]:
+                - link "Question paper" [ref=f11e123] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/ee5dc019ad7306f397c539d30ceeaf1ca20f2298.pdf
+                - link "Mark scheme" [ref=f11e124] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/844c077ac6f14b3242d5eb1e8beab67b565adf1a.pdf
+                - link "Examiners’ report" [ref=f11e125] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/8d3a6f520f9908e3adf6b7349800ec7978783d25.pdf
+      - generic [ref=f11e126]:
+        - heading "June 2022" [level=2] [ref=f11e128]
+        - table [ref=f11e130]:
+          - rowgroup [ref=f11e131]:
+            - row [ref=f11e132]:
+              - cell "Paper 1 Foundation" [ref=f11e133]:
+                - text: Paper 1
+                - generic [ref=f11e134]: Foundation
+              - cell [ref=f11e135]:
+                - link "Question paper" [ref=f11e136] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/ecaa4fa9ce38d87f90c9511c28ad48e8673f15a4.pdf
+                - link "Mark scheme" [ref=f11e137] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/61c2da17f1e6446addf23bbc832f23119ea2867a.pdf
+            - row [ref=f11e138]:
+              - cell "Paper 1 Higher" [ref=f11e139]:
+                - text: Paper 1
+                - generic [ref=f11e140]: Higher
+              - cell [ref=f11e141]:
+                - link "Question paper" [ref=f11e142] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/9016d570203ac764a4b3716392e9ad0925d0ea8b.pdf
+                - link "Mark scheme" [ref=f11e143] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/a76ee1ede52e47e5ca9885beb719f3ab1ed732d2.pdf
+            - row [ref=f11e144]:
+              - cell "Paper 2 Foundation" [ref=f11e145]:
+                - text: Paper 2
+                - generic [ref=f11e146]: Foundation
+              - cell [ref=f11e147]:
+                - link "Question paper" [ref=f11e148] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/2f8660aa32c19e622ebcabbe243dd8d2c189b5ff.pdf
+                - link "Mark scheme" [ref=f11e149] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/16d04512995d15dca81a53fd46b148a1d72c4a26.pdf
+                - link "Examiners’ report" [ref=f11e150] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/dddd16dbe4e1b3ec121916b7c6a626383ee05f68.pdf
+            - row [ref=f11e151]:
+              - cell "Paper 2 Higher" [ref=f11e152]:
+                - text: Paper 2
+                - generic [ref=f11e153]: Higher
+              - cell [ref=f11e154]:
+                - link "Question paper" [ref=f11e155] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/b3bc256d1193aab692439fd016c7b28d64a37602.pdf
+                - link "Mark scheme" [ref=f11e156] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/3e9a43d3a36cc7480327052dc13fb53064b7012a.pdf
+                - link "Examiners’ report" [ref=f11e157] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/6065eed3c9a83a816f047794a6ab96b6b7323552.pdf
+      - generic [ref=f11e158]:
+        - heading "November 2021" [level=2] [ref=f11e160]
+        - table [ref=f11e162]:
+          - rowgroup [ref=f11e163]:
+            - row [ref=f11e164]:
+              - cell "Paper 1 Foundation" [ref=f11e165]:
+                - text: Paper 1
+                - generic [ref=f11e166]: Foundation
+              - cell [ref=f11e167]:
+                - link "Question paper" [ref=f11e168] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/82d40f82efb5f0843167d25d7a7c89bb652b8fa1.pdf
+                - link "Mark scheme" [ref=f11e169] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/7bebcd31c77c4104b5a5d1ab822c72eb1d1bddbb.pdf
+            - row [ref=f11e170]:
+              - cell "Paper 1 Higher" [ref=f11e171]:
+                - text: Paper 1
+                - generic [ref=f11e172]: Higher
+              - cell [ref=f11e173]:
+                - link "Question paper" [ref=f11e174] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/bbfe6ac78c52a384e4e8aa57e24d651f950329d1.pdf
+                - link "Mark scheme" [ref=f11e175] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/88dc2e852403fdaff9a4d39329da9ba0ade197aa.pdf
+                - link "Examiners’ report" [ref=f11e176] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/c2f09818a3ae3f76bbb54b12ef315b6cb51e6c90.pdf
+            - row [ref=f11e177]:
+              - cell "Paper 2 Foundation" [ref=f11e178]:
+                - text: Paper 2
+                - generic [ref=f11e179]: Foundation
+              - cell [ref=f11e180]:
+                - link "Question paper" [ref=f11e181] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/12e85710305ac2956622081277e382615acb9c51.pdf
+                - link "Mark scheme" [ref=f11e182] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/ad65d495a9e981f049d3a2c4b5bc775f4e71e7a1.pdf
+            - row [ref=f11e183]:
+              - cell "Paper 2 Higher" [ref=f11e184]:
+                - text: Paper 2
+                - generic [ref=f11e185]: Higher
+              - cell [ref=f11e186]:
+                - link "Question paper" [ref=f11e187] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/f7a270b8a3a688506da9e52f20eef9bd06112edf.pdf
+                - link "Mark scheme" [ref=f11e188] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/3a226433f7bad5974cd270c2da2dac7d1146949d.pdf
+                - link "Examiners’ report" [ref=f11e189] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/8f7e0108c52ed9c5d7db52f23c04a38a3cc98f77.pdf
+      - generic [ref=f11e190]:
+        - heading "November 2020" [level=2] [ref=f11e192]
+        - table [ref=f11e194]:
+          - rowgroup [ref=f11e195]:
+            - row [ref=f11e196]:
+              - cell "Paper 1 Foundation" [ref=f11e197]:
+                - text: Paper 1
+                - generic [ref=f11e198]: Foundation
+              - cell [ref=f11e199]:
+                - link "Question paper" [ref=f11e200] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/75dd1b43909fec5f2265dbec4ae496ab2858df10.pdf
+                - link "Examiners’ report" [ref=f11e201] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/af35258466266c0aa2ca899f44a4a9be88160619.pdf
+            - row [ref=f11e202]:
+              - cell "Paper 1 Higher" [ref=f11e203]:
+                - text: Paper 1
+                - generic [ref=f11e204]: Higher
+              - cell [ref=f11e205]:
+                - link "Question paper" [ref=f11e206] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/6fc7e4f44d60cbb149879a63cba29f6de6f9d21e.pdf
+                - link "Examiners’ report" [ref=f11e207] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/fd78e2bf16e7270edad3022b196e4c176806575d.pdf
+            - row [ref=f11e208]:
+              - cell "Paper 2 Foundation" [ref=f11e209]:
+                - text: Paper 2
+                - generic [ref=f11e210]: Foundation
+              - cell [ref=f11e211]:
+                - link "Question paper" [ref=f11e212] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/df33a5c0cd7ab47cc3bcc6cbde5739549fdfaf0e.pdf
+                - link "Examiners’ report" [ref=f11e213] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/18bbeb4f1fc70aab888a44f62ada37063d44128f.pdf
+            - row [ref=f11e214]:
+              - cell "Paper 2 Higher" [ref=f11e215]:
+                - text: Paper 2
+                - generic [ref=f11e216]: Higher
+              - cell [ref=f11e217]:
+                - link "Question paper" [ref=f11e218] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/f0909da2ded82d9e584afb300ff867531e56b9b0.pdf
+                - link "Examiners’ report" [ref=f11e219] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/9d6a3a9761a63369590facde07bccb91fa733c22.pdf
+      - generic [ref=f11e220]:
+        - heading "June 2018" [level=2] [ref=f11e222]
+        - table [ref=f11e224]:
+          - rowgroup [ref=f11e225]:
+            - row [ref=f11e226]:
+              - cell "Paper 1 Higher" [ref=f11e227]:
+                - text: Paper 1
+                - generic [ref=f11e228]: Higher
+              - cell [ref=f11e229]:
+                - link "Question paper" [ref=f11e230] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/e8a0009c360109d76a8dd3364a6fbdfe5e681f3a.pdf
+                - link "Examiners’ report" [ref=f11e231] [cursor=pointer]:
+                  - /url: https://cdn.sanity.io/files/p28bar15/green/1c71bf4e42670cacb633f056c469c0583a25d46c.pdf
+    - paragraph [ref=f11e232]: Links checked 2026-11-15. The newest series usually stay private until the board releases them. Papers are © AQA; Hilite only links to them.
+    - heading "Other AQA GCSE past papers" [level=2] [ref=f11e233]
+    - list [ref=f11e234]:
+      - listitem [ref=f11e235]:
+        - link "Chemistry" [ref=f11e236] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-chemistry
+      - listitem [ref=f11e237]:
+        - link "Physics" [ref=f11e238] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-physics
+      - listitem [ref=f11e239]:
+        - 'link "Combined Science: Trilogy" [ref=f11e240] [cursor=pointer]':
+          - /url: /past-papers/aqa-gcse-combined-science-trilogy
+      - listitem [ref=f11e241]:
+        - link "Mathematics" [ref=f11e242] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-mathematics
+      - listitem [ref=f11e243]:
+        - link "English Language" [ref=f11e244] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-english-language
+      - listitem [ref=f11e245]:
+        - link "English Literature" [ref=f11e246] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-english-literature
+      - listitem [ref=f11e247]:
+        - link "Computer Science" [ref=f11e248] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-computer-science
+      - listitem [ref=f11e249]:
+        - link "Geography" [ref=f11e250] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-geography
+      - listitem [ref=f11e251]:
+        - link "History" [ref=f11e252] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-history
+      - listitem [ref=f11e253]:
+        - link "Psychology" [ref=f11e254] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-psychology
+      - listitem [ref=f11e255]:
+        - link "Religious Studies A" [ref=f11e256] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-religious-studies-a
+      - listitem [ref=f11e257]:
+        - link "Business" [ref=f11e258] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-business
+      - listitem [ref=f11e259]:
+        - link "Sociology" [ref=f11e260] [cursor=pointer]:
+          - /url: /past-papers/aqa-gcse-sociology
+  - contentinfo [ref=f11e261]:
+    - generic [ref=f11e262]: © 2026 Hilite
+    - link "GCSE exam dates 2027" [ref=f11e263] [cursor=pointer]:
+      - /url: /exam-dates
+    - link "GCSE past papers" [ref=f11e264] [cursor=pointer]:
+      - /url: /past-papers
+    - link "Privacy" [ref=f11e265] [cursor=pointer]:
+      - /url: /privacy
+    - link "Terms" [ref=f11e266] [cursor=pointer]:
+      - /url: /terms
+    - generic [ref=f11e267]: Dates from the boards’ published timetables. Always check your school’s final timetable.

@@ -429,3 +429,11 @@ a.tool:hover { border-color: var(--line-strong); text-decoration: none; }
 .q-scheme { padding: 12px 14px; background: var(--surface-2); border-radius: var(--r); }
 .q-scheme .item { border-color: var(--line-strong); align-items: flex-start; }
 .q-scheme .item input { width: 16px; height: 16px; margin-top: 3px; accent-color: var(--good); flex-shrink: 0; }
+.pp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 8px; }
+.pp-links { white-space: nowrap; text-align: right; }
+.pp-links .btn + .btn { margin-left: 4px; }
+.seo .panel-head h2, .seo-cta h2 { margin: 0; }
+.pp-series .panel-head { padding-bottom: 4px; }
+.pp-series .panel-head h2 { font-size: 16px; }
+@media (max-width: 1000px) { .pp-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) { .pp-grid { grid-template-columns: 1fr; } .pp-links { white-space: normal; text-align: left; } .pp-links .btn { margin: 2px 4px 2px 0; } }

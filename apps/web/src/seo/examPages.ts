@@ -3,20 +3,22 @@
  * Built at `vite build` time by the plugin in vite.config.ts (and served by the dev server too).
  * Plain HTML styled with the app's own CSS, so search engines see everything without running the app.
  */
+import { paperPages, paperSpecs } from './paperPages';
+import type { SpecPapers } from '../lib/paperLinks';
 import { BOARDS, CONTINGENCY_DAY, SPECS, TIMETABLE_YEAR, type Board, type Paper, type Spec } from '../catalog/catalog';
 
 export interface StaticFile { fileName: string; source: string }
-interface Assets { css: string[]; script: string; site: string }
+export interface Assets { css: string[]; script: string; site: string }
 
 export const COUNTDOWN_SCRIPT = 'exam-dates/countdown.js';
 const BOARD_ORDER: Board[] = ['AQA', 'Edexcel', 'OCR'];
 
 export const specSlug = (s: Spec) => (s.board + ' ' + s.qual + ' ' + s.subject).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+export const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-function longDate(iso: string, short = false) {
+export function longDate(iso: string, short = false) {
   const [y, m, d] = iso.split('-').map(Number);
   const day = DAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
   return short ? day.slice(0, 3) + ' ' + d + ' ' + MONTHS[m - 1].slice(0, 3) : day + ' ' + d + ' ' + MONTHS[m - 1] + ' ' + y;
@@ -25,9 +27,9 @@ const length = (mins: number) => (mins >= 60 ? Math.floor(mins / 60) + ' h' : ''
 const session = (p: Paper) => (p.sitting!.session === 'AM' ? 'Morning, 9am' : 'Afternoon, 1.30pm');
 const dated = (s: Spec) => s.papers.filter((p) => p.sitting).sort((a, b) => a.sitting!.date.localeCompare(b.sitting!.date) || a.sitting!.session.localeCompare(b.sitting!.session));
 const boardName = (s: Spec) => BOARDS[s.board].name;
-const title = (s: Spec) => boardName(s) + ' ' + s.qual + ' ' + s.subject;
+export const specTitle = (s: Spec) => boardName(s) + ' ' + s.qual + ' ' + s.subject;
 
-function page(a: Assets, path: string, pageTitle: string, description: string, body: string) {
+export function page(a: Assets, path: string, pageTitle: string, description: string, body: string) {
   const url = a.site + path;
   return `<!doctype html>
 <html lang="en">
@@ -44,7 +46,9 @@ function page(a: Assets, path: string, pageTitle: string, description: string, b
 <meta property="og:image" content="${esc(a.site)}/icon.png" />
 <meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)" />
-<link rel="icon" href="/icon.png" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 ${a.css.map((h) => `<link rel="stylesheet" href="${esc(h)}" />`).join('\n')}
 <script src="${esc(a.script)}"></script>
 </head>
@@ -52,13 +56,13 @@ ${a.css.map((h) => `<link rel="stylesheet" href="${esc(h)}" />`).join('\n')}
 <div class="landing">
 <header class="lnav">
 <a class="brand" href="/" style="color:var(--ink);text-decoration:none"><span class="brand-mark"><i></i></span>Hilite</a>
-<nav class="row" style="gap:6px"><a class="btn btn-ghost hide-sm" href="/exam-dates">All exam dates</a><a class="btn btn-ghost" href="/signin">Sign in</a><a class="btn btn-primary" href="/signup">Get started</a></nav>
+<nav class="row" style="gap:6px"><a class="btn btn-ghost hide-sm" href="/past-papers">Past papers</a><a class="btn btn-ghost hide-sm" href="/exam-dates">Exam dates</a><a class="btn btn-ghost" href="/signin">Sign in</a><a class="btn btn-primary" href="/signup">Get started</a></nav>
 </header>
 <main class="lsection seo">
 ${body}
 </main>
 <footer class="lfoot">
-<span>© 2026 Hilite</span><a href="/exam-dates">GCSE exam dates ${TIMETABLE_YEAR}</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+<span>© 2026 Hilite</span><a href="/exam-dates">GCSE exam dates ${TIMETABLE_YEAR}</a><a href="/past-papers">GCSE past papers</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
 <span style="margin-left:auto">Dates from the boards’ published timetables. Always check your school’s final timetable.</span>
 </footer>
 </div>
@@ -72,7 +76,7 @@ const until = (iso: string) => `<span class="num" data-until="${iso}">${esc(long
 function specPage(spec: Spec, a: Assets): string {
   const papers = dated(spec);
   const first = papers[0]?.sitting!.date, last = papers[papers.length - 1]?.sitting!.date;
-  const name = title(spec);
+  const name = specTitle(spec);
   const sameBoard = SPECS.filter((s) => s.board === spec.board && s.qual === spec.qual && s.id !== spec.id && dated(s).length);
   const rows = papers.map((p) => {
     const covers = p.topics?.length ? `<div class="small muted">Covers ${esc(p.topics.map((i) => spec.topics[i]).join(', '))}</div>` : '';
@@ -161,15 +165,16 @@ export const countdownScript = `(function () {
 })();
 `;
 
-export function buildExamPages(assets: Omit<Assets, 'script'>): StaticFile[] {
+export function buildExamPages(assets: Omit<Assets, 'script'>, papers: Record<string, SpecPapers> = {}): StaticFile[] {
   const a: Assets = { ...assets, script: '/' + COUNTDOWN_SCRIPT };
   const specs = SPECS.filter((s) => dated(s).length);
   const files: StaticFile[] = [
     { fileName: 'exam-dates.html', source: indexPage(a) },
     ...specs.map((s) => ({ fileName: 'exam-dates/' + specSlug(s) + '.html', source: specPage(s, a) })),
     { fileName: COUNTDOWN_SCRIPT, source: countdownScript },
+    ...paperPages(a, papers),
   ];
-  const urls = ['/', '/exam-dates', ...specs.map((s) => '/exam-dates/' + specSlug(s)), '/privacy', '/terms'];
+  const urls = ['/', '/exam-dates', ...specs.map((s) => '/exam-dates/' + specSlug(s)), '/past-papers', ...paperSpecs(papers).map((s) => '/past-papers/' + specSlug(s)), '/privacy', '/terms'];
   files.push({
     fileName: 'sitemap.xml',
     source: '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

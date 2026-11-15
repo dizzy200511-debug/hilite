@@ -24,12 +24,12 @@
     "appId": "study.hilite.app",
     "productName": "Hilite",
     "copyright": "© 2026 Hilite",
-    "files": ["main.js", "preload.js", "app/**/*", "build/icon.png"],
+    "files": ["main.js", "preload.js", "app/**/*", "build/icon.png", "build/icon.ico"],
     "directories": { "output": "dist", "buildResources": "build" },
     "protocols": [{ "name": "Hilite", "schemes": ["hilite"] }],
     "win": {
       "target": [{ "target": "nsis", "arch": ["x64"] }],
-      "icon": "build/icon.png",
+      "icon": "build/icon.ico",
       "artifactName": "Hilite-Setup-${version}.${ext}"
     },
     "nsis": {
