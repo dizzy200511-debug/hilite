@@ -1,0 +1,114 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Hilite" [ref=e4] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=e7]:
+      - link "All exam dates" [ref=e8] [cursor=pointer]:
+        - /url: /exam-dates
+      - link "Sign in" [ref=e9] [cursor=pointer]:
+        - /url: /signin
+      - link "Get started" [ref=e10] [cursor=pointer]:
+        - /url: /signup
+  - main [ref=e11]:
+    - navigation [ref=e12]:
+      - link "GCSE exam dates 2027" [ref=e13] [cursor=pointer]:
+        - /url: /exam-dates
+      - text: / AQA
+    - heading "AQA GCSE Biology exam dates 2027" [level=1] [ref=e14]
+    - paragraph [ref=e15]: Specification 8461. 2 papers, from Tuesday 11 May 2027 to Thursday 10 June 2027. Foundation and Higher tier papers are sat at the same time.
+    - generic [ref=e16]:
+      - generic [ref=e17]: "177"
+      - generic [ref=e18]: days until the first paper
+    - table [ref=e20]:
+      - rowgroup [ref=e21]:
+        - row [ref=e22]:
+          - columnheader "Paper" [ref=e23]
+          - columnheader "Date" [ref=e24]
+          - columnheader "Session" [ref=e25]
+          - columnheader "Length" [ref=e26]
+          - columnheader "Countdown" [ref=e27]
+      - rowgroup [ref=e28]:
+        - row [ref=e29]:
+          - cell "Paper 1 8461/1 Covers Cell biology, Organisation, Infection and response, Bioenergetics" [ref=e30]:
+            - text: Paper 1
+            - generic [ref=e31]: 8461/1
+            - generic [ref=e32]: Covers Cell biology, Organisation, Infection and response, Bioenergetics
+          - cell "Tuesday 11 May 2027" [ref=e33]
+          - cell "Morning, 9am" [ref=e34]
+          - cell "1 h 45 min" [ref=e35]
+          - cell "177 days" [ref=e36]
+        - row [ref=e37]:
+          - cell "Paper 2 8461/2 Covers Homeostasis and response, Inheritance, variation and evolution, Ecology" [ref=e38]:
+            - text: Paper 2
+            - generic [ref=e39]: 8461/2
+            - generic [ref=e40]: Covers Homeostasis and response, Inheritance, variation and evolution, Ecology
+          - cell "Thursday 10 June 2027" [ref=e41]
+          - cell "Morning, 9am" [ref=e42]
+          - cell "1 h 45 min" [ref=e43]
+          - cell "207 days" [ref=e44]
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - heading "Plan your revision around these dates" [level=2] [ref=e47]
+        - paragraph [ref=e48]: Hilite loads every paper for your subjects, then builds a revision plan that gets each topic done before its exam. Free, with no card needed.
+      - link "Plan your revision free" [ref=e49] [cursor=pointer]:
+        - /url: /signup
+    - heading "Good to know" [level=2] [ref=e50]
+    - list [ref=e51]:
+      - listitem [ref=e52]: Morning exams start at 9am and afternoon exams at 1.30pm. Your school can move the start time a little, so check your own timetable for times and rooms.
+      - listitem [ref=e53]: Wednesday 23 June 2027 is the contingency day. Stay available until then in case an exam has to be moved.
+      - listitem [ref=e54]:
+        - text: Practise with the official past papers and mark schemes on the
+        - link "AQA website" [ref=e55] [cursor=pointer]:
+          - /url: https://www.aqa.org.uk/find-past-papers-and-mark-schemes
+        - text: .
+      - listitem [ref=e56]: "Source: AQA provisional timetable, June 2027 (v1.0, January 2026)."
+    - heading "Other AQA GCSE exam dates" [level=2] [ref=e57]
+    - list [ref=e58]:
+      - listitem [ref=e59]:
+        - link "Chemistry" [ref=e60] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-chemistry
+      - listitem [ref=e61]:
+        - link "Physics" [ref=e62] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-physics
+      - listitem [ref=e63]:
+        - 'link "Combined Science: Trilogy" [ref=e64] [cursor=pointer]':
+          - /url: /exam-dates/aqa-gcse-combined-science-trilogy
+      - listitem [ref=e65]:
+        - link "Mathematics" [ref=e66] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-mathematics
+      - listitem [ref=e67]:
+        - link "English Language" [ref=e68] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-english-language
+      - listitem [ref=e69]:
+        - link "English Literature" [ref=e70] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-english-literature
+      - listitem [ref=e71]:
+        - link "Computer Science" [ref=e72] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-computer-science
+      - listitem [ref=e73]:
+        - link "Geography" [ref=e74] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-geography
+      - listitem [ref=e75]:
+        - link "History" [ref=e76] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-history
+      - listitem [ref=e77]:
+        - link "Psychology" [ref=e78] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-psychology
+      - listitem [ref=e79]:
+        - link "Religious Studies A" [ref=e80] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-religious-studies-a
+      - listitem [ref=e81]:
+        - link "Business" [ref=e82] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-business
+      - listitem [ref=e83]:
+        - link "Sociology" [ref=e84] [cursor=pointer]:
+          - /url: /exam-dates/aqa-gcse-sociology
+  - contentinfo [ref=e85]:
+    - generic [ref=e86]: © 2026 Hilite
+    - link "GCSE exam dates 2027" [ref=e87] [cursor=pointer]:
+      - /url: /exam-dates
+    - link "Privacy" [ref=e88] [cursor=pointer]:
+      - /url: /privacy
+    - link "Terms" [ref=e89] [cursor=pointer]:
+      - /url: /terms
+    - generic [ref=e90]: Dates from the boards’ published timetables. Always check your school’s final timetable.

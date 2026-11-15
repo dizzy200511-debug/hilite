@@ -1,0 +1,393 @@
+- generic [ref=f1e2]:
+  - banner [ref=f1e3]:
+    - link "Hilite" [ref=f1e4] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f1e7]:
+      - link "Sign in" [ref=f1e8] [cursor=pointer]:
+        - /url: /signin
+      - link "Get started" [ref=f1e9] [cursor=pointer]:
+        - /url: /signup
+  - main [ref=f1e10]:
+    - heading "GCSE exam dates 2027" [level=1] [ref=f1e11]
+    - paragraph [ref=f1e12]: Every written paper for AQA, Pearson Edexcel and OCR GCSEs in summer 2027, with dates, sessions and a countdown. Exams run from Monday 10 May 2027 to Friday 18 June 2027, and Wednesday 23 June 2027 is the contingency day.
+    - generic [ref=f1e13]:
+      - generic [ref=f1e14]:
+        - heading "See only your own exams" [level=2] [ref=f1e15]
+        - paragraph [ref=f1e16]: Pick your board and subjects in Hilite and get your personal timetable, clash warnings and a revision plan that fits every topic in.
+      - link "Plan your revision free" [ref=f1e17] [cursor=pointer]:
+        - /url: /signup
+    - heading "AQA GCSE" [level=2] [ref=f1e18]
+    - list [ref=f1e20]:
+      - listitem [ref=f1e21]:
+        - generic [ref=f1e22]:
+          - link "Biology" [ref=f1e23] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-biology
+          - generic [ref=f1e24]:
+            - generic [ref=f1e25]: "8461"
+            - generic [ref=f1e26]: 2 papers
+        - generic [ref=f1e27]: Tue 11 May to Thu 10 Jun
+      - listitem [ref=f1e28]:
+        - generic [ref=f1e29]:
+          - link "Business" [ref=f1e30] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-business
+          - generic [ref=f1e31]:
+            - generic [ref=f1e32]: "8132"
+            - generic [ref=f1e33]: 2 papers
+        - generic [ref=f1e34]: Wed 12 May to Fri 21 May
+      - listitem [ref=f1e35]:
+        - generic [ref=f1e36]:
+          - link "Chemistry" [ref=f1e37] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-chemistry
+          - generic [ref=f1e38]:
+            - generic [ref=f1e39]: "8462"
+            - generic [ref=f1e40]: 2 papers
+        - generic [ref=f1e41]: Mon 17 May to Tue 15 Jun
+      - listitem [ref=f1e42]:
+        - generic [ref=f1e43]:
+          - 'link "Combined Science: Trilogy" [ref=f1e44] [cursor=pointer]':
+            - /url: /exam-dates/aqa-gcse-combined-science-trilogy
+          - generic [ref=f1e45]:
+            - generic [ref=f1e46]: "8464"
+            - generic [ref=f1e47]: 6 papers
+        - generic [ref=f1e48]: Tue 11 May to Fri 18 Jun
+      - listitem [ref=f1e49]:
+        - generic [ref=f1e50]:
+          - link "Computer Science" [ref=f1e51] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-computer-science
+          - generic [ref=f1e52]:
+            - generic [ref=f1e53]: "8525"
+            - generic [ref=f1e54]: 2 papers
+        - generic [ref=f1e55]: Mon 10 May to Wed 19 May
+      - listitem [ref=f1e56]:
+        - generic [ref=f1e57]:
+          - link "English Language" [ref=f1e58] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-english-language
+          - generic [ref=f1e59]:
+            - generic [ref=f1e60]: "8700"
+            - generic [ref=f1e61]: 2 papers
+        - generic [ref=f1e62]: Mon 24 May to Tue 8 Jun
+      - listitem [ref=f1e63]:
+        - generic [ref=f1e64]:
+          - link "English Literature" [ref=f1e65] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-english-literature
+          - generic [ref=f1e66]:
+            - generic [ref=f1e67]: "8702"
+            - generic [ref=f1e68]: 2 papers
+        - generic [ref=f1e69]: Wed 12 May to Wed 19 May
+      - listitem [ref=f1e70]:
+        - generic [ref=f1e71]:
+          - link "Geography" [ref=f1e72] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-geography
+          - generic [ref=f1e73]:
+            - generic [ref=f1e74]: "8035"
+            - generic [ref=f1e75]: 3 papers
+        - generic [ref=f1e76]: Tue 18 May to Thu 10 Jun
+      - listitem [ref=f1e77]:
+        - generic [ref=f1e78]:
+          - link "History" [ref=f1e79] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-history
+          - generic [ref=f1e80]:
+            - generic [ref=f1e81]: "8145"
+            - generic [ref=f1e82]: 2 papers
+        - generic [ref=f1e83]: Thu 20 May to Fri 28 May
+      - listitem [ref=f1e84]:
+        - generic [ref=f1e85]:
+          - link "Mathematics" [ref=f1e86] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-mathematics
+          - generic [ref=f1e87]:
+            - generic [ref=f1e88]: "8300"
+            - generic [ref=f1e89]: 3 papers
+        - generic [ref=f1e90]: Fri 14 May to Mon 14 Jun
+      - listitem [ref=f1e91]:
+        - generic [ref=f1e92]:
+          - link "Physics" [ref=f1e93] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-physics
+          - generic [ref=f1e94]:
+            - generic [ref=f1e95]: "8463"
+            - generic [ref=f1e96]: 2 papers
+        - generic [ref=f1e97]: Tue 25 May to Fri 18 Jun
+      - listitem [ref=f1e98]:
+        - generic [ref=f1e99]:
+          - link "Psychology" [ref=f1e100] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-psychology
+          - generic [ref=f1e101]:
+            - generic [ref=f1e102]: "8182"
+            - generic [ref=f1e103]: 2 papers
+        - generic [ref=f1e104]: Mon 10 May to Mon 17 May
+      - listitem [ref=f1e105]:
+        - generic [ref=f1e106]:
+          - link "Religious Studies A" [ref=f1e107] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-religious-studies-a
+          - generic [ref=f1e108]:
+            - generic [ref=f1e109]: "8062"
+            - generic [ref=f1e110]: 2 papers
+        - generic [ref=f1e111]: Thu 13 May to Fri 21 May
+      - listitem [ref=f1e112]:
+        - generic [ref=f1e113]:
+          - link "Sociology" [ref=f1e114] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-sociology
+          - generic [ref=f1e115]:
+            - generic [ref=f1e116]: "8192"
+            - generic [ref=f1e117]: 2 papers
+        - generic [ref=f1e118]: Tue 11 May to Tue 18 May
+    - heading "Pearson Edexcel GCSE" [level=2] [ref=f1e119]
+    - list [ref=f1e121]:
+      - listitem [ref=f1e122]:
+        - generic [ref=f1e123]:
+          - link "Biology" [ref=f1e124] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-biology
+          - generic [ref=f1e125]:
+            - generic [ref=f1e126]: 1BI0
+            - generic [ref=f1e127]: 2 papers
+        - generic [ref=f1e128]: Tue 11 May to Thu 10 Jun
+      - listitem [ref=f1e129]:
+        - generic [ref=f1e130]:
+          - link "Business" [ref=f1e131] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-business
+          - generic [ref=f1e132]:
+            - generic [ref=f1e133]: 1BS0
+            - generic [ref=f1e134]: 2 papers
+        - generic [ref=f1e135]: Wed 12 May to Fri 21 May
+      - listitem [ref=f1e136]:
+        - generic [ref=f1e137]:
+          - link "Chemistry" [ref=f1e138] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-chemistry
+          - generic [ref=f1e139]:
+            - generic [ref=f1e140]: 1CH0
+            - generic [ref=f1e141]: 2 papers
+        - generic [ref=f1e142]: Mon 17 May to Tue 15 Jun
+      - listitem [ref=f1e143]:
+        - generic [ref=f1e144]:
+          - link "Combined Science" [ref=f1e145] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-combined-science
+          - generic [ref=f1e146]:
+            - generic [ref=f1e147]: 1SC0
+            - generic [ref=f1e148]: 6 papers
+        - generic [ref=f1e149]: Tue 11 May to Fri 18 Jun
+      - listitem [ref=f1e150]:
+        - generic [ref=f1e151]:
+          - link "English Language" [ref=f1e152] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-english-language
+          - generic [ref=f1e153]:
+            - generic [ref=f1e154]: 1EN0
+            - generic [ref=f1e155]: 2 papers
+        - generic [ref=f1e156]: Mon 24 May to Tue 8 Jun
+      - listitem [ref=f1e157]:
+        - generic [ref=f1e158]:
+          - link "English Literature" [ref=f1e159] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-english-literature
+          - generic [ref=f1e160]:
+            - generic [ref=f1e161]: 1ET0
+            - generic [ref=f1e162]: 2 papers
+        - generic [ref=f1e163]: Wed 12 May to Wed 19 May
+      - listitem [ref=f1e164]:
+        - generic [ref=f1e165]:
+          - link "French" [ref=f1e166] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-french
+          - generic [ref=f1e167]:
+            - generic [ref=f1e168]: 1FR1
+            - generic [ref=f1e169]: 3 papers
+        - generic [ref=f1e170]: Wed 26 May to Mon 14 Jun
+      - listitem [ref=f1e171]:
+        - generic [ref=f1e172]:
+          - link "Geography A" [ref=f1e173] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-geography-a
+          - generic [ref=f1e174]:
+            - generic [ref=f1e175]: 1GA0
+            - generic [ref=f1e176]: 3 papers
+        - generic [ref=f1e177]: Tue 18 May to Thu 10 Jun
+      - listitem [ref=f1e178]:
+        - generic [ref=f1e179]:
+          - link "Geography B" [ref=f1e180] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-geography-b
+          - generic [ref=f1e181]:
+            - generic [ref=f1e182]: 1GB0
+            - generic [ref=f1e183]: 3 papers
+        - generic [ref=f1e184]: Tue 18 May to Thu 10 Jun
+      - listitem [ref=f1e185]:
+        - generic [ref=f1e186]:
+          - link "German" [ref=f1e187] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-german
+          - generic [ref=f1e188]:
+            - generic [ref=f1e189]: 1GN1
+            - generic [ref=f1e190]: 3 papers
+        - generic [ref=f1e191]: Mon 10 May to Thu 20 May
+      - listitem [ref=f1e192]:
+        - generic [ref=f1e193]:
+          - link "History" [ref=f1e194] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-history
+          - generic [ref=f1e195]:
+            - generic [ref=f1e196]: 1HI0
+            - generic [ref=f1e197]: 3 papers
+        - generic [ref=f1e198]: Thu 20 May to Wed 9 Jun
+      - listitem [ref=f1e199]:
+        - generic [ref=f1e200]:
+          - link "Mathematics" [ref=f1e201] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-mathematics
+          - generic [ref=f1e202]:
+            - generic [ref=f1e203]: 1MA1
+            - generic [ref=f1e204]: 3 papers
+        - generic [ref=f1e205]: Fri 14 May to Mon 14 Jun
+      - listitem [ref=f1e206]:
+        - generic [ref=f1e207]:
+          - link "Physics" [ref=f1e208] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-physics
+          - generic [ref=f1e209]:
+            - generic [ref=f1e210]: 1PH0
+            - generic [ref=f1e211]: 2 papers
+        - generic [ref=f1e212]: Tue 25 May to Fri 18 Jun
+      - listitem [ref=f1e213]:
+        - generic [ref=f1e214]:
+          - link "Spanish" [ref=f1e215] [cursor=pointer]:
+            - /url: /exam-dates/edexcel-gcse-spanish
+          - generic [ref=f1e216]:
+            - generic [ref=f1e217]: 1SP1
+            - generic [ref=f1e218]: 3 papers
+        - generic [ref=f1e219]: Wed 9 Jun to Thu 17 Jun
+    - heading "OCR GCSE" [level=2] [ref=f1e220]
+    - list [ref=f1e222]:
+      - listitem [ref=f1e223]:
+        - generic [ref=f1e224]:
+          - link "Biology A (Gateway)" [ref=f1e225] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-biology-a-gateway
+          - generic [ref=f1e226]:
+            - generic [ref=f1e227]: J247
+            - generic [ref=f1e228]: 2 papers
+        - generic [ref=f1e229]: Tue 11 May to Thu 10 Jun
+      - listitem [ref=f1e230]:
+        - generic [ref=f1e231]:
+          - link "Business" [ref=f1e232] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-business
+          - generic [ref=f1e233]:
+            - generic [ref=f1e234]: J204
+            - generic [ref=f1e235]: 2 papers
+        - generic [ref=f1e236]: Wed 12 May to Fri 21 May
+      - listitem [ref=f1e237]:
+        - generic [ref=f1e238]:
+          - link "Chemistry A (Gateway)" [ref=f1e239] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-chemistry-a-gateway
+          - generic [ref=f1e240]:
+            - generic [ref=f1e241]: J248
+            - generic [ref=f1e242]: 2 papers
+        - generic [ref=f1e243]: Mon 17 May to Tue 15 Jun
+      - listitem [ref=f1e244]:
+        - generic [ref=f1e245]:
+          - link "Combined Science A (Gateway)" [ref=f1e246] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-combined-science-a-gateway
+          - generic [ref=f1e247]:
+            - generic [ref=f1e248]: J250
+            - generic [ref=f1e249]: 6 papers
+        - generic [ref=f1e250]: Tue 11 May to Fri 18 Jun
+      - listitem [ref=f1e251]:
+        - generic [ref=f1e252]:
+          - link "Computer Science" [ref=f1e253] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-computer-science
+          - generic [ref=f1e254]:
+            - generic [ref=f1e255]: J277
+            - generic [ref=f1e256]: 2 papers
+        - generic [ref=f1e257]: Mon 10 May to Wed 19 May
+      - listitem [ref=f1e258]:
+        - generic [ref=f1e259]:
+          - link "Economics" [ref=f1e260] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-economics
+          - generic [ref=f1e261]:
+            - generic [ref=f1e262]: J205
+            - generic [ref=f1e263]: 2 papers
+        - generic [ref=f1e264]: Thu 13 May to Tue 25 May
+      - listitem [ref=f1e265]:
+        - generic [ref=f1e266]:
+          - link "English Language" [ref=f1e267] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-english-language
+          - generic [ref=f1e268]:
+            - generic [ref=f1e269]: J351
+            - generic [ref=f1e270]: 2 papers
+        - generic [ref=f1e271]: Mon 24 May to Tue 8 Jun
+      - listitem [ref=f1e272]:
+        - generic [ref=f1e273]:
+          - link "English Literature" [ref=f1e274] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-english-literature
+          - generic [ref=f1e275]:
+            - generic [ref=f1e276]: J352
+            - generic [ref=f1e277]: 2 papers
+        - generic [ref=f1e278]: Wed 12 May to Wed 19 May
+      - listitem [ref=f1e279]:
+        - generic [ref=f1e280]:
+          - link "Geography A (Geographical Themes)" [ref=f1e281] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-geography-a-geographical-themes
+          - generic [ref=f1e282]:
+            - generic [ref=f1e283]: J383
+            - generic [ref=f1e284]: 3 papers
+        - generic [ref=f1e285]: Tue 18 May to Thu 10 Jun
+      - listitem [ref=f1e286]:
+        - generic [ref=f1e287]:
+          - link "Geography B (Geography for Enquiring Minds)" [ref=f1e288] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-geography-b-geography-for-enquiring-minds
+          - generic [ref=f1e289]:
+            - generic [ref=f1e290]: J384
+            - generic [ref=f1e291]: 3 papers
+        - generic [ref=f1e292]: Tue 18 May to Thu 10 Jun
+      - listitem [ref=f1e293]:
+        - generic [ref=f1e294]:
+          - link "History A (Explaining the Modern World)" [ref=f1e295] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-history-a-explaining-the-modern-world
+          - generic [ref=f1e296]:
+            - generic [ref=f1e297]: J410
+            - generic [ref=f1e298]: 3 papers
+        - generic [ref=f1e299]: Thu 20 May to Wed 9 Jun
+      - listitem [ref=f1e300]:
+        - generic [ref=f1e301]:
+          - link "History B (Schools History Project)" [ref=f1e302] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-history-b-schools-history-project
+          - generic [ref=f1e303]:
+            - generic [ref=f1e304]: J411
+            - generic [ref=f1e305]: 3 papers
+        - generic [ref=f1e306]: Thu 20 May to Wed 9 Jun
+      - listitem [ref=f1e307]:
+        - generic [ref=f1e308]:
+          - link "Mathematics" [ref=f1e309] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-mathematics
+          - generic [ref=f1e310]:
+            - generic [ref=f1e311]: J560
+            - generic [ref=f1e312]: 3 papers
+        - generic [ref=f1e313]: Fri 14 May to Mon 14 Jun
+      - listitem [ref=f1e314]:
+        - generic [ref=f1e315]:
+          - link "Physical Education" [ref=f1e316] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-physical-education
+          - generic [ref=f1e317]:
+            - generic [ref=f1e318]: J587
+            - generic [ref=f1e319]: 2 papers
+        - generic [ref=f1e320]: Thu 13 May to Thu 20 May
+      - listitem [ref=f1e321]:
+        - generic [ref=f1e322]:
+          - link "Physics A (Gateway)" [ref=f1e323] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-physics-a-gateway
+          - generic [ref=f1e324]:
+            - generic [ref=f1e325]: J249
+            - generic [ref=f1e326]: 2 papers
+        - generic [ref=f1e327]: Tue 25 May to Fri 18 Jun
+      - listitem [ref=f1e328]:
+        - generic [ref=f1e329]:
+          - link "Psychology" [ref=f1e330] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-psychology
+          - generic [ref=f1e331]:
+            - generic [ref=f1e332]: J203
+            - generic [ref=f1e333]: 2 papers
+        - generic [ref=f1e334]: Mon 10 May to Mon 17 May
+      - listitem [ref=f1e335]:
+        - generic [ref=f1e336]:
+          - link "Religious Studies" [ref=f1e337] [cursor=pointer]:
+            - /url: /exam-dates/ocr-gcse-religious-studies
+          - generic [ref=f1e338]:
+            - generic [ref=f1e339]: J625
+            - generic [ref=f1e340]: 3 papers
+        - generic [ref=f1e341]: Thu 13 May to Fri 21 May
+  - contentinfo [ref=f1e342]:
+    - generic [ref=f1e343]: © 2026 Hilite
+    - link "GCSE exam dates 2027" [ref=f1e344] [cursor=pointer]:
+      - /url: /exam-dates
+    - link "Privacy" [ref=f1e345] [cursor=pointer]:
+      - /url: /privacy
+    - link "Terms" [ref=f1e346] [cursor=pointer]:
+      - /url: /terms
+    - generic [ref=f1e347]: Dates from the boards’ published timetables. Always check your school’s final timetable.

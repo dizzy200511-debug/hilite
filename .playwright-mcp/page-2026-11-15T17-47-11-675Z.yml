@@ -1,0 +1,140 @@
+- generic [ref=f3e2]:
+  - banner [ref=f3e3]:
+    - link "Hilite" [ref=f3e4] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f3e7]:
+      - link "Sign in" [ref=f3e8] [cursor=pointer]:
+        - /url: /signin
+      - link "Get started" [ref=f3e9] [cursor=pointer]:
+        - /url: /signup
+  - main [ref=f3e10]:
+    - navigation [ref=f3e11]:
+      - link "GCSE exam dates 2027" [ref=f3e12] [cursor=pointer]:
+        - /url: /exam-dates
+      - text: / Pearson Edexcel
+    - heading "Pearson Edexcel GCSE Combined Science exam dates 2027" [level=1] [ref=f3e13]
+    - paragraph [ref=f3e14]: Specification 1SC0. 6 papers, from Tuesday 11 May 2027 to Friday 18 June 2027. Foundation and Higher tier papers are sat at the same time.
+    - generic [ref=f3e15]:
+      - generic [ref=f3e16]: "177"
+      - generic [ref=f3e17]: days until the first paper
+    - table [ref=f3e19]:
+      - rowgroup [ref=f3e20]:
+        - row [ref=f3e21]:
+          - columnheader "Paper" [ref=f3e22]
+          - columnheader "Date" [ref=f3e23]
+          - columnheader "Countdown" [ref=f3e24]
+      - rowgroup [ref=f3e25]:
+        - row [ref=f3e26]:
+          - 'cell "Paper 1: Biology 1 1SC0/1B" [ref=f3e27]':
+            - text: "Paper 1: Biology 1"
+            - generic [ref=f3e28]: 1SC0/1B
+          - cell "Tuesday 11 May 2027 Morning, 9am" [ref=f3e29]:
+            - text: Tuesday 11 May 2027
+            - generic [ref=f3e30]: Morning, 9am
+          - cell "177 days" [ref=f3e31]
+        - row [ref=f3e32]:
+          - 'cell "Paper 2: Chemistry 1 1SC0/1C" [ref=f3e33]':
+            - text: "Paper 2: Chemistry 1"
+            - generic [ref=f3e34]: 1SC0/1C
+          - cell "Monday 17 May 2027 Morning, 9am" [ref=f3e35]:
+            - text: Monday 17 May 2027
+            - generic [ref=f3e36]: Morning, 9am
+          - cell "183 days" [ref=f3e37]
+        - row [ref=f3e38]:
+          - 'cell "Paper 3: Physics 1 1SC0/1P" [ref=f3e39]':
+            - text: "Paper 3: Physics 1"
+            - generic [ref=f3e40]: 1SC0/1P
+          - cell "Tuesday 25 May 2027 Morning, 9am" [ref=f3e41]:
+            - text: Tuesday 25 May 2027
+            - generic [ref=f3e42]: Morning, 9am
+          - cell "191 days" [ref=f3e43]
+        - row [ref=f3e44]:
+          - 'cell "Paper 4: Biology 2 1SC0/2B" [ref=f3e45]':
+            - text: "Paper 4: Biology 2"
+            - generic [ref=f3e46]: 1SC0/2B
+          - cell "Thursday 10 June 2027 Morning, 9am" [ref=f3e47]:
+            - text: Thursday 10 June 2027
+            - generic [ref=f3e48]: Morning, 9am
+          - cell "207 days" [ref=f3e49]
+        - row [ref=f3e50]:
+          - 'cell "Paper 5: Chemistry 2 1SC0/2C" [ref=f3e51]':
+            - text: "Paper 5: Chemistry 2"
+            - generic [ref=f3e52]: 1SC0/2C
+          - cell "Tuesday 15 June 2027 Morning, 9am" [ref=f3e53]:
+            - text: Tuesday 15 June 2027
+            - generic [ref=f3e54]: Morning, 9am
+          - cell "212 days" [ref=f3e55]
+        - row [ref=f3e56]:
+          - 'cell "Paper 6: Physics 2 1SC0/2P" [ref=f3e57]':
+            - text: "Paper 6: Physics 2"
+            - generic [ref=f3e58]: 1SC0/2P
+          - cell "Friday 18 June 2027 Morning, 9am" [ref=f3e59]:
+            - text: Friday 18 June 2027
+            - generic [ref=f3e60]: Morning, 9am
+          - cell "215 days" [ref=f3e61]
+    - generic [ref=f3e62]:
+      - generic [ref=f3e63]:
+        - heading "Plan your revision around these dates" [level=2] [ref=f3e64]
+        - paragraph [ref=f3e65]: Hilite loads every paper for your subjects, then builds a revision plan that gets each topic done before its exam. Free, with no card needed.
+      - link "Plan your revision free" [ref=f3e66] [cursor=pointer]:
+        - /url: /signup
+    - heading "Good to know" [level=2] [ref=f3e67]
+    - list [ref=f3e68]:
+      - listitem [ref=f3e69]: Morning exams start at 9am and afternoon exams at 1.30pm. Your school can move the start time a little, so check your own timetable for times and rooms.
+      - listitem [ref=f3e70]: Wednesday 23 June 2027 is the contingency day. Stay available until then in case an exam has to be moved.
+      - listitem [ref=f3e71]:
+        - text: Practise with the official past papers and mark schemes on the
+        - link "Pearson Edexcel website" [ref=f3e72] [cursor=pointer]:
+          - /url: https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html
+        - text: .
+      - listitem [ref=f3e73]: "Source: Pearson Edexcel GCSE timetable, summer 2027 (final)."
+    - heading "Other Pearson Edexcel GCSE exam dates" [level=2] [ref=f3e74]
+    - list [ref=f3e75]:
+      - listitem [ref=f3e76]:
+        - link "Mathematics" [ref=f3e77] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-mathematics
+      - listitem [ref=f3e78]:
+        - link "History" [ref=f3e79] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-history
+      - listitem [ref=f3e80]:
+        - link "English Literature" [ref=f3e81] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-english-literature
+      - listitem [ref=f3e82]:
+        - link "English Language" [ref=f3e83] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-english-language
+      - listitem [ref=f3e84]:
+        - link "Biology" [ref=f3e85] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-biology
+      - listitem [ref=f3e86]:
+        - link "Chemistry" [ref=f3e87] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-chemistry
+      - listitem [ref=f3e88]:
+        - link "Physics" [ref=f3e89] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-physics
+      - listitem [ref=f3e90]:
+        - link "Geography A" [ref=f3e91] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-geography-a
+      - listitem [ref=f3e92]:
+        - link "Geography B" [ref=f3e93] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-geography-b
+      - listitem [ref=f3e94]:
+        - link "Business" [ref=f3e95] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-business
+      - listitem [ref=f3e96]:
+        - link "French" [ref=f3e97] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-french
+      - listitem [ref=f3e98]:
+        - link "Spanish" [ref=f3e99] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-spanish
+      - listitem [ref=f3e100]:
+        - link "German" [ref=f3e101] [cursor=pointer]:
+          - /url: /exam-dates/edexcel-gcse-german
+  - contentinfo [ref=f3e102]:
+    - generic [ref=f3e103]: © 2026 Hilite
+    - link "GCSE exam dates 2027" [ref=f3e104] [cursor=pointer]:
+      - /url: /exam-dates
+    - link "Privacy" [ref=f3e105] [cursor=pointer]:
+      - /url: /privacy
+    - link "Terms" [ref=f3e106] [cursor=pointer]:
+      - /url: /terms
+    - generic [ref=f3e107]: Dates from the boards’ published timetables. Always check your school’s final timetable.

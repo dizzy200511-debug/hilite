@@ -58,7 +58,7 @@ const FEATURES: [string, string][] = [
 
 const FAQ: [string, string][] = [
   ['Is it really free?', 'Yes. The timetable, revision plan, flashcards, past paper tracker, mistake log and core revision tools are free, with no time limit. Pro adds the AI coach, more plan styles, unlimited notes and maps, every guide, and predicted grades.'],
-  ['Which exam boards do you cover?', 'AQA and Pearson Edexcel GCSEs, with their 2027 exam dates loaded. OCR Computer Science and Maths are in too, and you can add your own dates for anything else. A-levels are next.'],
+  ['Which exam boards do you cover?', 'AQA, Pearson Edexcel and OCR GCSEs, with their 2027 exam dates loaded. You can add your own dates for anything else. A-levels are next.'],
   ['Where do the past papers come from?', 'From the exam boards’ own websites. Hilite links you straight to them so you always get the official paper and mark scheme.'],
   ['Is my data safe?', 'Your account is protected with a code sent to your email whenever a new device signs in. We never sell data or show ads, and you can delete everything at any time.'],
 ];
@@ -119,8 +119,9 @@ export default function Landing() {
         <span>© 2026 Hilite</span>
         <Link to="/privacy">Privacy</Link>
         <Link to="/terms">Terms</Link>
+        {!window.hiliteDesktop && <a href="/exam-dates">GCSE exam dates 2027</a>}
         <a href="mailto:hello@hilite.study">Contact</a>
-        <span style={{ marginLeft: 'auto' }}>Exam dates from AQA and Pearson published timetables. Always check your school’s final timetable.</span>
+        <span style={{ marginLeft: 'auto' }}>Exam dates from the AQA, Pearson and OCR published timetables. Always check your school’s final timetable.</span>
       </footer>
     </div>
   );

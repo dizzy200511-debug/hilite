@@ -4,8 +4,9 @@
  * Dates for summer 2027 come from the boards' own timetables:
  *  - AQA GCSE: provisional timetable v1.0 (January 2026), aqa.org.uk
  *  - Pearson Edexcel GCSE: final summer 2027 timetable
+ *  - OCR GCSE: final examination timetable, June 2027 (edition dated June 2026), ocr.org.uk
  * Refresh this file every autumn when the next timetable is published.
- * OCR dates are not loaded yet, so students add their own (Hilite shows that clearly).
+ * Wednesday 23 June 2027 is the contingency day for every board.
  */
 
 export type Board = 'AQA' | 'Edexcel' | 'OCR';
@@ -49,16 +50,22 @@ export const BOARDS: Record<Board, { name: string; pastPapers: string; timetable
   OCR: {
     name: 'OCR',
     pastPapers: 'https://www.ocr.org.uk/qualifications/past-paper-finder/',
-    timetableSource: 'OCR summer 2027 dates are not in Hilite yet. Add your own from your school’s timetable.',
+    timetableSource: 'OCR final examination timetable, June 2027',
   },
 };
 
 export const TIMETABLE_YEAR = 2027;
+/** The day every board keeps free in case exams are disrupted. Students must stay available until then. */
+export const CONTINGENCY_DAY = '2027-06-23';
 const d = (day: number, month: 5 | 6, session: 'AM' | 'PM'): Sitting => ({ date: '2027-' + (month === 5 ? '05' : '06') + '-' + (day < 10 ? '0' : '') + day, session });
 
 const BIO_AQA = ['Cell biology', 'Organisation', 'Infection and response', 'Bioenergetics', 'Homeostasis and response', 'Inheritance, variation and evolution', 'Ecology'];
 const CHEM_AQA = ['Atomic structure and the periodic table', 'Bonding, structure and the properties of matter', 'Quantitative chemistry', 'Chemical changes', 'Energy changes', 'The rate and extent of chemical change', 'Organic chemistry', 'Chemical analysis', 'Chemistry of the atmosphere', 'Using resources'];
 const PHYS_AQA = ['Energy', 'Electricity', 'Particle model of matter', 'Atomic structure', 'Forces', 'Waves', 'Magnetism and electromagnetism', 'Space physics'];
+// OCR Gateway (A) science chapters. The practical skills chapter is tested across both papers, so it isn't listed.
+const BIO_OCR = ['Cell level systems', 'Scaling up', 'Organism level systems', 'Community level systems', 'Genes, inheritance and variation', 'Global challenges'];
+const CHEM_OCR = ['Particles', 'Elements, compounds and mixtures', 'Chemical reactions', 'Predicting and identifying reactions and products', 'Monitoring and controlling chemical reactions', 'Global challenges'];
+const PHYS_OCR = ['Matter', 'Forces', 'Electricity', 'Magnetism and magnetic fields', 'Waves in matter', 'Radioactivity', 'Energy', 'Global challenges'];
 const MATHS = ['Number', 'Algebra', 'Ratio, proportion and rates of change', 'Geometry and measures', 'Probability', 'Statistics'];
 const BIO_EDX = ['Key concepts in biology', 'Cells and control', 'Genetics', 'Natural selection and genetic modification', 'Health, disease and the development of medicines', 'Plant structures and their functions', 'Animal coordination, control and homeostasis', 'Exchange and transport in animals', 'Ecosystems and material cycles'];
 const CHEM_EDX = ['Key concepts in chemistry', 'States of matter and mixtures', 'Chemical changes', 'Extracting metals and equilibria', 'Groups in the periodic table', 'Rates of reaction and energy changes', 'Fuels and Earth science', 'Separate chemistry'];
@@ -249,18 +256,117 @@ export const SPECS: Spec[] = [
       { id: 'p4', code: '1GN1/4', name: 'Paper 4: Writing', mins: 80, marks: null, topics: [2, 4], sitting: d(20, 5, 'PM') },
     ] },
 
-  // ---------------- OCR GCSE (dates not loaded yet) ----------------
+  // ---------------- OCR GCSE ----------------
+  // Tiered OCR papers have separate Foundation and Higher codes, sat at the same time.
   { id: 'ocr-gcse-cs', qual: 'GCSE', board: 'OCR', subject: 'Computer Science', code: 'J277', tiered: false, firstExam: 2022,
     topics: ['Systems architecture', 'Memory and storage', 'Computer networks, connections and protocols', 'Network security', 'Systems software', 'Ethical, legal, cultural and environmental impacts', 'Algorithms', 'Programming fundamentals', 'Producing robust programs', 'Boolean logic', 'Programming languages and IDEs'],
     papers: [
-      { id: 'p1', code: 'J277/01', name: 'Paper 1: Computer systems', mins: 90, marks: 80, topics: range(0, 5) },
-      { id: 'p2', code: 'J277/02', name: 'Paper 2: Computational thinking, algorithms and programming', mins: 90, marks: 80, topics: range(6, 10) },
+      { id: 'p1', code: 'J277/01', name: 'Paper 1: Computer systems', mins: 90, marks: 80, topics: range(0, 5), sitting: d(10, 5, 'AM') },
+      { id: 'p2', code: 'J277/02', name: 'Paper 2: Computational thinking, algorithms and programming', mins: 90, marks: 80, topics: range(6, 10), sitting: d(19, 5, 'PM') },
     ] },
   { id: 'ocr-gcse-maths', qual: 'GCSE', board: 'OCR', subject: 'Mathematics', code: 'J560', tiered: true, firstExam: 2017, november: true, topics: MATHS,
     papers: [
-      { id: 'p1', code: 'J560/1-3', name: 'Paper 1', mins: 90, marks: 100 },
-      { id: 'p2', code: 'J560/2-5', name: 'Paper 2', mins: 90, marks: 100 },
-      { id: 'p3', code: 'J560/3-6', name: 'Paper 3', mins: 90, marks: 100 },
+      { id: 'p1', code: 'J560/01 or 04', name: 'Paper 1 (calculator)', mins: 90, marks: 100, sitting: d(14, 5, 'AM') },
+      { id: 'p2', code: 'J560/02 or 05', name: 'Paper 2 (non-calculator)', mins: 90, marks: 100, sitting: d(27, 5, 'AM') },
+      { id: 'p3', code: 'J560/03 or 06', name: 'Paper 3 (calculator)', mins: 90, marks: 100, sitting: d(14, 6, 'AM') },
+    ] },
+  { id: 'ocr-gcse-bio', qual: 'GCSE', board: 'OCR', subject: 'Biology A (Gateway)', code: 'J247', tiered: true, firstExam: 2018, topics: BIO_OCR,
+    papers: [
+      { id: 'p1', code: 'J247/01 or 03', name: 'Paper 1', mins: 105, marks: 90, topics: range(0, 2), sitting: d(11, 5, 'AM') },
+      { id: 'p2', code: 'J247/02 or 04', name: 'Paper 2', mins: 105, marks: 90, topics: range(3, 5), sitting: d(10, 6, 'AM') },
+    ] },
+  { id: 'ocr-gcse-chem', qual: 'GCSE', board: 'OCR', subject: 'Chemistry A (Gateway)', code: 'J248', tiered: true, firstExam: 2018, topics: CHEM_OCR,
+    papers: [
+      { id: 'p1', code: 'J248/01 or 03', name: 'Paper 1', mins: 105, marks: 90, topics: range(0, 2), sitting: d(17, 5, 'AM') },
+      { id: 'p2', code: 'J248/02 or 04', name: 'Paper 2', mins: 105, marks: 90, topics: range(3, 5), sitting: d(15, 6, 'AM') },
+    ] },
+  { id: 'ocr-gcse-phys', qual: 'GCSE', board: 'OCR', subject: 'Physics A (Gateway)', code: 'J249', tiered: true, firstExam: 2018, topics: PHYS_OCR,
+    papers: [
+      { id: 'p1', code: 'J249/01 or 03', name: 'Paper 1', mins: 105, marks: 90, topics: range(0, 3), sitting: d(25, 5, 'AM') },
+      { id: 'p2', code: 'J249/02 or 04', name: 'Paper 2', mins: 105, marks: 90, topics: range(4, 7), sitting: d(18, 6, 'AM') },
+    ] },
+  { id: 'ocr-gcse-combined', qual: 'GCSE', board: 'OCR', subject: 'Combined Science A (Gateway)', code: 'J250', tiered: true, firstExam: 2018,
+    topics: BIO_OCR.map((t) => 'Biology: ' + t).concat(CHEM_OCR.map((t) => 'Chemistry: ' + t), ['Matter', 'Forces', 'Electricity and magnetism', 'Waves and radioactivity', 'Energy', 'Global challenges'].map((t) => 'Physics: ' + t)),
+    papers: [
+      { id: 'b1', code: 'J250/01 or 07', name: 'Paper 1: Biology', mins: 70, marks: 60, topics: range(0, 2), sitting: d(11, 5, 'AM') },
+      { id: 'c1', code: 'J250/03 or 09', name: 'Paper 3: Chemistry', mins: 70, marks: 60, topics: range(6, 8), sitting: d(17, 5, 'AM') },
+      { id: 'ph1', code: 'J250/05 or 11', name: 'Paper 5: Physics', mins: 70, marks: 60, topics: range(12, 14), sitting: d(25, 5, 'AM') },
+      { id: 'b2', code: 'J250/02 or 08', name: 'Paper 2: Biology', mins: 70, marks: 60, topics: range(3, 5), sitting: d(10, 6, 'AM') },
+      { id: 'c2', code: 'J250/04 or 10', name: 'Paper 4: Chemistry', mins: 70, marks: 60, topics: range(9, 11), sitting: d(15, 6, 'AM') },
+      { id: 'ph2', code: 'J250/06 or 12', name: 'Paper 6: Physics', mins: 70, marks: 60, topics: range(15, 17), sitting: d(18, 6, 'AM') },
+    ] },
+  { id: 'ocr-gcse-englang', qual: 'GCSE', board: 'OCR', subject: 'English Language', code: 'J351', tiered: false, firstExam: 2017, november: true,
+    topics: ['Reading non-fiction', 'Writing for information and ideas', 'Reading literary fiction', 'Imaginative writing', 'Spoken language'],
+    papers: [
+      { id: 'p1', code: 'J351/01', name: 'Paper 1: Communicating information and ideas', mins: 120, marks: 80, topics: [0, 1], sitting: d(24, 5, 'AM') },
+      { id: 'p2', code: 'J351/02', name: 'Paper 2: Exploring effects and impact', mins: 120, marks: 80, topics: [2, 3], sitting: d(8, 6, 'AM') },
+    ] },
+  { id: 'ocr-gcse-englit', qual: 'GCSE', board: 'OCR', subject: 'English Literature', code: 'J352', tiered: false, firstExam: 2017,
+    topics: ['Modern prose or drama', '19th-century prose', 'Poetry anthology', 'Unseen poetry', 'Shakespeare'],
+    papers: [
+      { id: 'p1', code: 'J352/01', name: 'Paper 1: Exploring modern and literary heritage texts', mins: 120, marks: 80, topics: [0, 1], sitting: d(12, 5, 'AM') },
+      { id: 'p2', code: 'J352/02', name: 'Paper 2: Exploring poetry and Shakespeare', mins: 120, marks: 80, topics: [2, 3, 4], sitting: d(19, 5, 'AM') },
+    ] },
+  { id: 'ocr-gcse-hista', qual: 'GCSE', board: 'OCR', subject: 'History A (Explaining the Modern World)', code: 'J410', tiered: false, firstExam: 2018,
+    topics: ['Period study', 'Non-British depth study', 'Thematic study', 'British depth study', 'Historic environment'],
+    papers: [
+      { id: 'p1', code: 'J410/01–07', name: 'Paper 1: Period study with non-British depth study', mins: 105, marks: null, topics: [0, 1], sitting: d(20, 5, 'AM') },
+      { id: 'p2', code: 'J410/08–10', name: 'Paper 2: Thematic study', mins: 60, marks: null, topics: [2], sitting: d(28, 5, 'AM') },
+      { id: 'p3', code: 'J410/11–13', name: 'Paper 3: British depth study with the historic environment', mins: 75, marks: null, topics: [3, 4], sitting: d(9, 6, 'PM') },
+    ] },
+  { id: 'ocr-gcse-histb', qual: 'GCSE', board: 'OCR', subject: 'History B (Schools History Project)', code: 'J411', tiered: false, firstExam: 2018,
+    topics: ['British thematic study', 'British depth study', 'History around us', 'World period study', 'World depth study'],
+    papers: [
+      { id: 'p1', code: 'J411/11–19', name: 'Paper 1: British thematic study and depth study', mins: 105, marks: null, topics: [0, 1], sitting: d(28, 5, 'AM') },
+      { id: 'p2', code: 'J411/21', name: 'Paper 2: History around us', mins: 60, marks: null, topics: [2], sitting: d(20, 5, 'AM') },
+      { id: 'p3', code: 'J411/31–39', name: 'Paper 3: World period study and depth study', mins: 105, marks: null, topics: [3, 4], sitting: d(9, 6, 'PM') },
+    ] },
+  { id: 'ocr-gcse-geoga', qual: 'GCSE', board: 'OCR', subject: 'Geography A (Geographical Themes)', code: 'J383', tiered: false, firstExam: 2018,
+    topics: ['Landscapes of the UK', 'People of the UK', 'UK environmental challenges', 'Ecosystems of the planet', 'People of the planet', 'Environmental threats to our planet', 'Geographical skills and fieldwork'],
+    papers: [
+      { id: 'p1', code: 'J383/01', name: 'Paper 1: Living in the UK today', mins: 60, marks: null, topics: [0, 1, 2], sitting: d(18, 5, 'AM') },
+      { id: 'p2', code: 'J383/02', name: 'Paper 2: The world around us', mins: 60, marks: null, topics: [3, 4, 5], sitting: d(26, 5, 'PM') },
+      { id: 'p3', code: 'J383/03', name: 'Paper 3: Geographical skills', mins: 90, marks: null, topics: [6], sitting: d(10, 6, 'PM') },
+    ] },
+  { id: 'ocr-gcse-geogb', qual: 'GCSE', board: 'OCR', subject: 'Geography B (Geography for Enquiring Minds)', code: 'J384', tiered: false, firstExam: 2018,
+    topics: ['Global hazards', 'Changing climate', 'Distinctive landscapes', 'Sustaining ecosystems', 'Urban futures', 'Dynamic development', 'UK in the 21st century', 'Resource reliance', 'Fieldwork', 'Geographical exploration'],
+    papers: [
+      { id: 'p1', code: 'J384/01', name: 'Paper 1: Our natural world', mins: 90, marks: null, topics: [0, 1, 2, 3, 8], sitting: d(18, 5, 'AM') },
+      { id: 'p2', code: 'J384/02', name: 'Paper 2: People and society', mins: 90, marks: null, topics: [4, 5, 6, 7, 8], sitting: d(26, 5, 'PM') },
+      { id: 'p3', code: 'J384/03', name: 'Paper 3: Geographical exploration', mins: 90, marks: null, topics: [9], sitting: d(10, 6, 'PM') },
+    ] },
+  { id: 'ocr-gcse-rs', qual: 'GCSE', board: 'OCR', subject: 'Religious Studies', code: 'J625', tiered: false, firstExam: 2018,
+    note: 'You sit two of the religion papers (J625/01–05), one after the other on the morning of 13 May.',
+    topics: ['Religion 1: beliefs and teachings', 'Religion 1: practices', 'Religion 2: beliefs and teachings', 'Religion 2: practices', 'Relationships and families', 'The existence of God', 'Religion, peace and conflict', 'Dialogue between religious and non-religious beliefs'],
+    papers: [
+      { id: 'p1', code: 'J625/01–05', name: 'Religion 1: beliefs, teachings and practices', mins: 60, marks: null, topics: [0, 1], sitting: d(13, 5, 'AM') },
+      { id: 'p2', code: 'J625/01–05', name: 'Religion 2: beliefs, teachings and practices', mins: 60, marks: null, topics: [2, 3], sitting: d(13, 5, 'AM') },
+      { id: 'p3', code: 'J625/06–10', name: 'Religion, philosophy and ethics in the modern world', mins: 120, marks: null, topics: [4, 5, 6, 7], sitting: d(21, 5, 'AM') },
+    ] },
+  { id: 'ocr-gcse-psych', qual: 'GCSE', board: 'OCR', subject: 'Psychology', code: 'J203', tiered: false, firstExam: 2019,
+    topics: ['Criminal psychology', 'Development', 'Psychological problems', 'Social influence', 'Memory', 'Sleep and dreaming', 'Research methods'],
+    papers: [
+      { id: 'p1', code: 'J203/01', name: 'Paper 1: Studies and applications in psychology 1', mins: 90, marks: null, topics: [0, 1, 2, 6], sitting: d(10, 5, 'PM') },
+      { id: 'p2', code: 'J203/02', name: 'Paper 2: Studies and applications in psychology 2', mins: 90, marks: null, topics: [3, 4, 5, 6], sitting: d(17, 5, 'PM') },
+    ] },
+  { id: 'ocr-gcse-bus', qual: 'GCSE', board: 'OCR', subject: 'Business', code: 'J204', tiered: false, firstExam: 2019,
+    topics: ['Business activity', 'Marketing', 'People', 'Operations', 'Finance', 'Influences on business', 'The interdependent nature of business'],
+    papers: [
+      { id: 'p1', code: 'J204/01', name: 'Paper 1: Business activity, marketing and people', mins: 90, marks: 80, topics: [0, 1, 2], sitting: d(12, 5, 'PM') },
+      { id: 'p2', code: 'J204/02', name: 'Paper 2: Operations, finance and influences on business', mins: 90, marks: 80, topics: [3, 4, 5, 6], sitting: d(21, 5, 'PM') },
+    ] },
+  { id: 'ocr-gcse-econ', qual: 'GCSE', board: 'OCR', subject: 'Economics', code: 'J205', tiered: false, firstExam: 2019,
+    topics: ['Introduction to economics', 'The role of markets and money', 'Economic objectives and the role of government', 'International trade and the global economy'],
+    papers: [
+      { id: 'p1', code: 'J205/01', name: 'Paper 1: Introduction to economics', mins: 90, marks: 80, topics: [0, 1], sitting: d(13, 5, 'PM') },
+      { id: 'p2', code: 'J205/02', name: 'Paper 2: National and international economics', mins: 90, marks: 80, topics: [2, 3], sitting: d(25, 5, 'PM') },
+    ] },
+  { id: 'ocr-gcse-pe', qual: 'GCSE', board: 'OCR', subject: 'Physical Education', code: 'J587', tiered: false, firstExam: 2018,
+    note: 'Practical performance and analysis is assessed at school, so it isn’t in the timetable.',
+    topics: ['Applied anatomy and physiology', 'Physical training', 'Socio-cultural influences', 'Sports psychology', 'Health, fitness and well-being'],
+    papers: [
+      { id: 'p1', code: 'J587/01', name: 'Paper 1: Physical factors affecting performance', mins: 60, marks: 60, topics: [0, 1], sitting: d(13, 5, 'PM') },
+      { id: 'p2', code: 'J587/02', name: 'Paper 2: Socio-cultural issues and sports psychology', mins: 60, marks: 60, topics: [2, 3, 4], sitting: d(20, 5, 'PM') },
     ] },
 ];
 
