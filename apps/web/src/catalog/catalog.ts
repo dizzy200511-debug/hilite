@@ -373,6 +373,8 @@ export const SPECS: Spec[] = [
 export const specById = (id: string) => SPECS.find((s) => s.id === id);
 export const subjectsFor = (qual: Qual, board: Board) => SPECS.filter((s) => s.qual === qual && s.board === board);
 export const specLabel = (s: Spec) => s.board + ' ' + s.qual + ' ' + s.subject;
+/** URL slug for a spec's public pages, e.g. aqa-gcse-biology. */
+export const specSlug = (s: Spec) => (s.board + ' ' + s.qual + ' ' + s.subject).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 /** Exam series with papers, newest first. Boards keep the latest two or so private. */
 export function pastSeries(spec: Spec): { year: number; series: 'June' | 'November'; isPublic: boolean }[] {

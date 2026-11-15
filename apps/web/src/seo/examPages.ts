@@ -5,7 +5,7 @@
  */
 import { paperPages, paperSpecs } from './paperPages';
 import type { SpecPapers } from '../lib/paperLinks';
-import { BOARDS, CONTINGENCY_DAY, SPECS, TIMETABLE_YEAR, type Board, type Paper, type Spec } from '../catalog/catalog';
+import { BOARDS, CONTINGENCY_DAY, SPECS, TIMETABLE_YEAR, specSlug, type Board, type Paper, type Spec } from '../catalog/catalog';
 
 export interface StaticFile { fileName: string; source: string }
 export interface Assets { css: string[]; script: string; site: string }
@@ -13,7 +13,7 @@ export interface Assets { css: string[]; script: string; site: string }
 export const COUNTDOWN_SCRIPT = 'exam-dates/countdown.js';
 const BOARD_ORDER: Board[] = ['AQA', 'Edexcel', 'OCR'];
 
-export const specSlug = (s: Spec) => (s.board + ' ' + s.qual + ' ' + s.subject).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+export { specSlug };
 
 export const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
