@@ -11,7 +11,9 @@ export function useToolTarget() {
   const [profile] = useProfile();
   const spec = params.get('spec');
   const known = !!spec && profile.subjects.some((s) => s.specId === spec);
-  const topic = Number(params.get('topic'));
+  // Number(null) is 0, so a missing topic must stay missing rather than become the first topic.
+  const raw = params.get('topic');
+  const topic = raw == null || raw === '' ? NaN : Number(raw);
   return {
     specId: known ? spec! : profile.subjects[0]?.specId || '',
     topic: known && Number.isInteger(topic) && topic >= 0 ? topic : undefined,

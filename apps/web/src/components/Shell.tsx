@@ -81,9 +81,11 @@ export function Shell() {
           <div className="nav-group"><div className="nav-label">Practise</div>
             {link('/practice', 'Practice questions', <IconQuestion />)}
             {link('/papers', 'Past papers', <IconPapers />)}
-            {link('/topics', 'Topic checklist', <IconChecklist />)}
             {link('/flashcards', 'Flashcards', <IconCards />, due ? <span className="count">{due}</span> : null)}
             {link('/tools/mistakes', 'Mistake log', <IconMistake />, dueMistakes ? <span className="count">{dueMistakes}</span> : null)}
+            {link('/topics', 'Topic checklist', <IconChecklist />)}
+          </div>
+          <div className="nav-group"><div className="nav-label">Tools</div>
             {link('/tools', 'Revision tools', <IconTools />)}
             {link('/coach', 'AI coach', <IconSparkle />, auth.plan !== 'pro' && !auth.isOwner ? <span className="nav-pro">Pro</span> : null)}
             {link('/focus', 'Focus timer', <IconTimer />, t.running ? <span className="count num">{fmtClock(t.left)}</span> : null)}
