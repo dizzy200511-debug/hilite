@@ -60,7 +60,7 @@ Everything an agent needs to continue the project. Written 15 November 2026, whe
 
 **AI coach:** the `ai` edge function typechecks against `@anthropic-ai/sdk@1.3.0`, but it has never run against the real API. Test question quality, marking accuracy and cost per request before launch.
 
-**Windows app:** launched under xvfb with Playwright. It loads `app://hilite/index.html`, the preload bridge works (`hiliteDesktop.version` returned "1.0.0"), and there are no CSP errors. The NSIS installer itself has not been built yet (it needs Windows or the GitHub Action).
+**Windows app:** launched under xvfb with Playwright. It loads `app://hilite/index.html`, the preload bridge works (`hiliteDesktop.version` returned "1.0.0"), and there are no CSP errors. The NSIS installer builds on the owner's machine (`npm run dist` makes `dist/Hilite-Setup-1.0.0.exe`, unsigned, in local mode unless the `VITE_SUPABASE_*` vars are set). If electron-builder fails with "Cannot create symbolic link", either turn on Windows Developer Mode, or extract its winCodeSign archive into `%LOCALAPPDATA%\electron-builder\Cache\winCodeSign\winCodeSign-2.6.0` with 7-Zip (the macOS symlink errors don't matter). Real releases still go through the GitHub Action (tag `v*`), which has the live env vars.
 
 **Written but never run against real services:**
 - **Supabase auth flows:** sign-up code, sign-in, Google OAuth (web and the `hilite://auth` deep link), password reset.
