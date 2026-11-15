@@ -1,0 +1,37 @@
+- generic [ref=f1e2]:
+  - generic [ref=f1e3]:
+    - complementary [ref=f1e4]:
+      - generic [ref=f1e5]: Hilite
+      - paragraph [ref=f1e9]: Every exam, every paper, one plan. Know exactly what to revise next.
+      - generic [ref=f1e10]:
+        - generic [ref=f1e11]: Your real exam dates for AQA, Edexcel and OCR, with countdowns and clash warnings.
+        - generic [ref=f1e12]: Past papers by spec, with marks and grades tracked over time.
+        - generic [ref=f1e13]: A revision plan that schedules every topic before each paper.
+    - main [ref=f1e14]:
+      - generic [ref=f1e15]:
+        - heading "Create your account" [level=1] [ref=f1e16]
+        - paragraph [ref=f1e17]: Free forever for the essentials. Takes a minute.
+        - button "Sign up with Google" [ref=f1e18] [cursor=pointer]
+        - generic [ref=f1e24]: or with email
+        - generic [ref=f1e25]:
+          - generic [ref=f1e26]:
+            - generic [ref=f1e27]: Email
+            - textbox "Email" [ref=f1e28]: sam@example.com
+          - generic [ref=f1e29]:
+            - generic [ref=f1e30]: Password
+            - textbox "Password" [ref=f1e31]: Revision-2027!
+            - generic [ref=f1e44]: Strong password.
+          - generic [ref=f1e32] [cursor=pointer]:
+            - checkbox "I agree to the terms and privacy policy" [checked] [active] [ref=f1e33]
+            - text: I agree to the
+            - link "terms" [ref=f1e34]:
+              - /url: /terms
+            - text: and
+            - link "privacy policy" [ref=f1e35]:
+              - /url: /privacy
+          - button "Create account" [ref=f1e36] [cursor=pointer]
+        - paragraph [ref=f1e37]:
+          - text: Already have an account?
+          - link "Sign in" [ref=f1e38] [cursor=pointer]:
+            - /url: /signin
+  - status

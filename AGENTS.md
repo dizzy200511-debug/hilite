@@ -3,7 +3,7 @@
 Read this first, then `docs/HANDOFF.md` for the full history, status and to-do list.
 
 ## What this is
-Hilite is a GCSE revision website plus a Windows app, modelled on Save My Exams, being built to launch commercially. Free plan stays genuinely useful; Pro is £5/month or £50/year.
+Hilite is a GCSE revision website plus a Windows app, modelled on Save My Exams, being built to launch commercially. Free plan stays genuinely useful; Pro is £8/month or £60/year (prices in `PRICE` in `pages/Upgrade.tsx`).
 
 ## Commands
 ```

@@ -100,7 +100,7 @@ The installer isn't code-signed yet, so Windows SmartScreen shows "Windows prote
 
 ### 9. Payments (later, with a parent)
 Stripe needs an adult account holder. When you're ready:
-1. Make two prices in Stripe: £5 a month and £50 a year.
+1. Make two prices in Stripe: £8 a month and £60 a year.
 2. Set the secrets:
    ```
    npx supabase secrets set STRIPE_SECRET_KEY=sk_live_xxx STRIPE_PRICE_MONTH=price_xxx STRIPE_PRICE_YEAR=price_xxx STRIPE_WEBHOOK_SECRET=whsec_xxx

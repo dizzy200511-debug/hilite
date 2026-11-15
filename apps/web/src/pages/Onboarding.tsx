@@ -10,8 +10,9 @@ import type { Profile, SubjectChoice } from '../lib/types';
 import { PRESETS, type PresetId } from '../lib/presets';
 import { FREE_PRESETS, effectivePreset } from '../lib/pro';
 import { usePro } from './hooks';
+import { useAuth } from '../auth/AuthProvider';
+import { PriceCards, useBilling } from './Upgrade';
 
-const STEPS = ['Your name', 'Subjects', 'Study time'];
 
 export default function Onboarding() {
   const [profile, setProfile] = useProfile();
@@ -26,23 +27,30 @@ export default function Onboarding() {
   const [we, setWe] = useState(profile.weekendMins);
   const [rest, setRest] = useState<number[]>(profile.restDays);
   const pro = usePro();
+  const auth = useAuth();
+  // Everyone who isn't paying sees the Pro step once, including the owner.
+  const offerPro = auth.plan !== 'pro';
+  const steps = ['Your name', 'Subjects', 'Study time'].concat(offerPro ? ['Your plan'] : []);
+  const billing = useBilling();
   const [preset, setPreset] = useState<PresetId>(effectivePreset(profile.planPreset, pro));
 
-  const finish = () => {
+  const save = () => {
     const next: Profile = { ...profile, name: cleanText(name, 40), subjects, weekdayMins: wd, weekendMins: we, restDays: rest, planPreset: preset, dailyGoalMins: Math.round((wd * 5 + we * 2) / 7 / 5) * 5, onboarded: true };
     const sittings = mySittings(next, dates);
     setPlanner((p) => ({ ...p, sessions: upcoming(sittings).length ? buildPlan(sittings, checklist, next, [], { proPlans: pro }) : [], builtAt: Date.now() }));
     setProfile(next);
-    nav('/', { replace: true });
   };
+  const finish = () => { save(); nav('/', { replace: true }); };
+  // Save first: real checkout leaves the page, and Stripe brings the student back to the app.
+  const getPro = async (period: 'month' | 'year') => { save(); if (await billing.go('checkout', period)) nav('/', { replace: true }); };
 
   return (
     <div className="onboard">
       <header className="lnav" style={{ width: '100%' }}>
         <div className="brand"><span className="brand-mark"><i /></span>Hilite</div>
-        <ol className="steps" aria-label="Setup steps">{STEPS.map((s, i) => <li key={s} aria-current={i === step ? 'step' : undefined} className={i < step ? 'done' : ''}><span className="num">{i + 1}</span>{s}</li>)}</ol>
+        <ol className="steps" aria-label="Setup steps">{steps.map((s, i) => <li key={s} aria-current={i === step ? 'step' : undefined} className={i < step ? 'done' : ''}><span className="num">{i + 1}</span>{s}</li>)}</ol>
       </header>
-      <main className="onboard-card">
+      <main className="onboard-card" style={step === 3 ? { maxWidth: 880 } : undefined}>
         {step === 0 && (
           <form onSubmit={(e) => { e.preventDefault(); if (cleanText(name)) setStep(1); }}>
             <h1>Welcome to Hilite</h1>
@@ -78,7 +86,15 @@ export default function Onboarding() {
               </select>
               <span className="hint">Which revision methods your plan uses and how they’re spaced. You can change it any time in the planner.{!pro && ' Pro adds six more styles, including one matched to each subject.'}</span>
             </div>
-            <div className="onboard-foot"><button className="btn btn-lg btn-ghost" onClick={() => setStep(1)}>Back</button><button className="btn btn-primary btn-lg" onClick={finish}>Build my plan</button></div>
+            <div className="onboard-foot"><button className="btn btn-lg btn-ghost" onClick={() => setStep(1)}>Back</button>{offerPro ? <button className="btn btn-primary btn-lg" onClick={() => setStep(3)}>Continue</button> : <button className="btn btn-primary btn-lg" onClick={finish}>Build my plan</button>}</div>
+          </>
+        )}
+        {step === 3 && (
+          <>
+            <h1>Free or Pro?</h1>
+            <p className="lead">Free has everything you need to revise, for good. Pro adds the AI coach, AI marking, every practice question and the deeper tools. You can upgrade later from Settings.</p>
+            <PriceCards cta={(period) => <button className="btn btn-primary btn-block btn-lg" disabled={billing.busy} onClick={() => getPro(period)}>{billing.busy ? 'Opening checkout…' : 'Get Pro'}</button>} />
+            <div className="onboard-foot"><button className="btn btn-lg btn-ghost" onClick={() => setStep(2)}>Back</button><button className="btn btn-lg" onClick={finish}>Continue with Free</button></div>
           </>
         )}
       </main>

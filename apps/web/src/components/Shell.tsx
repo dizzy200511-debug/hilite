@@ -98,7 +98,7 @@ export function Shell() {
         </nav>
         <div className="side-foot">
           <span className="avatar">{initials}</span>
-          <div className="who"><b>{profile.name || 'Your account'}</b><span>{auth.localMode ? 'Local mode' : auth.plan === 'pro' ? 'Hilite Pro' : 'Free plan'}</span></div>
+          <div className="who"><b>{profile.name || 'Your account'}</b><span>{(auth.plan === 'pro' ? 'Hilite Pro' : 'Free plan') + (auth.localMode ? ', local mode' : '')}</span></div>
         </div>
       </aside>
       <div className="main"><Outlet /></div>

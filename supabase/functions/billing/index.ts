@@ -1,5 +1,5 @@
 // Stripe Checkout and the billing portal, called by the Upgrade page.
-// Set STRIPE_SECRET_KEY, STRIPE_PRICE_MONTH (£5/month) and STRIPE_PRICE_YEAR (£50/year) as function secrets.
+// Set STRIPE_SECRET_KEY, STRIPE_PRICE_MONTH (£8/month) and STRIPE_PRICE_YEAR (£60/year) as function secrets.
 import { admin, cors, json, userFrom } from '../_shared/common.ts';
 
 const SITE = Deno.env.get('SITE_URL') ?? 'https://hilite.study';

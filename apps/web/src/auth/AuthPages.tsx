@@ -29,6 +29,17 @@ function ErrorBox({ msg }: { msg: string }) {
   return msg ? <div className="error" role="alert">{msg}</div> : null;
 }
 
+/** Local mode sends no emails, so the code it would have sent is shown here instead. */
+function LocalCode() {
+  const auth = useAuth();
+  if (!auth.localMode) return null;
+  return (
+    <div className="banner info" style={{ marginBottom: 14 }}>
+      <p className="small">{auth.devCode ? <>Local mode doesn’t send emails. Your code is <b className="num">{auth.devCode}</b>.</> : 'Local mode doesn’t send emails. No code was sent: this email already has an account here, or has none. Try signing in.'}</p>
+    </div>
+  );
+}
+
 export function CodeInput({ onComplete, disabled }: { onComplete: (code: string) => void; disabled?: boolean }) {
   const [digits, setDigits] = useState(['', '', '', '', '', '']);
   const refs = useRef<(HTMLInputElement | null)[]>([]);
@@ -174,6 +185,7 @@ function ConfirmEmail({ email }: { email: string }) {
       <div className="avatar" style={{ width: 44, height: 44, marginBottom: 18 }}><IconMail width={20} height={20} /></div>
       <h1>Check your email</h1>
       <p className="lead">We sent a 6-digit code to <b>{email}</b>. It expires in 10 minutes.</p>
+      <LocalCode />
       <ErrorBox msg={err} />
       <CodeInput onComplete={verify} disabled={busy} />
       <p className="small muted">Didn’t get it? Check spam, or {cd.left ? <span>send a new code in {cd.left}s</span> : <button className="link" onClick={() => auth.resendSignUp(email).then(cd.start).catch((x) => setErr(x.message))}>send a new code</button>}.</p>
@@ -249,6 +261,7 @@ export function Forgot() {
       ) : (
         <>
           <p className="lead">If <b>{email}</b> has an account, a 6-digit code is on its way.</p>
+          <LocalCode />
           <ErrorBox msg={err} />
           <form onSubmit={reset} noValidate>
             <CodeInput onComplete={setCode} />

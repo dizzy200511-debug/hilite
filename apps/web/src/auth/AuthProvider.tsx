@@ -3,6 +3,7 @@ import type { Session, User } from '@supabase/supabase-js';
 import { LOCAL_MODE, SITE_URL, supabase } from '../lib/supabase';
 import { deviceId, deviceName } from '../lib/device';
 import { store } from '../lib/store';
+import { localAuth, localSession, localStoreId } from './localAuth';
 
 export type Plan = 'free' | 'pro';
 interface AuthState {
@@ -12,6 +13,8 @@ interface AuthState {
   plan: Plan;
   isOwner: boolean;
   localMode: boolean;
+  /** Local mode only: the email code to show on screen, since no email is sent. */
+  devCode: string | null;
   signUp(email: string, password: string): Promise<void>;
   confirmSignUp(email: string, code: string): Promise<void>;
   resendSignUp(email: string): Promise<void>;
@@ -46,7 +49,7 @@ async function hashDevice(): Promise<string> {
 }
 
 const localPlan = () => { try { return localStorage.getItem('hilite:localPlan'); } catch { return null; } };
-const LOCAL_USER ={ id: 'local', email: 'local@device', user_metadata: {} } as unknown as User;
+const localUser = (email: string) => ({ id: localStoreId(email), email, user_metadata: {} }) as unknown as User;
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -54,6 +57,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [deviceTrusted, setDeviceTrusted] = useState(false);
   const [plan, setPlan] = useState<Plan>('free');
   const [isOwner, setIsOwner] = useState(false);
+  const [localEmail, setLocalEmail] = useState<string | null>(null);
+  const [devCode, setDevCode] = useState<string | null>(null);
+  const startLocal = (email: string) => { store.open(localStoreId(email)); setLocalEmail(email); setDevCode(null); };
 
   const checkDevice = useCallback(async (s: Session | null) => {
     if (!supabase || !s) { setDeviceTrusted(false); return; }
@@ -64,7 +70,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const refreshPlan = useCallback(async () => {
-    if (!supabase) return;
+    if (!supabase) { setPlan(localPlan() === 'pro' ? 'pro' : 'free'); return; }
     const { data } = await supabase.from('profiles').select('plan, is_owner').maybeSingle();
     setPlan(data?.plan === 'pro' ? 'pro' : 'free');
     setIsOwner(!!data?.is_owner);
@@ -72,7 +78,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (LOCAL_MODE || !supabase) {
-      store.open('local');
+      const email = localSession();
+      if (email) { store.open(localStoreId(email)); setLocalEmail(email); }
+      setPlan(localPlan() === 'pro' ? 'pro' : 'free');
       setDeviceTrusted(true);
       setLoading(false);
       return;
@@ -108,29 +116,38 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const value: AuthState = {
     loading,
-    user: LOCAL_MODE ? LOCAL_USER : session?.user ?? null,
+    user: LOCAL_MODE ? (localEmail ? localUser(localEmail) : null) : session?.user ?? null,
     deviceTrusted,
     plan,
     // Local mode is the owner, unless you set localStorage 'hilite:localPlan' to 'free' to see what free accounts see.
     isOwner: LOCAL_MODE ? localPlan() !== 'free' : isOwner,
     localMode: LOCAL_MODE,
+    devCode,
 
     async signUp(email, password) {
+      if (LOCAL_MODE) { setDevCode(await localAuth.signUp(email, password)); return; }
       const { error } = await supabase!.auth.signUp({ email, password, options: { emailRedirectTo: SITE_URL } });
       // Supabase hides whether an email is already registered, which is what we want.
       if (error) throw friendly(error, 'Couldn’t create your account. Check your details and try again.');
     },
     async confirmSignUp(email, code) {
+      if (LOCAL_MODE) { localAuth.confirmSignUp(email, code); startLocal(email); return; }
       const { data, error } = await supabase!.auth.verifyOtp({ email, token: code, type: 'signup' });
       if (error || !data.session) throw friendly(error, 'That code is wrong or has expired.');
       await fn({ action: 'trust-new-account' });
       await checkDevice(data.session);
     },
     async resendSignUp(email) {
+      if (LOCAL_MODE) { setDevCode(localAuth.resendSignUp(email)); return; }
       const { error } = await supabase!.auth.resend({ type: 'signup', email });
       if (error) throw friendly(error, 'Couldn’t send a new code. Try again in a minute.');
     },
     async signIn(email, password) {
+      if (LOCAL_MODE) {
+        const r = await localAuth.signIn(email, password);
+        if (r === 'ok') { startLocal(email); return 'ok'; }
+        setDevCode(r.code); return 'confirm';
+      }
       const { error } = await supabase!.auth.signInWithPassword({ email, password });
       if (error) {
         if (/not confirmed/i.test(error.message)) { await supabase!.auth.resend({ type: 'signup', email }); return 'confirm'; }
@@ -139,22 +156,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return 'ok';
     },
     async signInWithGoogle() {
+      if (LOCAL_MODE) throw new AuthError('Google sign-in works once Hilite is connected to Supabase. In local mode, use email.');
       const redirectTo = window.hiliteDesktop ? 'hilite://auth' : SITE_URL;
       const { data, error } = await supabase!.auth.signInWithOAuth({ provider: 'google', options: { redirectTo, skipBrowserRedirect: !!window.hiliteDesktop } });
       if (error) throw friendly(error, 'Couldn’t start Google sign-in. Try again.');
       if (window.hiliteDesktop && data.url) window.hiliteDesktop.openExternal(data.url);
     },
-    async sendDeviceCode() { await fn({ action: 'send' }); },
+    async sendDeviceCode() { if (!LOCAL_MODE) await fn({ action: 'send' }); },
     async verifyDeviceCode(code) {
+      if (LOCAL_MODE) return;
       await fn({ action: 'verify', code });
       await checkDevice(session);
     },
     async sendReset(email) {
+      if (LOCAL_MODE) { setDevCode(localAuth.sendReset(email)); return; }
       const { error } = await supabase!.auth.resetPasswordForEmail(email, { redirectTo: SITE_URL });
       if (error && !/rate/i.test(error.message)) return;
       if (error) throw friendly(error, 'Try again in a minute.');
     },
     async confirmReset(email, code, password) {
+      if (LOCAL_MODE) { await localAuth.confirmReset(email, code, password); startLocal(email); return; }
       const { error } = await supabase!.auth.verifyOtp({ email, token: code, type: 'recovery' });
       if (error) throw friendly(error, 'That code is wrong or has expired.');
       const { error: e2 } = await supabase!.auth.updateUser({ password });
@@ -165,6 +186,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
     async signOut(everywhere) {
       store.close();
+      if (LOCAL_MODE) { localAuth.end(); setLocalEmail(null); setDevCode(null); return; }
       if (supabase) await supabase.auth.signOut({ scope: everywhere ? 'global' : 'local' });
     },
     refreshPlan,

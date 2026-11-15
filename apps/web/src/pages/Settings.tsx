@@ -118,7 +118,7 @@ export default function Settings() {
 
         <section className="panel panel-pad">
           <h2>Account</h2>
-          <Row title="Email" hint={auth.localMode ? 'Local mode: data stays on this device.' : auth.user?.email}>{null}</Row>
+          <Row title="Email" hint={auth.localMode ? auth.user?.email + ' (local mode: data stays on this device)' : auth.user?.email}>{null}</Row>
           <Row title="Plan" hint={auth.plan === 'pro' ? 'Hilite Pro. Thanks for supporting Hilite.' : 'Free plan'}>
             {auth.plan === 'pro' ? <span className="tag hl">Pro</span> : <Link className="btn" to="/upgrade">See Pro</Link>}
           </Row>
@@ -134,7 +134,11 @@ export default function Settings() {
               </li>
             ))}</ul>
           )}
-          {!auth.localMode && (
+          {auth.localMode ? (
+            <Row title="Sign out" hint="Your local data stays on this device for when you sign back in.">
+              <button className="btn" onClick={() => auth.signOut()}>Sign out</button>
+            </Row>
+          ) : (
             <Row title="Sign out" hint="Sign out everywhere also signs out every other browser and computer.">
               <button className="btn" onClick={() => auth.signOut()}>Sign out</button>
               <button className="btn" onClick={() => auth.signOut(true)}>Sign out everywhere</button>

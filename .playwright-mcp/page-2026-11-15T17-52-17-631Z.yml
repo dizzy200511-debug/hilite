@@ -1,0 +1,60 @@
+- generic [ref=f1e2]:
+  - generic [ref=f1e74]:
+    - banner [ref=f1e75]:
+      - generic [ref=f1e76]: Hilite
+      - list "Setup steps" [ref=f1e79]:
+        - listitem [ref=f1e80]:
+          - generic [ref=f1e81]: "1"
+          - text: Your name
+        - listitem [ref=f1e82]:
+          - generic [ref=f1e83]: "2"
+          - text: Subjects
+        - listitem [ref=f1e84]:
+          - generic [ref=f1e85]: "3"
+          - text: Study time
+        - listitem [ref=f1e86]:
+          - generic [ref=f1e87]: "4"
+          - text: Your plan
+    - main [ref=f1e88]:
+      - heading "Free or Pro?" [level=1] [ref=f1e281]
+      - paragraph [ref=f1e282]: Free has everything you need to revise, for good. Pro adds the AI coach, AI marking, every practice question and the deeper tools. You can upgrade later from Settings.
+      - group "Billing period" [ref=f1e284]:
+        - button "Monthly" [ref=f1e285] [cursor=pointer]
+        - button "Yearly, save £36" [pressed] [ref=f1e286] [cursor=pointer]
+      - generic [ref=f1e287]:
+        - generic [ref=f1e288]:
+          - heading "Free" [level=3] [ref=f1e289]
+          - generic [ref=f1e290]: £0
+          - generic [ref=f1e291]: Free for good, not a trial.
+          - list [ref=f1e292]:
+            - listitem [ref=f1e293]: Exam timetable for every subject, with countdowns and clash warnings
+            - listitem [ref=f1e296]: A revision plan built around your exam dates, in two plan styles
+            - listitem [ref=f1e299]: Unlimited flashcards with spaced repetition
+            - listitem [ref=f1e302]: Past paper tracker with links to every official paper, and mock mode
+            - listitem [ref=f1e305]: Mistake log that retests you until you get it right
+            - listitem [ref=f1e308]: Blurting, teach-back, command words and exam timing
+            - listitem [ref=f1e311]: Cornell notes, mind maps and the memoriser, to try
+            - listitem [ref=f1e314]: Guides to every revision method
+            - listitem [ref=f1e317]: Topic checklist, focus timer, and sync across web and Windows
+        - generic [ref=f1e320]:
+          - heading "Pro" [level=3] [ref=f1e321]
+          - generic [ref=f1e322]:
+            - text: £60
+            - generic [ref=f1e323]: / year
+          - generic [ref=f1e324]: Works out at £5 a month.
+          - list [ref=f1e325]:
+            - listitem [ref=f1e326]: Everything in Free
+            - listitem [ref=f1e329]: AI coach that learns from your mistakes and tests you on your weak spots
+            - listitem [ref=f1e332]: AI marking and feedback on written exam answers
+            - listitem [ref=f1e335]: AI flashcards from your notes
+            - listitem [ref=f1e338]: All eight plan styles, including Auto, and a plan that adapts to your weak topics
+            - listitem [ref=f1e341]: "See why you lose marks: content, technique, misreading or timing"
+            - listitem [ref=f1e344]: Unlimited Cornell notes, mind maps and memoriser items
+            - listitem [ref=f1e347]: Mixed quizzes across all your subjects, and the grade target calculator
+            - listitem [ref=f1e350]: Every subject and exam technique guide, and ready-made equation and formula decks
+            - listitem [ref=f1e353]: Predicted grades and full progress history
+          - button "Get Pro" [ref=f1e356] [cursor=pointer]
+      - generic [ref=f1e357]:
+        - button "Back" [ref=f1e358] [cursor=pointer]
+        - button "Continue with Free" [ref=f1e359] [cursor=pointer]
+  - status

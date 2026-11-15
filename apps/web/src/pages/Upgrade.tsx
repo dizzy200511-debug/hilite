@@ -6,7 +6,10 @@ import { IconCheck } from '../components/icons';
 import { useAuth } from '../auth/AuthProvider';
 import { supabase } from '../lib/supabase';
 
-export const PRICE = { month: 5, year: 50 };
+/** Pro prices in pounds. Keep in step with the Stripe prices (STRIPE_PRICE_MONTH, STRIPE_PRICE_YEAR). */
+export const PRICE = { month: 8, year: 60 };
+/** What a year costs on the monthly plan, minus the yearly price. */
+export const YEAR_SAVING = PRICE.month * 12 - PRICE.year;
 
 export const FREE_FEATURES = [
   'Exam timetable for every subject, with countdowns and clash warnings',
@@ -36,7 +39,7 @@ export function PriceCards({ cta }: { cta: (period: 'month' | 'year') => React.R
   const [period, setPeriod] = useState<'month' | 'year'>('year');
   return (
     <>
-      <div style={{ marginBottom: 18 }}><Seg label="Billing period" value={period} onChange={setPeriod} options={[['month', 'Monthly'], ['year', 'Yearly, 2 months free']]} /></div>
+      <div style={{ marginBottom: 18 }}><Seg label="Billing period" value={period} onChange={setPeriod} options={[['month', 'Monthly'], ['year', 'Yearly, save £' + YEAR_SAVING]]} /></div>
       <div className="prices">
         <div className="price">
           <h3>Free</h3>
@@ -47,7 +50,7 @@ export function PriceCards({ cta }: { cta: (period: 'month' | 'year') => React.R
         <div className="price pro">
           <h3>Pro</h3>
           <div className="amt">£{period === 'month' ? PRICE.month : PRICE.year}<span className="small muted" style={{ fontWeight: 500, letterSpacing: 0 }}> / {period}</span></div>
-          <div className="small muted">{period === 'year' ? 'Works out at £4.17 a month.' : 'Cancel any time.'}</div>
+          <div className="small muted">{period === 'year' ? 'Works out at £' + (PRICE.year / 12).toFixed(2).replace(/\.00$/, '') + ' a month.' : 'Cancel any time.'}</div>
           <ul>{PRO_FEATURES.map((f) => <li key={f}><IconCheck />{f}</li>)}</ul>
           {cta(period)}
         </div>
@@ -56,19 +59,35 @@ export function PriceCards({ cta }: { cta: (period: 'month' | 'year') => React.R
   );
 }
 
-export default function Upgrade() {
+/**
+ * Opens Stripe checkout or the billing portal. Local mode has no payments, so checkout switches Pro on
+ * straight away (and the portal switches it off) to make Pro testable. Resolves true when Pro was turned on here.
+ */
+export function useBilling() {
   const auth = useAuth();
   const toast = useToast();
   const [busy, setBusy] = useState(false);
-  const pro = auth.plan === 'pro';
-  const go = async (action: 'checkout' | 'portal', period?: 'month' | 'year') => {
-    if (!supabase) { toast('Payments need an account. Local mode is for testing.'); return; }
+  const go = async (action: 'checkout' | 'portal', period?: 'month' | 'year'): Promise<boolean> => {
+    if (!supabase) {
+      try { if (action === 'checkout') localStorage.setItem('hilite:localPlan', 'pro'); else localStorage.removeItem('hilite:localPlan'); } catch { /* ignore */ }
+      await auth.refreshPlan();
+      toast(action === 'checkout' ? 'Local mode: Pro is on. No payment was taken.' : 'Local mode: back on the free plan.');
+      return action === 'checkout';
+    }
     setBusy(true);
     const { data, error } = await supabase.functions.invoke('billing', { body: { action, period } });
     setBusy(false);
-    if (error || !data?.url) { toast(data?.error || 'Payments aren’t open yet. Everything in Free stays free.'); return; }
+    if (error || !data?.url) { toast(data?.error || 'Payments aren’t open yet. Everything in Free stays free.'); return false; }
     if (window.hiliteDesktop) window.hiliteDesktop.openExternal(data.url); else window.location.href = data.url;
+    return false;
   };
+  return { busy, go };
+}
+
+export default function Upgrade() {
+  const auth = useAuth();
+  const { busy, go } = useBilling();
+  const pro = auth.plan === 'pro';
   return (
     <>
       <Topbar title={pro ? 'Your Pro plan' : 'Hilite Pro'} sub={pro ? 'Thanks for supporting Hilite' : 'The free plan has everything you need to revise. Pro adds the extras.'} />

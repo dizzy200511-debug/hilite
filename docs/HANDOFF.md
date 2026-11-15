@@ -12,7 +12,7 @@ Everything an agent needs to continue the project. Written 15 November 2026, whe
 | Topic | Decision |
 |---|---|
 | Model | Like Save My Exams. Pick qualification, board, subject and tier. Each subject shows its real exam dates, past papers, a revision planner and user-made flashcards. |
-| Pricing | Free stays good. Pro is £5/month or £50/year ("2 months free"). |
+| Pricing | Free stays good. Pro is £8/month or £60/year (£5 a month billed yearly, saving £36). Owner raised it from £5/£50 on 15 November 2026. |
 | Pro features | AI coach (learns from the mistake log, weak topics, card lapses, coach marks and blurt scores; writes targeted questions; marks answers; wrong answers go back into the mistake log), AI marking of pasted answers, AI flashcards from notes, a plan that adapts to weak topics, predicted grades, full stats history. |
 | Free and Pro split | Set in `apps/web/src/lib/pro.ts` (owner chose on 15 November 2026: free should entice, Pro should be wanted). Free: timetable, a full plan in Balanced or Mock sprint style, flashcards, past papers, checklist, focus, mistake log with retests (1, 3, 7 days), blurting, teach-back, command words, exam timing, method guides, the command words deck, and 3 Cornell notes, 3 mind maps and 5 memoriser items. Pro: AI coach, AI marking, AI flashcards, adaptive plan, Auto and the other plan styles, the why-you-lose-marks pattern, unlimited notes, maps and memoriser, mixed quiz, grade target, subject and exam technique guides (first section free), equation and formula decks, predicted grades and full history. |
 | Login | Email+password and Google. Both use 6-digit email codes (sign-up, reset, new device). A wrong login always says "Email or password is incorrect." |

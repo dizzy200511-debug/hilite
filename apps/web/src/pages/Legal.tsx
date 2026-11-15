@@ -59,7 +59,7 @@ export function Terms() {
       <p>Exam dates come from the exam boards’ published timetables. Boards can change them, so always check the final timetable your school gives you. Past papers belong to the exam boards: Hilite links to them on the boards’ own websites and doesn’t host them.</p>
       <h2>Hilite Pro</h2>
       <ul>
-        <li>Pro costs £5 a month or £50 a year and renews automatically until you cancel.</li>
+        <li>Pro costs £8 a month or £60 a year and renews automatically until you cancel.</li>
         <li>You can cancel at any time from the Upgrade page. You keep Pro until the end of the period you paid for.</li>
         <li>If you’re unhappy within 14 days of your first payment, email us for a full refund.</li>
         <li>If you’re under 18, a parent or carer must agree to the purchase.</li>
