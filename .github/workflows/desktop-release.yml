@@ -1,0 +1,30 @@
+# Push a tag like v1.0.1 to build the Windows installer and publish it as a GitHub Release.
+# Installed copies of Hilite check Releases and update themselves.
+name: Release Windows app
+on:
+  push: { tags: ['v*'] }
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Set app version from tag
+        shell: bash
+        run: cd apps/desktop && npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version --allow-same-version
+      - name: Install
+        shell: bash
+        run: |
+          cd apps/web && npm ci
+          cd ../desktop && npm ci
+      - name: Build and publish
+        working-directory: apps/desktop
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_SITE_URL: ${{ secrets.VITE_SITE_URL }}
+        run: npm run release

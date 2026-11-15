@@ -1,0 +1,31 @@
+# Used by the Supabase CLI (`supabase link`, `supabase db push`, `supabase functions deploy`).
+project_id = "hilite"
+
+[auth]
+site_url = "https://hilite.study"
+additional_redirect_urls = ["http://localhost:5173", "hilite://auth"]
+minimum_password_length = 10
+enable_signup = true
+
+[auth.email]
+enable_confirmations = true
+otp_length = 6
+otp_expiry = 600
+double_confirm_changes = true
+secure_password_change = true
+
+[auth.email.template.confirmation]
+subject = "{{ .Token }} is your Hilite code"
+content_path = "./supabase/templates/confirm.html"
+
+[auth.email.template.recovery]
+subject = "{{ .Token }} is your Hilite reset code"
+content_path = "./supabase/templates/recovery.html"
+
+[auth.external.google]
+enabled = true
+client_id = "env(GOOGLE_CLIENT_ID)"
+secret = "env(GOOGLE_CLIENT_SECRET)"
+
+[functions.stripe-webhook]
+verify_jwt = false

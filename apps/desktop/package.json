@@ -1,0 +1,45 @@
+{
+  "name": "hilite-desktop",
+  "productName": "Hilite",
+  "version": "1.0.0",
+  "description": "Hilite for Windows: revision built around your exams",
+  "author": "Hilite",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "web": "npm --prefix ../web run build:desktop",
+    "start": "npm run web && electron .",
+    "dist": "npm run web && electron-builder --win --publish never",
+    "release": "npm run web && electron-builder --win --publish always"
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "study.hilite.app",
+    "productName": "Hilite",
+    "copyright": "© 2026 Hilite",
+    "files": ["main.js", "preload.js", "app/**/*", "build/icon.png"],
+    "directories": { "output": "dist", "buildResources": "build" },
+    "protocols": [{ "name": "Hilite", "schemes": ["hilite"] }],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.png",
+      "artifactName": "Hilite-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Hilite",
+      "deleteAppDataOnUninstall": false
+    },
+    "publish": [{ "provider": "github", "owner": "dizzy200511-debug", "repo": "hilite", "releaseType": "release" }]
+  }
+}
