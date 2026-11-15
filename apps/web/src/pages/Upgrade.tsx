@@ -13,6 +13,7 @@ export const YEAR_SAVING = PRICE.month * 12 - PRICE.year;
 
 export const FREE_FEATURES = [
   'Exam timetable for every subject, with countdowns and clash warnings',
+  'Your own school tests and mocks, with revision planned before each one',
   'A revision plan built around your exam dates, in two plan styles',
   'Unlimited flashcards with spaced repetition',
   'Past paper tracker with links to every official paper, and mock mode',

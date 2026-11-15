@@ -3,7 +3,7 @@ import { uid } from './sanitize';
 import { presetFor } from './presets';
 import { effectivePreset } from './pro';
 import type { MySitting } from './exams';
-import type { Checklist, Method, Profile, Session } from './types';
+import type { Checklist, Method, OwnTest, Profile, Session } from './types';
 
 export interface PlanOptions {
   /** Pro, adaptive: how weak each topic is, 0 to 1. Key: specId:topic. */
@@ -14,6 +14,15 @@ export interface PlanOptions {
   pro?: boolean;
   /** Pro account: all plan styles. Free accounts on a Pro style get Balanced. */
   proPlans?: boolean;
+  /** Your own tests: each topic on one gets revision in the days before it. */
+  tests?: OwnTest[];
+}
+
+/** A stable number per test, so its sessions keep the same stage numbers across rebuilds. */
+function testStage(id: string) {
+  let h = 0;
+  for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 100000;
+  return 1000 + h * 100;
 }
 
 /**
@@ -27,7 +36,7 @@ export function buildPlan(sittings: MySitting[], checklist: Checklist, profile: 
   const capFor = (k: string) => (dow(k) === 0 || dow(k) === 6 ? profile.weekendMins : profile.weekdayMins);
   const isRest = (k: string) => (profile.restDays || []).indexOf(dow(k)) >= 0;
 
-  interface Req { specId: string; topic: number; stage: number; method: Method; target: string; deadline: string; mins: number }
+  interface Req { specId: string; topic: number; stage: number; method: Method; target: string; deadline: string; mins: number; testId?: string }
   const reqs: Req[] = [];
   const done = new Set(keep.map((s) => s.specId + ':' + s.topic + ':' + s.stage));
 
@@ -80,6 +89,20 @@ export function buildPlan(sittings: MySitting[], checklist: Checklist, profile: 
     specIndex++;
   });
 
+  // Your own tests: learn and blurt each topic a few days before, then exam questions the day before.
+  (opts.tests || []).forEach((test) => {
+    if (!test.specId || test.date <= t || !test.topics.length) return;
+    const last = addDays(test.date, -1);
+    const room = daysBetween(t, last);
+    const base = testStage(test.id);
+    const len = profile.sessionMins || 30;
+    test.topics.forEach((topic, i) => {
+      const key = (stage: number) => test.specId + ':' + topic + ':' + stage;
+      if (room >= 2 && !done.has(key(base + i * 2))) reqs.push({ specId: test.specId!, topic, stage: base + i * 2, method: 'blurt', target: addDays(last, -Math.min(4, room) + (i % 2)), deadline: last, mins: len, testId: test.id });
+      if (!done.has(key(base + i * 2 + 1))) reqs.push({ specId: test.specId!, topic, stage: base + i * 2 + 1, method: 'pastq', target: addDays(last, -(i % 2)), deadline: last, mins: len, testId: test.id });
+    });
+  });
+
   reqs.sort((a, b) => a.target.localeCompare(b.target) || a.deadline.localeCompare(b.deadline));
   const load: Record<string, number> = {};
   keep.forEach((s) => { if (s.day >= t) load[s.day] = (load[s.day] || 0) + s.mins; });
@@ -96,7 +119,7 @@ export function buildPlan(sittings: MySitting[], checklist: Checklist, profile: 
       day = best || r.deadline;
     }
     load[day] = (load[day] || 0) + r.mins;
-    out.push({ id: uid(), specId: r.specId, topic: r.topic, method: r.method, stage: r.stage, day, mins: r.mins, done: false });
+    out.push({ id: uid(), specId: r.specId, topic: r.topic, method: r.method, stage: r.stage, day, mins: r.mins, done: false, ...(r.testId ? { testId: r.testId } : {}) });
   });
   return out.sort((a, b) => a.day.localeCompare(b.day));
 }

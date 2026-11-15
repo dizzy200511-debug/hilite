@@ -7,7 +7,10 @@ import { fmtDay, fmtMins, greeting, studyDayOf, today } from '../lib/dates';
 import { missedSessions } from '../lib/planner';
 import { METHODS } from '../lib/types';
 import { sessionTopic, subjectName, toolLink, useColourOf, useDueCount, usePro, useSittings } from './hooks';
-import { useMistakes } from '../lib/data';
+import { useMistakes, useTests } from '../lib/data';
+import { countdownTag, testTopics } from './OwnTests';
+import type { MySitting } from '../lib/exams';
+import type { OwnTest } from '../lib/types';
 import { isDueMistake } from '../lib/mistakes';
 import { specById } from '../catalog/catalog';
 
@@ -24,6 +27,12 @@ export default function Today() {
   const dueMistakes = mistakes.list.filter(isDueMistake).length;
   const t = today();
   const next = upcoming(sittings);
+  const [tests] = useTests();
+  // Exams and your own tests together, soonest first.
+  const coming: ({ date: string; exam: MySitting } | { date: string; test: OwnTest })[] = [
+    ...next.map((exam) => ({ date: exam.date!, exam })),
+    ...tests.list.filter((x) => x.date >= t).map((test) => ({ date: test.date, test })),
+  ].sort((a, b) => a.date.localeCompare(b.date)).slice(0, 6);
   const first = next[0];
   const todays = planner.sessions.filter((s) => s.day === t);
   const tasks = planner.tasks.filter((x) => !x.done && (!x.due || x.due <= t));
@@ -107,10 +116,22 @@ export default function Today() {
           <section className="panel c8">
             <div className="panel-head"><h2>Coming up</h2><Link className="small" to="/timetable">Full timetable</Link></div>
             <div className="panel-body">
-              {!next.length ? <p className="muted">{profile.subjects.length ? 'Your exam dates will appear here.' : <><Link to="/subjects">Add your subjects</Link> to load your exam dates.</>}</p> : (
+              {!coming.length ? <p className="muted">{profile.subjects.length ? 'Your exam dates will appear here.' : <><Link to="/subjects">Add your subjects</Link> to load your exam dates.</>}</p> : (
                 <ul className="list">
-                  {next.slice(0, 5).map((s) => {
-                    const days = daysUntil(s.date!);
+                  {coming.map((c) => {
+                    const days = daysUntil(c.date);
+                    if ('test' in c) {
+                      const x = c.test;
+                      return (
+                        <li key={x.id} className="item">
+                          <div className={'datebox' + (days === 0 ? ' today' : '')}><span>{fmtDay(x.date).split(' ')[0]}</span><b>{Number(x.date.slice(8))}</b></div>
+                          <span className="sub-tab" style={colourVar(colourOf(x.specId))} />
+                          <div className="grow"><div className="title">{x.title}</div><div className="meta"><span className="tag">Your test</span>{x.specId && <span>{subjectName(x.specId)}</span>}{testTopics(x).length > 0 && <span>{testTopics(x).slice(0, 3).join(', ')}{testTopics(x).length > 3 ? ' and more' : ''}</span>}</div></div>
+                          {countdownTag(days)}
+                        </li>
+                      );
+                    }
+                    const s = c.exam;
                     return (
                       <li key={s.key} className="item">
                         <div className={'datebox' + (days === 0 ? ' today' : '')}><span>{fmtDay(s.date!).split(' ')[0]}</span><b>{Number(s.date!.slice(8))}</b></div>

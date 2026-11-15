@@ -29,13 +29,24 @@ export const DEFAULT_PROFILE: Profile = {
 /** Your own dates for papers Hilite doesn't have dates for, or overrides. Key: specId:paperId */
 export type ExamDates = Record<string, { date: string; session: 'AM' | 'PM' }>;
 
+/**
+ * Your own tests: school tests, mocks and end-of-topic tests. `topics` are indexes into the spec's topics;
+ * `extra` is anything else the test covers, in the student's own words.
+ */
+export interface OwnTest {
+  id: string; title: string; specId?: string; topics: number[]; extra: string;
+  date: string; session: 'AM' | 'PM' | ''; mins?: number; notes: string;
+  score?: number; max?: number;
+}
+export interface OwnTests { list: OwnTest[] }
+
 /** Topic confidence. Key: specId, then topic index. */
 export type Rating = 'r' | 'a' | 'g';
 export type Checklist = Record<string, Record<number, Rating>>;
 
 export type Method = 'learn' | 'cards' | 'review' | 'pastq' | 'teach' | 'timed' | 'blurt' | 'notes' | 'mindmap' | 'memorise' | 'mistakes' | 'mixed' | 'coach';
 /** topic is an index into the spec's topics, or -1 for a session across the whole subject. */
-export interface Session { id: string; specId: string; topic: number; method: Method; stage: number; day: string; mins: number; done: boolean; doneAt?: number }
+export interface Session { id: string; specId: string; topic: number; method: Method; stage: number; day: string; mins: number; done: boolean; doneAt?: number; /** Revision for one of your own tests. */ testId?: string }
 export interface Task { id: string; title: string; specId?: string; due?: string; mins: number; done: number }
 export interface Planner { sessions: Session[]; tasks: Task[]; builtAt?: number }
 export const DEFAULT_PLANNER: Planner = { sessions: [], tasks: [] };

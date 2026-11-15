@@ -8,6 +8,7 @@ import { clashes, daysUntil, toICS, type MySitting } from '../lib/exams';
 import { useExamDates } from '../lib/data';
 import { fmtDayLong, fmtMins, MONTHS, today } from '../lib/dates';
 import { useSittings } from './hooks';
+import { OwnTestsPanel } from './OwnTests';
 
 export default function Timetable() {
   const sittings = useSittings();
@@ -41,6 +42,7 @@ export default function Timetable() {
         {clash.length > 0 && clash.map(([a, b]) => (
           <div className="banner" key={a.key + b.key}><p><b>Possible clash on {fmtDayLong(a.date!)}.</b> {a.spec.subject} {a.paper.name} and {b.spec.subject} {b.paper.name} are both in the {a.session === 'AM' ? 'morning' : 'afternoon'}. Your school’s exams officer will sort out the timing, but it’s worth checking with them.</p></div>
         ))}
+        <OwnTestsPanel />
         {missing.length > 0 && (
           <section className="panel">
             <div className="panel-head"><h2>Papers without a date</h2></div>

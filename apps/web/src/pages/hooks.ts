@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { specById } from '../catalog/catalog';
 import { mySittings } from '../lib/exams';
-import { useBlurts, useChecklist, useCoach, useDecks, useExamDates, useMistakes, usePlanner, useProfile } from '../lib/data';
+import { useBlurts, useChecklist, useCoach, useDecks, useExamDates, useMistakes, usePlanner, useProfile, useTests } from '../lib/data';
 import { store, useStoreVersion } from '../lib/store';
 import { isDue, isNew } from '../lib/srs';
 import { today } from '../lib/dates';
@@ -79,9 +79,10 @@ export function useRebuildPlan() {
   const sittings = useSittings();
   const weak = useWeakness();
   const pro = usePro();
-  return (override?: Partial<Profile>) => {
+  const [tests] = useTests();
+  return (override?: Partial<Profile>, testList = tests.list) => {
     const p = { ...profile, ...override };
     const adaptive = pro && p.adaptive;
-    setPlanner((pl) => ({ ...pl, sessions: buildPlan(sittings, checklist, p, pl.sessions, { pro: adaptive, proPlans: pro, weak: adaptive ? weakMap(weak) : undefined, openMistakes: openBySpec(mistakes.list) }), builtAt: Date.now() }));
+    setPlanner((pl) => ({ ...pl, sessions: buildPlan(sittings, checklist, p, pl.sessions, { pro: adaptive, proPlans: pro, weak: adaptive ? weakMap(weak) : undefined, openMistakes: openBySpec(mistakes.list), tests: testList }), builtAt: Date.now() }));
   };
 }

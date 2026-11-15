@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Topbar } from '../components/Shell';
 import { Empty, Modal, Tick, colourVar, useToast } from '../components/ui';
 import { IconArrowLeft, IconPlus } from '../components/icons';
-import { usePlanner, useProfile } from '../lib/data';
+import { usePlanner, useProfile, useTests } from '../lib/data';
 import { missedSessions } from '../lib/planner';
 import { PRESETS, presetFor, type PresetId } from '../lib/presets';
 import { FREE_PRESETS, effectivePreset } from '../lib/pro';
@@ -49,6 +49,8 @@ export default function Planner() {
 
   const cap = (k: string) => (isWeekend(k) ? profile.weekendMins : profile.weekdayMins);
   const examsOn = (k: string) => sittings.filter((s) => s.date === k);
+  const [tests] = useTests();
+  const testTitle = (id?: string) => tests.list.find((x) => x.id === id)?.title;
 
   return (
     <>
@@ -90,10 +92,11 @@ export default function Planner() {
                   <div key={k} className={'day' + (k === t ? ' is-today' : '')}>
                     <div className="day-h"><b>{k === t ? 'Today' : DAY_NAMES[new Date(k + 'T12:00').getDay()]}</b><span className="tiny muted num">{fmtDay(k).slice(4)}</span></div>
                     {exams.map((e) => <div key={e.key} className="tag hl" style={{ justifyContent: 'flex-start', whiteSpace: 'normal' }}>Exam: {e.spec.subject} {e.paper.name.split(':')[0]}</div>)}
+                    {tests.list.filter((x) => x.date === k).map((x) => <div key={x.id} className="tag accent" style={{ justifyContent: 'flex-start', whiteSpace: 'normal' }}>Test: {x.title}</div>)}
                     {list.map((s) => (
                       <div key={s.id} className={'block' + (s.done ? ' done' : '')} style={colourVar(colourOf(s.specId))} onClick={() => setOpen(s)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') setOpen(s); }}>
                         <b>{sessionTopic(s)}</b>
-                        <span>{METHODS[s.method].name}, {fmtMins(s.mins)}</span>
+                        <span>{METHODS[s.method].name}, {fmtMins(s.mins)}{s.testId && testTitle(s.testId) ? ', for ' + testTitle(s.testId) : ''}</span>
                       </div>
                     ))}
                     {tasks.map((x) => (

@@ -1,11 +1,12 @@
 import { useDoc } from './store';
-import { DEFAULT_FOCUS, DEFAULT_PLANNER, DEFAULT_PROFILE, emptyDeck, type Blurts, type Checklist, type Coach, type DeckData, type Decks, type ExamDates, type Focus, type Memos, type MindMaps, type Mistakes, type NoteData, type Notes, type Papers, type Planner, type Profile } from './types';
+import { DEFAULT_FOCUS, DEFAULT_PLANNER, DEFAULT_PROFILE, emptyDeck, type Blurts, type Checklist, type Coach, type DeckData, type Decks, type ExamDates, type Focus, type Memos, type MindMaps, type Mistakes, type NoteData, type Notes, type OwnTests, type Papers, type Planner, type Profile } from './types';
 
 export const useProfile = () => {
   const [p, set] = useDoc<Profile>('profile', DEFAULT_PROFILE);
   return [{ ...DEFAULT_PROFILE, ...p }, set] as const;
 };
 export const useExamDates = () => useDoc<ExamDates>('examDates', {});
+export const useTests = () => useDoc<OwnTests>('tests', { list: [] });
 export const useChecklist = () => useDoc<Checklist>('checklist', {});
 export const usePlanner = () => useDoc<Planner>('planner', DEFAULT_PLANNER);
 export const usePapers = () => useDoc<Papers>('papers', { logs: [] });

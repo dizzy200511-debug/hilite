@@ -1,0 +1,162 @@
+- generic [ref=f3e2]:
+  - generic [ref=f3e6]:
+    - complementary [ref=f3e7]:
+      - generic [ref=f3e8]: Hilite
+      - navigation [ref=f3e11]:
+        - link "Today" [ref=f3e12] [cursor=pointer]:
+          - /url: /
+        - link "Exam timetable" [ref=f3e16] [cursor=pointer]:
+          - /url: /timetable
+        - link "Revision planner" [ref=f3e20] [cursor=pointer]:
+          - /url: /planner
+        - generic [ref=f3e24]:
+          - generic [ref=f3e25]: Practise
+          - link "Past papers" [ref=f3e26] [cursor=pointer]:
+            - /url: /papers
+          - link "Topic checklist" [ref=f3e30] [cursor=pointer]:
+            - /url: /topics
+          - link "Flashcards" [ref=f3e34] [cursor=pointer]:
+            - /url: /flashcards
+          - link "Mistake log" [ref=f3e38] [cursor=pointer]:
+            - /url: /tools/mistakes
+          - link "Revision tools" [ref=f3e42] [cursor=pointer]:
+            - /url: /tools
+          - link "AI coach" [ref=f3e46] [cursor=pointer]:
+            - /url: /coach
+          - link "Focus timer" [ref=f3e50] [cursor=pointer]:
+            - /url: /focus
+          - link "Guides" [ref=f3e54] [cursor=pointer]:
+            - /url: /guides
+        - generic [ref=f3e58]:
+          - generic [ref=f3e59]: You
+          - link "Progress" [ref=f3e60] [cursor=pointer]:
+            - /url: /stats
+          - link "Subjects" [ref=f3e64] [cursor=pointer]:
+            - /url: /subjects
+          - link "Settings" [ref=f3e68] [cursor=pointer]:
+            - /url: /settings
+          - link "Owner" [ref=f3e72] [cursor=pointer]:
+            - /url: /owner
+      - generic [ref=f3e76]:
+        - generic [ref=f3e77]: S
+        - generic [ref=f3e78]:
+          - generic [ref=f3e79]: Sam
+          - generic [ref=f3e80]: Hilite Pro, local mode
+    - generic [ref=f3e81]:
+      - banner [ref=f3e82]:
+        - heading "Exam timetable Summer 2027, 5 papers" [level=1] [ref=f3e83]:
+          - text: Exam timetable
+          - generic [ref=f3e84]: Summer 2027, 5 papers
+        - button "Add to calendar" [ref=f3e85] [cursor=pointer]
+        - generic "Saved" [ref=f3e88]
+      - generic [ref=f3e90]:
+        - generic [ref=f3e91]:
+          - generic [ref=f3e92]:
+            - heading "Your own tests" [level=2] [ref=f3e93]
+            - button "Add a test" [ref=f3e94] [cursor=pointer]
+          - list [ref=f3e256]:
+            - listitem [ref=f3e257]:
+              - generic [ref=f3e258]:
+                - generic [ref=f3e259]: Fri
+                - generic [ref=f3e260]: "27"
+              - generic [ref=f3e262]:
+                - generic [ref=f3e263]: Year 11 biology mock
+                - generic [ref=f3e264]:
+                  - generic [ref=f3e265]: Biology
+                  - generic [ref=f3e266]: Fri 27 Nov
+                - generic [ref=f3e267]: Covers Cell biology, Bioenergetics
+              - generic [ref=f3e268]: 12 days
+              - button "Edit Year 11 biology mock" [ref=f3e269] [cursor=pointer]
+        - generic [ref=f3e143]:
+          - generic [ref=f3e144]:
+            - heading "May 2027" [level=2] [ref=f3e145]
+            - generic [ref=f3e146]: 3 papers
+          - table [ref=f3e148]:
+            - rowgroup [ref=f3e149]:
+              - row [ref=f3e150]:
+                - columnheader "Date" [ref=f3e151]
+                - columnheader "Paper" [ref=f3e152]
+                - columnheader "Code" [ref=f3e153]
+                - columnheader "Session" [ref=f3e154]
+                - columnheader "Length" [ref=f3e155]
+                - columnheader "Countdown" [ref=f3e156]
+                - columnheader [ref=f3e157]
+            - rowgroup [ref=f3e158]:
+              - row [ref=f3e159]:
+                - cell "Tuesday, 11 May" [ref=f3e160]
+                - cell "Biology Paper 1, Higher" [ref=f3e161]:
+                  - generic [ref=f3e164]:
+                    - text: Biology
+                    - generic [ref=f3e165]: Paper 1, Higher
+                - cell "8461/1" [ref=f3e166]
+                - cell "Morning" [ref=f3e167]
+                - cell "1h 45m" [ref=f3e168]
+                - cell "177 days" [ref=f3e169]
+                - cell [ref=f3e171]:
+                  - button "Change date" [ref=f3e172] [cursor=pointer]
+              - row [ref=f3e175]:
+                - cell "Friday, 14 May" [ref=f3e176]
+                - cell "Mathematics Paper 1 (non-calculator), Higher" [ref=f3e177]:
+                  - generic [ref=f3e180]:
+                    - text: Mathematics
+                    - generic [ref=f3e181]: Paper 1 (non-calculator), Higher
+                - cell "8300/1" [ref=f3e182]
+                - cell "Morning" [ref=f3e183]
+                - cell "1h 30m" [ref=f3e184]
+                - cell "180 days" [ref=f3e185]
+                - cell [ref=f3e187]:
+                  - button "Change date" [ref=f3e188] [cursor=pointer]
+              - row [ref=f3e191]:
+                - cell "Thursday, 27 May" [ref=f3e192]
+                - cell "Mathematics Paper 2 (calculator), Higher" [ref=f3e193]:
+                  - generic [ref=f3e196]:
+                    - text: Mathematics
+                    - generic [ref=f3e197]: Paper 2 (calculator), Higher
+                - cell "8300/2" [ref=f3e198]
+                - cell "Morning" [ref=f3e199]
+                - cell "1h 30m" [ref=f3e200]
+                - cell "193 days" [ref=f3e201]
+                - cell [ref=f3e203]:
+                  - button "Change date" [ref=f3e204] [cursor=pointer]
+        - generic [ref=f3e207]:
+          - generic [ref=f3e208]:
+            - heading "Jun 2027" [level=2] [ref=f3e209]
+            - generic [ref=f3e210]: 2 papers
+          - table [ref=f3e212]:
+            - rowgroup [ref=f3e213]:
+              - row [ref=f3e214]:
+                - columnheader "Date" [ref=f3e215]
+                - columnheader "Paper" [ref=f3e216]
+                - columnheader "Code" [ref=f3e217]
+                - columnheader "Session" [ref=f3e218]
+                - columnheader "Length" [ref=f3e219]
+                - columnheader "Countdown" [ref=f3e220]
+                - columnheader [ref=f3e221]
+            - rowgroup [ref=f3e222]:
+              - row [ref=f3e223]:
+                - cell "Thursday, 10 June" [ref=f3e224]
+                - cell "Biology Paper 2, Higher" [ref=f3e225]:
+                  - generic [ref=f3e228]:
+                    - text: Biology
+                    - generic [ref=f3e229]: Paper 2, Higher
+                - cell "8461/2" [ref=f3e230]
+                - cell "Morning" [ref=f3e231]
+                - cell "1h 45m" [ref=f3e232]
+                - cell "207 days" [ref=f3e233]
+                - cell [ref=f3e235]:
+                  - button "Change date" [ref=f3e236] [cursor=pointer]
+              - row [ref=f3e239]:
+                - cell "Monday, 14 June" [ref=f3e240]
+                - cell "Mathematics Paper 3 (calculator), Higher" [ref=f3e241]:
+                  - generic [ref=f3e244]:
+                    - text: Mathematics
+                    - generic [ref=f3e245]: Paper 3 (calculator), Higher
+                - cell "8300/3" [ref=f3e246]
+                - cell "Morning" [ref=f3e247]
+                - cell "1h 30m" [ref=f3e248]
+                - cell "211 days" [ref=f3e249]
+                - cell [ref=f3e251]:
+                  - button "Change date" [ref=f3e252] [cursor=pointer]
+        - paragraph [ref=f3e255]: "Dates from: AQA provisional timetable, June 2027 (v1.0, January 2026). Provisional dates can change, and your school confirms start times and rooms."
+  - status:
+    - generic: Test saved. Revision for it is in your plan.
