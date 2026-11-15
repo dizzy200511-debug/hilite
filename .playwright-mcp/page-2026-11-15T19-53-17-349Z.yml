@@ -1,0 +1,491 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link "Hilite" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e8]:
+        - link "Past papers" [ref=e9] [cursor=pointer]:
+          - /url: /past-papers
+        - link "Exam dates" [ref=e10] [cursor=pointer]:
+          - /url: /exam-dates
+        - link "Pricing" [ref=e11] [cursor=pointer]:
+          - /url: "#pricing"
+        - link "Sign in" [ref=e12] [cursor=pointer]:
+          - /url: /signin
+        - link "Get started" [ref=e13] [cursor=pointer]:
+          - /url: /signup
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - paragraph [ref=e16]: GCSE and A-level exams start in 176 days
+        - heading "Revise for the exams you’re actually sitting." [level=1] [ref=e17]
+        - paragraph [ref=e18]: For GCSE and A-level. Real exam dates for your board and spec, free past papers, practice questions, and a revision plan that gets every topic done in time.
+        - generic [ref=e19]:
+          - link "Start revising free" [ref=e20] [cursor=pointer]:
+            - /url: /signup
+          - link "Browse past papers" [ref=e21] [cursor=pointer]:
+            - /url: /past-papers
+        - paragraph [ref=e22]:
+          - text: GCSE and A-level, for AQA, Pearson Edexcel and OCR. No card needed.
+          - link "Windows app" [ref=e23] [cursor=pointer]:
+            - /url: https://github.com/dizzy200511-debug/hilite/releases/latest
+      - generic "Find your exams" [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]: Find your exams
+          - group "Qualification" [ref=e29]:
+            - button "GCSE" [pressed] [ref=e30] [cursor=pointer]
+            - button "A-level" [ref=e31] [cursor=pointer]
+        - group "Exam board" [ref=e32]:
+          - button "AQA" [pressed] [ref=e33] [cursor=pointer]
+          - button "Pearson Edexcel" [ref=e34] [cursor=pointer]
+          - button "OCR" [ref=e35] [cursor=pointer]
+        - combobox "Subject" [ref=e36]:
+          - option "Biology (8461)" [selected]
+          - option "Business (8132)"
+          - option "Chemistry (8462)"
+          - 'option "Combined Science: Trilogy (8464)"'
+          - option "Computer Science (8525)"
+          - option "English Language (8700)"
+          - option "English Literature (8702)"
+          - option "Geography (8035)"
+          - option "History (8145)"
+          - option "Mathematics (8300)"
+          - option "Physics (8463)"
+          - option "Psychology (8182)"
+          - option "Religious Studies A (8062)"
+          - option "Sociology (8192)"
+        - list [ref=e37]:
+          - listitem [ref=e38]:
+            - generic [ref=e39]:
+              - generic [ref=e40]: Tue
+              - generic [ref=e41]: "11"
+            - generic [ref=e42]:
+              - generic [ref=e43]: Paper 1
+              - generic [ref=e44]: 11 May, morning, 1 h 45 min
+            - generic [ref=e45]: 177 days
+          - listitem [ref=e46]:
+            - generic [ref=e47]:
+              - generic [ref=e48]: Thu
+              - generic [ref=e49]: "10"
+            - generic [ref=e50]:
+              - generic [ref=e51]: Paper 2
+              - generic [ref=e52]: 10 Jun, morning, 1 h 45 min
+            - generic [ref=e53]: 207 days
+        - generic [ref=e54]:
+          - link "Free Biology past papers" [ref=e55] [cursor=pointer]:
+            - /url: /past-papers/aqa-gcse-biology
+          - link "Biology exam dates" [ref=e56] [cursor=pointer]:
+            - /url: /exam-dates/aqa-gcse-biology
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - heading "Exam season 2027 at a glance" [level=2] [ref=e60]
+        - paragraph [ref=e61]: Every written GCSE and A-level paper from all three boards, by day. Darker days have more papers. Sign up and Hilite shows only yours, warns you about clashes and plans backwards from each one.
+        - link "All exam dates by subject" [ref=e62] [cursor=pointer]:
+          - /url: /exam-dates
+      - generic [ref=e63]:
+        - group "Show papers for" [ref=e65]:
+          - button "GCSE and A-level" [pressed] [ref=e66] [cursor=pointer]
+          - button "GCSE" [ref=e67] [cursor=pointer]
+          - button "A-level" [ref=e68] [cursor=pointer]
+        - table "Exam season 2027, papers per day" [ref=e69]:
+          - row [ref=e70]:
+            - columnheader "Mon" [ref=e71]
+            - columnheader "Tue" [ref=e72]
+            - columnheader "Wed" [ref=e73]
+            - columnheader "Thu" [ref=e74]
+            - columnheader "Fri" [ref=e75]
+          - row [ref=e76]:
+            - rowheader "10 May" [ref=e77]
+            - cell "10 10" [ref=e78]:
+              - generic [ref=e79]: "10"
+              - emphasis [ref=e80]: "10"
+            - cell "11 10" [ref=e81]:
+              - generic [ref=e82]: "11"
+              - emphasis [ref=e83]: "10"
+            - cell "12 9" [ref=e84]:
+              - generic [ref=e85]: "12"
+              - emphasis [ref=e86]: "9"
+            - cell "13 10" [ref=e87]:
+              - generic [ref=e88]: "13"
+              - emphasis [ref=e89]: "10"
+            - cell "14 5" [ref=e90]:
+              - generic [ref=e91]: "14"
+              - emphasis [ref=e92]: "5"
+          - row [ref=e93]:
+            - rowheader "17 May" [ref=e94]
+            - cell "17 13" [ref=e95]:
+              - generic [ref=e96]: "17"
+              - emphasis [ref=e97]: "13"
+            - cell "18 10" [ref=e98]:
+              - generic [ref=e99]: "18"
+              - emphasis [ref=e100]: "10"
+            - cell "19 10" [ref=e101]:
+              - generic [ref=e102]: "19"
+              - emphasis [ref=e103]: "10"
+            - cell "20 14" [ref=e104]:
+              - generic [ref=e105]: "20"
+              - emphasis [ref=e106]: "14"
+            - cell "21 10" [ref=e107]:
+              - generic [ref=e108]: "21"
+              - emphasis [ref=e109]: "10"
+          - row [ref=e110]:
+            - rowheader "24 May" [ref=e111]
+            - cell "24 5" [ref=e112]:
+              - generic [ref=e113]: "24"
+              - emphasis [ref=e114]: "5"
+            - cell "25 12" [ref=e115]:
+              - generic [ref=e116]: "25"
+              - emphasis [ref=e117]: "12"
+            - cell "26 13" [ref=e118]:
+              - generic [ref=e119]: "26"
+              - emphasis [ref=e120]: "13"
+            - cell "27 9" [ref=e121]:
+              - generic [ref=e122]: "27"
+              - emphasis [ref=e123]: "9"
+            - cell "28 8" [ref=e124]:
+              - generic [ref=e125]: "28"
+              - emphasis [ref=e126]: "8"
+          - row [ref=e127]:
+            - rowheader "7 Jun" [ref=e128]
+            - cell "7 9" [ref=e129]:
+              - generic [ref=e130]: "7"
+              - emphasis [ref=e131]: "9"
+            - cell "8 12" [ref=e132]:
+              - generic [ref=e133]: "8"
+              - emphasis [ref=e134]: "12"
+            - cell "9 10" [ref=e135]:
+              - generic [ref=e136]: "9"
+              - emphasis [ref=e137]: "10"
+            - cell "10 20" [ref=e138]:
+              - generic [ref=e139]: "10"
+              - emphasis [ref=e140]: "20"
+            - cell "11" [ref=e141]
+          - row [ref=e143]:
+            - rowheader "14 Jun" [ref=e144]
+            - cell "14 10" [ref=e145]:
+              - generic [ref=e146]: "14"
+              - emphasis [ref=e147]: "10"
+            - cell "15 11" [ref=e148]:
+              - generic [ref=e149]: "15"
+              - emphasis [ref=e150]: "11"
+            - cell "16 6" [ref=e151]:
+              - generic [ref=e152]: "16"
+              - emphasis [ref=e153]: "6"
+            - cell "17 4" [ref=e154]:
+              - generic [ref=e155]: "17"
+              - emphasis [ref=e156]: "4"
+            - cell "18 11" [ref=e157]:
+              - generic [ref=e158]: "18"
+              - emphasis [ref=e159]: "11"
+          - row [ref=e160]:
+            - rowheader "21 Jun" [ref=e161]
+            - cell "21 2" [ref=e162]:
+              - generic [ref=e163]: "21"
+              - emphasis [ref=e164]: "2"
+            - cell "22" [ref=e165]
+            - cell "23" [ref=e167]
+            - cell "24" [ref=e169]
+            - cell "25" [ref=e171]
+        - generic [ref=e173]:
+          - generic [ref=e174]: fewer papers
+          - generic [ref=e176]: busiest days
+          - generic [ref=e178]: "contingency day: stay free"
+        - paragraph [ref=e180]: Written papers start Mon 10 May 2027. Counts cover every AQA, Pearson Edexcel and OCR GCSE and A-level paper in Hilite.
+    - generic [ref=e181]:
+      - heading "Free past papers, no sign-up" [level=2] [ref=e182]
+      - paragraph [ref=e183]: Question papers, mark schemes and examiners’ reports for GCSE and A-level, straight from the boards. Pick a subject.
+      - group "Qualification" [ref=e185]:
+        - button "GCSE" [pressed] [ref=e186] [cursor=pointer]
+        - button "A-level" [ref=e187] [cursor=pointer]
+      - generic [ref=e188]:
+        - generic [ref=e189]:
+          - heading "AQA GCSE" [level=3] [ref=e190]
+          - list [ref=e191]:
+            - listitem [ref=e192]:
+              - link "Biology" [ref=e193] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-biology
+            - listitem [ref=e194]:
+              - link "Business" [ref=e195] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-business
+            - listitem [ref=e196]:
+              - link "Chemistry" [ref=e197] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-chemistry
+            - listitem [ref=e198]:
+              - 'link "Combined Science: Trilogy" [ref=e199] [cursor=pointer]':
+                - /url: /past-papers/aqa-gcse-combined-science-trilogy
+            - listitem [ref=e200]:
+              - link "Computer Science" [ref=e201] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-computer-science
+            - listitem [ref=e202]:
+              - link "English Language" [ref=e203] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-english-language
+            - listitem [ref=e204]:
+              - link "English Literature" [ref=e205] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-english-literature
+            - listitem [ref=e206]:
+              - link "Geography" [ref=e207] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-geography
+            - listitem [ref=e208]:
+              - link "History" [ref=e209] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-history
+            - listitem [ref=e210]:
+              - link "Mathematics" [ref=e211] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-mathematics
+            - listitem [ref=e212]:
+              - link "Physics" [ref=e213] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-physics
+            - listitem [ref=e214]:
+              - link "Psychology" [ref=e215] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-psychology
+            - listitem [ref=e216]:
+              - link "Religious Studies A" [ref=e217] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-religious-studies-a
+            - listitem [ref=e218]:
+              - link "Sociology" [ref=e219] [cursor=pointer]:
+                - /url: /past-papers/aqa-gcse-sociology
+        - generic [ref=e220]:
+          - heading "Pearson Edexcel GCSE" [level=3] [ref=e221]
+          - list [ref=e222]:
+            - listitem [ref=e223]:
+              - link "Biology" [ref=e224] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-biology
+            - listitem [ref=e225]:
+              - link "Business" [ref=e226] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-business
+            - listitem [ref=e227]:
+              - link "Chemistry" [ref=e228] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-chemistry
+            - listitem [ref=e229]:
+              - link "Combined Science" [ref=e230] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-combined-science
+            - listitem [ref=e231]:
+              - link "English Language" [ref=e232] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-english-language
+            - listitem [ref=e233]:
+              - link "English Literature" [ref=e234] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-english-literature
+            - listitem [ref=e235]:
+              - link "Geography A" [ref=e236] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-geography-a
+            - listitem [ref=e237]:
+              - link "Geography B" [ref=e238] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-geography-b
+            - listitem [ref=e239]:
+              - link "History" [ref=e240] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-history
+            - listitem [ref=e241]:
+              - link "Mathematics" [ref=e242] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-mathematics
+            - listitem [ref=e243]:
+              - link "Physics" [ref=e244] [cursor=pointer]:
+                - /url: /past-papers/edexcel-gcse-physics
+        - generic [ref=e245]:
+          - heading "OCR GCSE" [level=3] [ref=e246]
+          - list [ref=e247]:
+            - listitem [ref=e248]:
+              - link "Biology A (Gateway)" [ref=e249] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-biology-a-gateway
+            - listitem [ref=e250]:
+              - link "Chemistry A (Gateway)" [ref=e251] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-chemistry-a-gateway
+            - listitem [ref=e252]:
+              - link "Combined Science A (Gateway)" [ref=e253] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-combined-science-a-gateway
+            - listitem [ref=e254]:
+              - link "Computer Science" [ref=e255] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-computer-science
+            - listitem [ref=e256]:
+              - link "Economics" [ref=e257] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-economics
+            - listitem [ref=e258]:
+              - link "English Language" [ref=e259] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-english-language
+            - listitem [ref=e260]:
+              - link "English Literature" [ref=e261] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-english-literature
+            - listitem [ref=e262]:
+              - link "Geography A (Geographical Themes)" [ref=e263] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-geography-a-geographical-themes
+            - listitem [ref=e264]:
+              - link "Geography B (Geography for Enquiring Minds)" [ref=e265] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-geography-b-geography-for-enquiring-minds
+            - listitem [ref=e266]:
+              - link "History A (Explaining the Modern World)" [ref=e267] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-history-a-explaining-the-modern-world
+            - listitem [ref=e268]:
+              - link "History B (Schools History Project)" [ref=e269] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-history-b-schools-history-project
+            - listitem [ref=e270]:
+              - link "Mathematics" [ref=e271] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-mathematics
+            - listitem [ref=e272]:
+              - link "Physical Education" [ref=e273] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-physical-education
+            - listitem [ref=e274]:
+              - link "Physics A (Gateway)" [ref=e275] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-physics-a-gateway
+            - listitem [ref=e276]:
+              - link "Psychology" [ref=e277] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-psychology
+            - listitem [ref=e278]:
+              - link "Religious Studies" [ref=e279] [cursor=pointer]:
+                - /url: /past-papers/ocr-gcse-religious-studies
+    - generic [ref=e281]:
+      - generic [ref=e282]:
+        - heading "Everything for revision, built around your exams" [level=2] [ref=e283]
+        - paragraph [ref=e284]: Not another notes app. Hilite knows when each paper is, so it always knows what you should do next.
+        - generic [ref=e285]:
+          - generic [ref=e286]:
+            - term [ref=e287]: A plan that fits every topic in
+            - definition [ref=e288]: Tell Hilite how long you can revise. It spaces every topic out before its paper, with methods matched to how each subject is examined.
+          - generic [ref=e289]:
+            - term [ref=e290]: Practice questions for every topic
+            - definition [ref=e291]: Exam-style questions with diagrams and a mark scheme for each. Mark yourself, or let Pro’s AI mark your written answers.
+          - generic [ref=e292]:
+            - term [ref=e293]: Your school tests too
+            - definition [ref=e294]: Add mocks and end-of-topic tests with the topics they cover. Hilite plans revision for them alongside your real exams.
+          - generic [ref=e295]:
+            - term [ref=e296]: A mistake log that retests you
+            - definition [ref=e297]: Every lost mark goes in with why you lost it. Hilite brings it back after 1, 3 and 7 days until you get it right.
+          - generic [ref=e298]:
+            - term [ref=e299]: Flashcards that space themselves
+            - definition [ref=e300]: Make decks or start from ready-made ones for equations and formulae. Cards come back just before you’d forget them.
+          - generic [ref=e301]:
+            - term [ref=e302]: On the web and on Windows
+            - definition [ref=e303]: Use Hilite in a browser or install the Windows app with a focus timer in your tray. Everything syncs.
+      - generic [ref=e304]:
+        - generic [ref=e305]:
+          - generic [ref=e306]: Physics, motion
+          - generic [ref=e307]: 1 mark
+          - generic [ref=e308]: Easy
+        - figure [ref=e309]:
+          - img "Graph of Velocity (m/s) against Time (s)" [ref=e310]:
+            - generic [ref=e311]: "0"
+            - generic [ref=e313]: "1"
+            - generic [ref=e315]: "2"
+            - generic [ref=e317]: "3"
+            - generic [ref=e319]: "4"
+            - generic [ref=e321]: "5"
+            - generic [ref=e323]: "6"
+            - generic [ref=e325]: "0"
+            - generic [ref=e327]: "2"
+            - generic [ref=e329]: "4"
+            - generic [ref=e331]: "6"
+            - generic [ref=e333]: "8"
+            - generic [ref=e335]: "10"
+            - generic [ref=e337]: "12"
+            - generic [ref=e339]: "14"
+            - generic [ref=e341]: Time (s)
+            - generic [ref=e342]: Velocity (m/s)
+        - paragraph [ref=e345]: The graph shows a cyclist speeding up. What is the acceleration in the first 4 seconds?
+        - generic [ref=e346]:
+          - button "A 3 m/s²" [ref=e347] [cursor=pointer]:
+            - generic [ref=e348]: A
+            - text: 3 m/s²
+          - button "B 4 m/s²" [ref=e349] [cursor=pointer]:
+            - generic [ref=e350]: B
+            - text: 4 m/s²
+          - button "C 12 m/s²" [ref=e351] [cursor=pointer]:
+            - generic [ref=e352]: C
+            - text: 12 m/s²
+          - button "D 48 m/s²" [ref=e353] [cursor=pointer]:
+            - generic [ref=e354]: D
+            - text: 48 m/s²
+    - generic [ref=e355]:
+      - heading "Set up in a minute" [level=2] [ref=e356]
+      - list [ref=e357]:
+        - listitem [ref=e358]:
+          - generic [ref=e359]: "1"
+          - heading "Pick your subjects" [level=3] [ref=e360]
+          - paragraph [ref=e361]: Choose your exam board and tier for each subject. Your papers and dates load straight away.
+        - listitem [ref=e362]:
+          - generic [ref=e363]: "2"
+          - heading "Say how long you can revise" [level=3] [ref=e364]
+          - paragraph [ref=e365]: School days, weekends and days off. Hilite builds a plan that fits every topic in.
+        - listitem [ref=e366]:
+          - generic [ref=e367]: "3"
+          - heading "Open Hilite each day" [level=3] [ref=e368]
+          - paragraph [ref=e369]: Today shows what to revise, what’s due and how long until each exam.
+    - generic [ref=e370]:
+      - heading "Simple pricing" [level=2] [ref=e371]
+      - paragraph [ref=e372]: Free covers everything you need to revise. Pro adds the AI coach and the deeper tools.
+      - group "Billing period" [ref=e374]:
+        - button "Monthly" [ref=e375] [cursor=pointer]
+        - button "Yearly, save £36" [pressed] [ref=e376] [cursor=pointer]
+      - generic [ref=e377]:
+        - generic [ref=e378]:
+          - heading "Free" [level=3] [ref=e379]
+          - generic [ref=e380]: £0
+          - generic [ref=e381]: Free for good, not a trial.
+          - list [ref=e382]:
+            - listitem [ref=e383]: Exam timetable for every subject, with countdowns and clash warnings
+            - listitem [ref=e386]: Your own school tests and mocks, with revision planned before each one
+            - listitem [ref=e389]: A revision plan built around your exam dates, in two plan styles
+            - listitem [ref=e392]: Unlimited flashcards with spaced repetition
+            - listitem [ref=e395]: Past paper tracker with links to every official paper, and mock mode
+            - listitem [ref=e398]: Mistake log that retests you until you get it right
+            - listitem [ref=e401]: Blurting, teach-back, command words and exam timing
+            - listitem [ref=e404]: Cornell notes, mind maps and the memoriser, to try
+            - listitem [ref=e407]: Guides to every revision method
+            - listitem [ref=e410]: Topic checklist, focus timer, and sync across web and Windows
+        - generic [ref=e413]:
+          - heading "Pro" [level=3] [ref=e414]
+          - generic [ref=e415]:
+            - text: £60
+            - generic [ref=e416]: / year
+          - generic [ref=e417]: Works out at £5 a month.
+          - list [ref=e418]:
+            - listitem [ref=e419]: Everything in Free
+            - listitem [ref=e422]: AI coach that learns from your mistakes and tests you on your weak spots
+            - listitem [ref=e425]: AI marking and feedback on written exam answers
+            - listitem [ref=e428]: AI flashcards from your notes
+            - listitem [ref=e431]: All eight plan styles, including Auto, and a plan that adapts to your weak topics
+            - listitem [ref=e434]: "See why you lose marks: content, technique, misreading or timing"
+            - listitem [ref=e437]: Unlimited Cornell notes, mind maps and memoriser items
+            - listitem [ref=e440]: Mixed quizzes across all your subjects, and the grade target calculator
+            - listitem [ref=e443]: Every subject and exam technique guide, and ready-made equation and formula decks
+            - listitem [ref=e446]: Predicted grades and full progress history
+          - link "Start free, upgrade any time" [ref=e449] [cursor=pointer]:
+            - /url: /signup
+    - generic [ref=e450]:
+      - heading "Questions" [level=2] [ref=e451]
+      - generic [ref=e452]:
+        - generic [ref=e453]:
+          - heading "Are the past papers really free?" [level=3] [ref=e454]
+          - paragraph [ref=e455]: Yes. Pick your subject and every public question paper, mark scheme and examiners’ report opens on the exam board’s own website. You don’t need an account.
+        - generic [ref=e456]:
+          - heading "Which exam boards do you cover?" [level=3] [ref=e457]
+          - paragraph [ref=e458]: AQA, Pearson Edexcel and OCR, at GCSE and A-level, with every 2027 exam date loaded. You can add your own dates for anything else.
+        - generic [ref=e459]:
+          - heading "What do I get without paying?" [level=3] [ref=e460]
+          - paragraph [ref=e461]: The timetable, a full revision plan, flashcards, past paper tracking, practice questions, the mistake log and the core revision tools, with no time limit.
+        - generic [ref=e462]:
+          - heading "Is my data safe?" [level=3] [ref=e463]
+          - paragraph [ref=e464]: A code goes to your email whenever a new device signs in. We never sell data or show ads, and you can delete everything at any time.
+    - contentinfo [ref=e465]:
+      - generic [ref=e466]:
+        - generic [ref=e467]: Hilite
+        - paragraph [ref=e470]: GCSE and A-level revision built around your exams.
+      - generic [ref=e471]:
+        - heading "Revise" [level=4] [ref=e472]
+        - link "Past papers" [ref=e473] [cursor=pointer]:
+          - /url: /past-papers
+        - link "Exam dates 2027" [ref=e474] [cursor=pointer]:
+          - /url: /exam-dates
+        - link "Revision planner" [ref=e475] [cursor=pointer]:
+          - /url: /signup
+      - generic [ref=e476]:
+        - heading "Hilite" [level=4] [ref=e477]
+        - link "Pricing" [ref=e478] [cursor=pointer]:
+          - /url: "#pricing"
+        - link "Windows app" [ref=e479] [cursor=pointer]:
+          - /url: https://github.com/dizzy200511-debug/hilite/releases/latest
+        - link "Contact" [ref=e480] [cursor=pointer]:
+          - /url: mailto:hello@hilite.study
+      - generic [ref=e481]:
+        - heading "Legal" [level=4] [ref=e482]
+        - link "Privacy" [ref=e483] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms" [ref=e484] [cursor=pointer]:
+          - /url: /terms
+      - paragraph [ref=e485]: © 2026 Hilite. Exam dates from the AQA, Pearson and OCR published timetables; always check your school’s final timetable. Past papers belong to the exam boards and open on their websites.
+  - status

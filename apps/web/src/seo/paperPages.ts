@@ -4,7 +4,7 @@
  */
 import { BOARDS, SPECS, type Board, type Spec } from '../catalog/catalog';
 import type { PaperLink, SpecPapers } from '../lib/paperLinks';
-import { esc, page, specSlug, specTitle, type Assets, type StaticFile } from './examPages';
+import { QUALS, esc, page, specSlug, specTitle, type Assets, type StaticFile } from './examPages';
 
 const BOARD_ORDER: Board[] = ['AQA', 'Edexcel', 'OCR'];
 export const paperSpecs = (papers: Record<string, SpecPapers>) => SPECS.filter((s) => papers[s.id] && Object.keys(papers[s.id].series).length);
@@ -26,7 +26,7 @@ function specPage(spec: Spec, data: SpecPapers, all: Record<string, SpecPapers>,
   }).join('\n');
   const others = paperSpecs(all).filter((s) => s.board === spec.board && s.id !== spec.id);
   const body = `
-<nav class="small crumbs"><a href="/past-papers">GCSE past papers</a> <span class="faint">/</span> <span class="muted">${esc(BOARDS[spec.board].name)}</span></nav>
+<nav class="small crumbs"><a href="/past-papers">Past papers</a> <span class="faint">/</span> <a href="/past-papers#${spec.qual === 'GCSE' ? 'gcse' : 'a-level'}">${esc(spec.qual)}</a> <span class="faint">/</span> <span class="muted">${esc(BOARDS[spec.board].name)}</span></nav>
 <h1>${esc(name)} past papers</h1>
 <p class="lead">Question papers, mark schemes and examiners’ reports for specification <span class="num">${esc(spec.code)}</span>, free with no sign-up. ${keys.length} ${keys.length === 1 ? 'series' : 'series'}, from ${esc(seriesName(keys[keys.length - 1]))} to ${esc(seriesName(keys[0]))}. Every file opens on the ${esc(BOARDS[spec.board].name)} website.</p>
 <div class="row wrap" style="margin-bottom:8px"><a class="btn" href="/exam-dates/${specSlug(spec)}">${esc(spec.subject)} exam dates 2027</a><a class="btn btn-ghost" href="${esc(BOARDS[spec.board].pastPapers)}" rel="noopener" target="_blank">${esc(BOARDS[spec.board].name)} past paper finder</a></div>
@@ -43,25 +43,29 @@ ${others.length ? `<h2>Other ${esc(BOARDS[spec.board].name)} ${esc(spec.qual)} p
 }
 
 function indexPage(papers: Record<string, SpecPapers>, a: Assets): string {
-  const groups = BOARD_ORDER.map((b) => {
-    const specs = paperSpecs(papers).filter((s) => s.board === b).sort((x, y) => x.subject.localeCompare(y.subject));
-    if (!specs.length) return '';
-    return `<section><h2>${esc(BOARDS[b].name)} GCSE</h2><div class="pp-grid">${specs.map((s) => {
+  const groups = QUALS.map((q) => {
+    const inner = BOARD_ORDER.map((b) => {
+      const specs = paperSpecs(papers).filter((s) => s.qual === q && s.board === b).sort((x, y) => x.subject.localeCompare(y.subject));
+      if (!specs.length) return '';
+      return `<section><h3 class="seo-board">${esc(BOARDS[b].name)} ${q}</h3><div class="pp-grid">${specs.map((s) => {
       const keys = Object.keys(papers[s.id].series);
       return `<a class="tool" href="/past-papers/${specSlug(s)}"><span class="tool-name">${esc(s.subject)}</span><p><span class="num">${esc(s.code)}</span>, ${keys.length} series, latest ${esc(seriesName(keys[0]))}</p></a>`;
     }).join('')}</div></section>`;
+    }).join('\n');
+    return inner ? `<section id="${q === 'GCSE' ? 'gcse' : 'a-level'}"><h2 class="seo-qual">${q}</h2>${inner}</section>` : '';
   }).join('\n');
   const body = `
-<h1>Free GCSE past papers</h1>
-<p class="lead">Question papers, mark schemes and examiners’ reports for AQA, Pearson Edexcel and OCR GCSEs. No account, no paywall: pick your subject and every file opens on the exam board’s own website.</p>
+<h1>Free GCSE and A-level past papers</h1>
+<p class="lead">Question papers, mark schemes and examiners’ reports for AQA, Pearson Edexcel and OCR, at GCSE and A-level. No account, no paywall: pick your subject and every file opens on the exam board’s own website.</p>
+<div class="row wrap" style="margin-bottom:8px"><a class="btn" href="#gcse">GCSE</a><a class="btn" href="#a-level">A-level</a></div>
 <div class="panel panel-pad seo-cta">
 <div class="grow"><h2>Practise with a plan</h2><p class="muted">Hilite times your mocks, tracks your marks paper by paper and builds a revision plan around your real exam dates.</p></div>
 <a class="btn btn-primary btn-lg" href="/signup">Start revising free</a>
 </div>
 <div class="stack" style="margin-top:8px">${groups}</div>
 `;
-  return page(a, '/past-papers', 'Free GCSE past papers and mark schemes: AQA, Edexcel, OCR · Hilite',
-    'Free GCSE past papers, mark schemes and examiners’ reports for AQA, Pearson Edexcel and OCR, by subject. No sign-up; every file opens on the official exam board website.', body);
+  return page(a, '/past-papers', 'Free GCSE and A-level past papers and mark schemes: AQA, Edexcel, OCR · Hilite',
+    'Free GCSE and A-level past papers, mark schemes and examiners’ reports for AQA, Pearson Edexcel and OCR, by subject. No sign-up; every file opens on the official exam board website.', body);
 }
 
 export function paperPages(a: Assets, papers: Record<string, SpecPapers>): StaticFile[] {

@@ -500,3 +500,5 @@ a.tool:hover { border-color: var(--line-strong); text-decoration: none; }
   .lfoot { grid-template-columns: 1fr 1fr; }
   .lfoot-brand { grid-column: 1 / -1; }
 }
+.seo-qual { font-size: 26px !important; margin: 40px 0 4px !important; padding-top: 16px; border-top: 1px solid var(--line); }
+.seo-board { font-size: 17px; margin: 22px 0 10px; }

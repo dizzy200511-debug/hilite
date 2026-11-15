@@ -24,6 +24,12 @@ const AQA_PAGES = {
   'aqa-gcse-englit': 'english/gcse/english-8702', 'aqa-gcse-cs': 'computer-science/gcse/computer-science-8525', 'aqa-gcse-geog': 'geography/gcse/geography-8035',
   'aqa-gcse-hist': 'history/gcse/history-8145', 'aqa-gcse-psych': 'psychology/gcse/psychology-8182', 'aqa-gcse-rs': 'religious-studies/gcse/religious-studies-a-8062',
   'aqa-gcse-bus': 'business/gcse/business-8132', 'aqa-gcse-soc': 'sociology/gcse/sociology-8192',
+  'aqa-al-bio': 'biology/a-level/biology-7402', 'aqa-al-chem': 'chemistry/a-level/chemistry-7405', 'aqa-al-phys': 'physics/a-level/physics-7408',
+  'aqa-al-maths': 'mathematics/a-level/mathematics-7357', 'aqa-al-fmaths': 'mathematics/a-level/further-mathematics-7367',
+  'aqa-al-psych': 'psychology/a-level/psychology-7182', 'aqa-al-soc': 'sociology/a-level/sociology-7192', 'aqa-al-englit': 'english/a-level/english-7712',
+  'aqa-al-englang': 'english/a-level/english-7702', 'aqa-al-hist': 'history/a-level/history-7042', 'aqa-al-geog': 'geography/a-level/geography-7037',
+  'aqa-al-econ': 'economics/a-level/economics-7136', 'aqa-al-bus': 'business/a-level/business-7132', 'aqa-al-cs': 'computer-science/a-level/computer-science-7517',
+  'aqa-al-pol': 'politics/a-level/politics-7152', 'aqa-al-rs': 'religious-studies/a-level/religious-studies-7062',
 };
 const OCR_PAGES = {
   'ocr-gcse-cs': 'computer-science-j277-from-2020', 'ocr-gcse-maths': 'mathematics-j560-from-2015', 'ocr-gcse-bio': 'gateway-science-suite-biology-a-j247-from-2016',
@@ -34,6 +40,10 @@ const OCR_PAGES = {
   'ocr-gcse-geogb': 'geography-b-geography-for-enquiring-minds-j384-from-2016', 'ocr-gcse-rs': 'religious-studies-j625-j125-from-2016',
   'ocr-gcse-psych': 'psychology-j203-from-2017', 'ocr-gcse-bus': 'business-j204-from-2017', 'ocr-gcse-econ': 'economics-j205-from-2017',
   'ocr-gcse-pe': 'physical-education-j587-from-2016',
+  'ocr-al-maths': 'mathematics-a-h230-h240-from-2017', 'ocr-al-bio': 'biology-a-h020-h420-from-2015', 'ocr-al-chem': 'chemistry-a-h032-h432-from-2015',
+  'ocr-al-phys': 'physics-a-h156-h556-from-2015', 'ocr-al-cs': 'computer-science-h046-h446-from-2015', 'ocr-al-psych': 'psychology-h167-h567-from-2015',
+  'ocr-al-hist': 'history-a-h105-h505-from-2015', 'ocr-al-englit': 'english-literature-h072-h472-from-2015', 'ocr-al-econ': 'economics-h060-h460-from-2019',
+  'ocr-al-geog': 'geography-h081-h481-from-2016', 'ocr-al-rs': 'religious-studies-h173-h573-from-2016', 'ocr-al-soc': 'sociology-h180-h580-from-2015',
 };
 const PEARSON = { app: 'L639T95U5A', key: 'f79c7a8352e9ffbdaec387bf43612ee6', index: 'qualifications-uk_LIVE_master-content' };
 
@@ -58,8 +68,15 @@ async function get(url) {
   return '';
 }
 
-/** Paper key from a catalogue code: "8461/1" -> "1", "8464/B/1" -> "B1", "1SC0/1B" -> "1B", "1ET0/01" -> "1". */
-const keyOf = (code) => code.split('/').slice(1).join('').replace(/^0+(?=\d)/, '').toUpperCase();
+/**
+ * Paper key from a catalogue code: "8461/1" -> "1", "8464/B/1" -> "B1", "1SC0/1B" -> "1B", "1ET0/01" -> "1".
+ * Option papers ("7042/1A–1L", "7367/3D, 3M or 3S", "9HI0/30–39") key on their paper number; the rest is the option.
+ */
+const keyOf = (code) => {
+  const part = code.split('/').slice(1).join('');
+  if (/[–,]| or /.test(part)) return part.replace(/^0+(?=\d)/, '')[0].toUpperCase();
+  return part.replace(/^0+(?=\d)/, '').toUpperCase();
+};
 
 // ---------- AQA ----------
 async function aqa(spec) {
@@ -108,6 +125,8 @@ async function pearson(spec) {
       let hit = papers.find(({ key }) => tok === key || (spec.tiered && tok.length === key.length + 1 && tok.startsWith(key) && /[fh]$/.test(tok)));
       let option;
       if (!hit) { hit = papers.find(({ key }) => /^\d$/.test(key) && tok.startsWith(key) && /^\d+$/.test(tok)); option = hit ? tok : undefined; }
+      // A-level option papers such as 9FM0/4A or 9PL0/3B.
+      if (!hit) { hit = papers.find(({ key }) => /^\d$/.test(key) && tok.length === 2 && tok.startsWith(key) && /[a-z]$/.test(tok)); option = hit ? tok.toUpperCase() : undefined; }
       if (!hit) continue;
       const tier = spec.tiered && /[fh]$/.test(tok) ? tok.slice(-1).toUpperCase() : undefined;
       const month = Number(f[4]);
@@ -138,6 +157,9 @@ const OCR_OPTIONS = {
   'ocr-gcse-hista': [[/international relations|period study/i, 'p1'], [/migrants|power:|war and british society|thematic/i, 'p2'], [/norman|elizabethans|peace and war|anglo|historic environment|british depth/i, 'p3']],
   'ocr-gcse-histb': [[/history around us/i, 'p2'], [/viking|mughal|making of america|nazi|aztec|cold war/i, 'p3'], [/people.s health|crime and punishment|migrants/i, 'p1']],
   'ocr-gcse-rs': [[/philosophy and ethics/i, 'p3'], [/beliefs and teaching/i, 'p1']],
+  // A-level History A: unit codes Y1xx, Y2xx and Y3xx are the three unit groups.
+  'ocr-al-hist': [[/\bY1\d\d\b|enquiry/i, 'p1'], [/\bY2\d\d\b/i, 'p2'], [/\bY3\d\d\b|interpretations|thematic/i, 'p3']],
+  'ocr-al-rs': [[/developments in/i, 'p3']],
 };
 const norm = (s) => s.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
 /** Which paper (and tier or option) an OCR link title is for, e.g. "Paper 3" or "Computer systems". */
@@ -152,7 +174,7 @@ function ocrMatch(spec, comps, title) {
   return p ? { paperId: p.id } : null;
 }
 async function ocr(spec) {
-  const html = await get('https://www.ocr.org.uk/qualifications/gcse/' + OCR_PAGES[spec.id] + '/assessment/');
+  const html = await get('https://www.ocr.org.uk/qualifications/' + (spec.qual === 'GCSE' ? 'gcse/' : 'as-and-a-level/') + OCR_PAGES[spec.id] + '/assessment/');
   const comps = ocrComponents(spec);
   const tokens = html.split(/(<h\d[^>]*>[\s\S]*?<\/h\d>|<a [^>]*href="[^"]+\.pdf"[^>]*>[\s\S]*?<\/a>)/);
   let year = 0, series = '', n = 0;

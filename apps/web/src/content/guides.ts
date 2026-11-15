@@ -169,7 +169,7 @@ export const GUIDES: Guide[] = [
 
   // ---------------------------------------------------------------- subjects
   {
-    id: 'maths', kind: 'subject', title: 'How to revise GCSE maths', kinds: ['maths'],
+    id: 'maths', kind: 'subject', title: 'How to revise maths', kinds: ['maths'],
     summary: 'Maths is revised by doing maths. Worked examples to learn a method, then lots of mixed exam questions.',
     sections: [
       { h: 'What the exams reward', p: 'Three papers, one non-calculator. Marks come from choosing the right method, setting out working clearly and getting accurate answers. Method marks are available even when the final answer is wrong, so always show working.' },
@@ -180,7 +180,7 @@ export const GUIDES: Guide[] = [
     tool: ['/papers', 'Open past papers'], related: ['worked-examples', 'interleaving', 'mistake-log'],
   },
   {
-    id: 'sciences', kind: 'subject', title: 'How to revise GCSE sciences', kinds: ['science'],
+    id: 'sciences', kind: 'subject', title: 'How to revise the sciences', kinds: ['science'],
     summary: 'Learn the content with recall, then practise applying it to unfamiliar exam questions, including required practicals and maths skills.',
     sections: [
       { h: 'What the exams reward', p: 'Recall of facts and processes, applying them to new situations, calculations, required practicals, and longer six-mark answers. Combined Science covers less content per subject but the same skills.' },
@@ -286,7 +286,7 @@ export const GUIDES: Guide[] = [
     id: 'timing', kind: 'technique', title: 'Timing in the exam',
     summary: 'Use about a minute per mark, leave time to check, and move on when you’re stuck.',
     sections: [
-      { h: 'The rule of thumb', p: 'Divide the time by the marks. Most GCSE papers give a little over a minute per mark. A 6-mark question deserves about 6 minutes, not 15.' },
+      { h: 'The rule of thumb', p: 'Divide the time by the marks. Most GCSE and A-level papers give a little over a minute per mark. A 6-mark question deserves about 6 minutes, not 15.' },
       { h: 'How to do it', steps: ['Before the exam, work out the time per mark and when you should be halfway.', 'Note the time you should reach each section.', 'If you’re stuck, leave a gap, mark the question, and come back.', 'Save five minutes at the end to check.'] },
       { h: 'In Hilite', p: 'The exam timing planner works out minutes per mark and checkpoints for any of your papers.' },
     ],

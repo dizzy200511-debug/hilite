@@ -5,13 +5,14 @@
  */
 import { paperPages, paperSpecs } from './paperPages';
 import type { SpecPapers } from '../lib/paperLinks';
-import { BOARDS, CONTINGENCY_DAY, SPECS, TIMETABLE_YEAR, specSlug, type Board, type Paper, type Spec } from '../catalog/catalog';
+import { BOARDS, CONTINGENCY_DAY, SPECS, TIMETABLE_YEAR, specSlug, type Board, type Paper, type Qual, type Spec } from '../catalog/catalog';
 
 export interface StaticFile { fileName: string; source: string }
 export interface Assets { css: string[]; script: string; site: string }
 
 export const COUNTDOWN_SCRIPT = 'exam-dates/countdown.js';
 const BOARD_ORDER: Board[] = ['AQA', 'Edexcel', 'OCR'];
+export const QUALS: Qual[] = ['GCSE', 'A-level'];
 
 export { specSlug };
 
@@ -62,7 +63,7 @@ ${a.css.map((h) => `<link rel="stylesheet" href="${esc(h)}" />`).join('\n')}
 ${body}
 </main>
 <footer class="lfoot">
-<span>© 2026 Hilite</span><a href="/exam-dates">GCSE exam dates ${TIMETABLE_YEAR}</a><a href="/past-papers">GCSE past papers</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+<span>© 2026 Hilite</span><a href="/exam-dates">GCSE and A-level exam dates ${TIMETABLE_YEAR}</a><a href="/past-papers">Free past papers</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
 <span style="margin-left:auto">Dates from the boards’ published timetables. Always check your school’s final timetable.</span>
 </footer>
 </div>
@@ -88,7 +89,7 @@ function specPage(spec: Spec, a: Assets): string {
     ? `One paper, on ${longDate(first!)}.`
     : `${papers.length} papers, from ${longDate(first!)} to ${longDate(last!)}.`;
   const body = `
-<nav class="small crumbs"><a href="/exam-dates">GCSE exam dates ${TIMETABLE_YEAR}</a> <span class="faint">/</span> <span class="muted">${esc(boardName(spec))}</span></nav>
+<nav class="small crumbs"><a href="/exam-dates">Exam dates ${TIMETABLE_YEAR}</a> <span class="faint">/</span> <a href="/exam-dates#${spec.qual === 'GCSE' ? 'gcse' : 'a-level'}">${esc(spec.qual)}</a> <span class="faint">/</span> <span class="muted">${esc(boardName(spec))}</span></nav>
 <h1>${esc(name)} exam dates ${TIMETABLE_YEAR}</h1>
 <p class="lead">Specification <span class="num">${esc(spec.code)}</span>. ${esc(summary)}${spec.tiered ? ' Foundation and Higher tier papers are sat at the same time.' : ''}</p>
 ${first ? `<div class="countdown" style="margin-bottom:24px"><b data-until="${first}" data-plain>–</b><span class="muted">until the first paper</span></div>` : ''}
@@ -117,27 +118,28 @@ ${sameBoard.length ? `<h2>Other ${esc(boardName(spec))} ${esc(spec.qual)} exam d
 }
 
 function indexPage(a: Assets): string {
-  const groups = BOARD_ORDER.map((b) => {
-    const specs = SPECS.filter((s) => s.board === b && dated(s).length).sort((x, y) => x.subject.localeCompare(y.subject));
+  const groups = QUALS.map((q) => `<section id="${q === 'GCSE' ? 'gcse' : 'a-level'}"><h2 class="seo-qual">${q}</h2>` + BOARD_ORDER.map((b) => {
+    const specs = SPECS.filter((s) => s.qual === q && s.board === b && dated(s).length).sort((x, y) => x.subject.localeCompare(y.subject));
     if (!specs.length) return '';
     const items = specs.map((s) => {
       const p = dated(s);
       return `<li class="item"><div class="grow"><a class="title" href="/exam-dates/${specSlug(s)}">${esc(s.subject)}</a><div class="meta"><span class="num">${esc(s.code)}</span><span>${p.length} paper${p.length === 1 ? '' : 's'}</span></div></div>`
         + `<div class="small muted num" style="text-align:right">${esc(longDate(p[0].sitting!.date, true))}${p.length > 1 ? ' to ' + esc(longDate(p[p.length - 1].sitting!.date, true)) : ''}</div></li>`;
     }).join('\n');
-    return `<h2>${esc(BOARDS[b].name)} GCSE</h2><div class="panel"><ul class="list" style="padding:0 20px">${items}</ul></div>`;
-  }).join('\n');
+    return `<h3 class="seo-board">${esc(BOARDS[b].name)} ${q}</h3><div class="panel"><ul class="list" style="padding:0 20px">${items}</ul></div>`;
+  }).join('\n') + '</section>').join('\n');
   const body = `
-<h1>GCSE exam dates ${TIMETABLE_YEAR}</h1>
-<p class="lead">Every written paper for AQA, Pearson Edexcel and OCR GCSEs in summer ${TIMETABLE_YEAR}, with dates, sessions and a countdown. Exams run from ${esc(longDate(firstDate()))} to ${esc(longDate(lastDate()))}, and ${esc(longDate(CONTINGENCY_DAY))} is the contingency day.</p>
+<h1>GCSE and A-level exam dates ${TIMETABLE_YEAR}</h1>
+<p class="lead">Every written GCSE and A-level paper for AQA, Pearson Edexcel and OCR in summer ${TIMETABLE_YEAR}, with dates, sessions and a countdown. Exams run from ${esc(longDate(firstDate()))} to ${esc(longDate(lastDate()))}, and ${esc(longDate(CONTINGENCY_DAY))} is the contingency day.</p>
+<div class="row wrap" style="margin-bottom:8px"><a class="btn" href="#gcse">GCSE</a><a class="btn" href="#a-level">A-level</a></div>
 <div class="panel panel-pad seo-cta">
 <div class="grow"><h2>See only your own exams</h2><p class="muted">Pick your board and subjects in Hilite and get your personal timetable, clash warnings and a revision plan that fits every topic in.</p></div>
 <a class="btn btn-primary btn-lg" href="/signup">Plan your revision free</a>
 </div>
 ${groups}
 `;
-  return page(a, '/exam-dates', 'GCSE exam dates ' + TIMETABLE_YEAR + ': AQA, Edexcel and OCR · Hilite',
-    `Every GCSE exam date for summer ${TIMETABLE_YEAR} by board and subject: AQA, Pearson Edexcel and OCR, with session times and a countdown to each paper.`, body);
+  return page(a, '/exam-dates', 'GCSE and A-level exam dates ' + TIMETABLE_YEAR + ': AQA, Edexcel and OCR · Hilite',
+    `Every GCSE and A-level exam date for summer ${TIMETABLE_YEAR} by board and subject: AQA, Pearson Edexcel and OCR, with session times and a countdown to each paper.`, body);
 }
 
 const allDates = () => SPECS.flatMap((s) => dated(s).map((p) => p.sitting!.date)).sort();

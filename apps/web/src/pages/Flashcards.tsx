@@ -309,7 +309,8 @@ function StarterModal({ onClose, onAdded }: { onClose: () => void; onAdded: (id:
   const pro = usePro();
   const toast = useToast();
   const mine = profile.subjects.map((sub) => specById(sub.specId)).filter(Boolean);
-  const list = STARTER_DECKS.map((d) => ({ d, spec: d.subject ? mine.find((sp) => d.subject!.test(sp!.subject)) : undefined }))
+  // The subject decks are written for GCSE, so they only attach to GCSE subjects.
+  const list = STARTER_DECKS.map((d) => ({ d, spec: d.subject ? mine.find((sp) => sp!.qual === 'GCSE' && d.subject!.test(sp!.subject)) : undefined }))
     .sort((a, b) => Number(!!b.spec) - Number(!!a.spec));
   return (
     <Modal title="Ready-made decks" onClose={onClose}>

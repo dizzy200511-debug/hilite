@@ -1,6 +1,6 @@
 # Hilite
 
-Revision built around your exams: real GCSE exam dates by board and spec, past papers, a revision planner, flashcards, topic checklists and a focus timer. Runs as a website and as a Windows app that updates itself.
+Revision built around your exams: real GCSE and A-level exam dates by board and spec, past papers, a revision planner, flashcards, topic checklists and a focus timer. Runs as a website and as a Windows app that updates itself.
 
 ```
 apps/web       The app (React + TypeScript + Vite). Hosted on Vercel.

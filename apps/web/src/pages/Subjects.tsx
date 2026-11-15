@@ -3,7 +3,7 @@ import { Topbar } from '../components/Shell';
 import { Modal, Seg, colourVar, useToast } from '../components/ui';
 import { IconCheck, IconPlus } from '../components/icons';
 import { useProfile } from '../lib/data';
-import { BOARDS, specById, subjectsFor, type Board, type Spec } from '../catalog/catalog';
+import { BOARDS, specById, subjectsFor, type Board, type Qual, type Spec } from '../catalog/catalog';
 import { SUBJECT_COLOURS, type SubjectChoice } from '../lib/types';
 
 const BOARD_LIST: Board[] = ['AQA', 'Edexcel', 'OCR'];
@@ -11,15 +11,16 @@ const BOARD_LIST: Board[] = ['AQA', 'Edexcel', 'OCR'];
 /** Pick subjects from one exam board at a time. Shared by onboarding and the Subjects page. */
 export function SubjectPicker({ value, onChange }: { value: SubjectChoice[]; onChange: (v: SubjectChoice[]) => void }) {
   const [board, setBoard] = useState<Board>(() => (value[0] && specById(value[0].specId)?.board) || 'AQA');
+  const [qual, setQual] = useState<Qual>(() => (value[0] && specById(value[0].specId)?.qual) || 'GCSE');
   const [q, setQ] = useState('');
-  const list = subjectsFor('GCSE', board).filter((s) => !q || s.subject.toLowerCase().includes(q.toLowerCase()));
+  const list = subjectsFor(qual, board).filter((s) => !q || s.subject.toLowerCase().includes(q.toLowerCase()));
   const has = (id: string) => value.find((v) => v.specId === id);
   const nextColour = () => { const used = new Set(value.map((v) => v.colour)); for (let i = 0; i < SUBJECT_COLOURS.length; i++) if (!used.has(i)) return i; return value.length % SUBJECT_COLOURS.length; };
   const toggle = (s: Spec) => {
     if (has(s.id)) onChange(value.filter((v) => v.specId !== s.id));
     else {
-      // You only sit one version of a subject, so picking AQA Biology replaces another board's Biology.
-      const rest = value.filter((v) => specById(v.specId)?.subject !== s.subject);
+      // You only sit one version of a subject at each level, so AQA GCSE Biology replaces another board's GCSE Biology.
+      const rest = value.filter((v) => { const o = specById(v.specId); return !o || o.qual !== s.qual || o.subject !== s.subject; });
       onChange(rest.concat({ specId: s.id, colour: nextColour(), tier: s.tiered ? 'H' : undefined }));
     }
   };
@@ -27,11 +28,11 @@ export function SubjectPicker({ value, onChange }: { value: SubjectChoice[]; onC
   return (
     <div className="stack" style={{ gap: 14 }}>
       <div className="row wrap between">
-        <Seg label="Qualification" value="GCSE" onChange={() => undefined} options={[['GCSE', 'GCSE']]} />
-        <span className="small muted">A-level is coming next.</span>
+        <Seg label="Qualification" value={qual} onChange={(v: Qual) => { setQual(v); setQ(''); }} options={[['GCSE', 'GCSE'], ['A-level', 'A-level']]} />
+        <span className="small muted">{value.length ? value.filter((v) => specById(v.specId)?.qual === 'GCSE').length + ' GCSE, ' + value.filter((v) => specById(v.specId)?.qual === 'A-level').length + ' A-level' : 'Pick your level, then your subjects.'}</span>
       </div>
       <div className="row wrap between">
-        <div className="chips" role="tablist" aria-label="Exam board">{BOARD_LIST.map((b) => <button key={b} className="chip" role="tab" aria-pressed={board === b} onClick={() => setBoard(b)}>{BOARDS[b].name}<span className="faint num" style={{ marginLeft: 6 }}>{value.filter((v) => specById(v.specId)?.board === b).length || ''}</span></button>)}</div>
+        <div className="chips" role="tablist" aria-label="Exam board">{BOARD_LIST.map((b) => <button key={b} className="chip" role="tab" aria-pressed={board === b} onClick={() => setBoard(b)}>{BOARDS[b].name}<span className="faint num" style={{ marginLeft: 6 }}>{value.filter((v) => { const o = specById(v.specId); return o?.board === b && o.qual === qual; }).length || ''}</span></button>)}</div>
         <input className="input" style={{ width: 200, height: 34 }} placeholder="Search subjects" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search subjects" />
       </div>
       <ul className="list" style={{ maxHeight: 360, overflow: 'auto', border: '1px solid var(--line)', borderRadius: 12, padding: '0 14px' }}>

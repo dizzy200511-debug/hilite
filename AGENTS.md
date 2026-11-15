@@ -3,7 +3,7 @@
 Read this first, then `docs/HANDOFF.md` for the full history, status and to-do list.
 
 ## What this is
-Hilite is a GCSE revision website plus a Windows app, modelled on Save My Exams, being built to launch commercially. Free plan stays genuinely useful; Pro is £8/month or £60/year (prices in `PRICE` in `pages/Upgrade.tsx`).
+Hilite is a GCSE and A-level revision website plus a Windows app, modelled on Save My Exams, being built to launch commercially. Free plan stays genuinely useful; Pro is £8/month or £60/year (prices in `PRICE` in `pages/Upgrade.tsx`).
 
 ## Commands
 ```
@@ -35,6 +35,7 @@ With no `VITE_SUPABASE_*` env vars the app runs in **local mode**: sign-up, code
 - **Practice questions are written for Hilite** (`content/questions/`). Never copy questions from past papers or board materials.
 - **Specification content is written in Hilite's own words** (`content/spec/`). AQA's policy forbids reproducing its materials in apps or on third-party sites, so never paste spec text. Section and sub-topic names follow the spec structure; the explanations are ours.
 - **Free entices, Pro is the full kit** (owner’s call, 15 November 2026). Free keeps everything needed to revise: timetable, a full revision plan, flashcards, past papers, checklist, mistake log and retests, blurting, teach-back. Pro gets the AI, most plan styles, unlimited notes and maps, the deeper tools and guides. The split lives in `lib/pro.ts`; change it there.
+- **GCSE and A-level, always.** Hilite serves both. Never write copy, pages or features as GCSE-only (owner's call, 15 November 2026).
 - The Classroom homework scanner is the owner's **separate personal tool**. Do not add it to Hilite.
 
 ## Map
